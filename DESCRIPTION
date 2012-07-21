@@ -1,0 +1,10 @@
+Package: eeptools
+Type: Package
+Title: Convenience functions for education data
+Version: 0.1
+Date: 2012-07-21
+Author: Jared E. Knowles
+Maintainer: Jared E. Knowles <jknowles@gmail.com>
+Description: Blah blah blah
+License: Public Domain
+Depends: stringr, ggplot2, plyr
