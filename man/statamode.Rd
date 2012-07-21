@@ -29,6 +29,7 @@ The modal value of a vector if a unique mode exists, else "."
 \references{
 %% ~put references to the literature/web site here ~
 }
+\author{
 Jared E. Knowles
 }
 \note{
