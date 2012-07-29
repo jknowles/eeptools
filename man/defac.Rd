@@ -2,10 +2,10 @@
 \alias{defac}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+convert a factor to a character string safely
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This is a shortcut function to convert a factor to a character variable without having to type as.character()
 }
 \usage{
 defac(x)
@@ -13,24 +13,20 @@ defac(x)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+a factor to be turned into a character
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a character string of the vector input
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jared E. Knowles
 }
 \note{
 %%  ~~further notes~~
@@ -42,9 +38,10 @@ defac(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+a<-as.factor(LETTERS)
+summary(a)
+b<-defac(a)
+class(b)
 
 ## The function is currently defined as
 function (x) 
@@ -55,5 +52,3 @@ function (x)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

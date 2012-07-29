@@ -2,10 +2,10 @@
 \alias{destring}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+a function to convert numeric factors into numeric class objects
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function allows you to convert directly from a numeric factor to the numeric class in R and strip away the underlying level index of a factor. This makes it safer to convert from factors to numeric characters directly without accidentally misassigning numbers. 
 }
 \usage{
 destring(x)
@@ -13,38 +13,41 @@ destring(x)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+a factor with numeric levels
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function should only be used on factors where all levels are valid numbers that can be coerced into a numeric class.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a vector of class numeric
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jared E. Knowles
 }
 \note{
-%%  ~~further notes~~
+
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\section{warning }{
+This will force all levels to be converted to characters and then to numeric objects. Leading zeroes will be stripped off and commas will cause errors.
+}
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+
+a<-ordered(c(1,3,'09',7,5))
+b<-destring(a)
+class(b)
+b
+a
 
 ## The function is currently defined as
 function (x) 
@@ -54,7 +57,4 @@ function (x)
     x
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
