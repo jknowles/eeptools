@@ -1,0 +1,5 @@
+TODO:
+
+Upgrade remove_stars to be more general
+Finish documentation for autoplot.lm
+Write an autoplot method for shapefiles
