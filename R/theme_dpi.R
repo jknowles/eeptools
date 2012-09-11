@@ -1,48 +1,31 @@
-theme_dpi<-
-  function (base_size = 16, base_family = "") {
-    require(gridExtra)
-  structure(list(axis.line = theme_blank(), 
-                 axis.text.x = theme_text(family = base_family,size = base_size * 1.05, 
-                                          lineheight = 0.9, vjust = 1), 
-                 axis.text.y = theme_text(family = base_family, 
-                                          size = base_size * 1.05, lineheight = 0.9, hjust = 1), 
-                 axis.ticks = theme_segment(colour = "black",size = 0.2), 
-                 axis.title.x = theme_text(family = base_family, 
-                                           size = base_size*1.2, face='bold',vjust = 0.25), 
-                 axis.title.y = theme_text(family = base_family, 
-                                           size = base_size*1.2, face='bold',angle = 90, 
-                                           vjust = 0.5), 
-                 axis.ticks.length = unit(0.06, "cm"), 
-                 axis.ticks.margin = unit(0.06, "cm"), 
-                 legend.background = theme_rect(colour = NA), 
-                 legend.margin = unit(0.2, "cm"), 
-                 legend.key = theme_rect(colour = "grey80"), 
-                 legend.key.size = unit(1.2, "lines"), 
-                 legend.key.height = NULL, 
-                 legend.key.width = NULL, 
-                 legend.text = theme_text(family = base_family, 
-                                          size = base_size * 0.8), 
-                 legend.text.align = NULL, 
-                 legend.title = theme_text(family = base_family, 
-                                           size = base_size * 0.9, 
-                                           face = "bold", hjust = 0), 
-                 legend.title.align = NULL, 
-                 legend.position = "right", 
-                 legend.direction = NULL, 
-                 legend.justification = "center", 
-                 legend.box = NULL, 
-                 panel.background = theme_rect(fill = "white", colour = NA), 
-                 panel.border = theme_rect(fill = NA, colour = "grey50"), 
-                 panel.grid.major = theme_line(colour = "grey90", size = 0.2), 
-                 panel.grid.minor = theme_line(colour = "grey98", size = 0.5), 
-                 panel.margin = unit(0.25, "lines"), 
-                 strip.background = theme_rect(fill = "grey80", colour = "grey50"),
-                 strip.text.x = theme_text(family = base_family, 
-                                           size = base_size * 0.8), 
-                 strip.text.y = theme_text(family = base_family, 
-                                           size = base_size * 0.8, angle = -90), 
-                 plot.background = theme_rect(colour = NA), 
-                 plot.title = theme_text(family = base_family, size = base_size * 
-                   1.4), face='bold',plot.margin = unit(c(1, 1, 0.5, 0.5), "lines")), 
-            class = "options")
-}
+theme_dpi<-function (base_size = 16, base_family = "") 
+{
+  theme_grey(base_size = base_size, base_family = base_family) %+replace% 
+    theme(axis.title=element_text(size=rel(0.8),face="bold"),
+          axis.title.y=element_text(vjust=0.35,angle=90),
+          axis.text = element_text(size = rel(0.8)),
+          axis.ticks = element_line(colour = "black",size=rel(1.5)), 
+          legend.key = element_rect(colour = "grey80"), 
+          legend.title = element_text(),
+          legend.text = element_text(),
+          panel.background = element_rect(fill = "white",colour = NA), 
+          panel.border = element_rect(fill = NA, colour = "grey50"), 
+          panel.grid.major = element_line(colour = "grey90",size = 0.2), 
+          panel.grid.minor = element_line(colour = "grey96", size = 0.5), 
+          strip.background = element_rect(fill = "grey90",colour = "grey50"), 
+          strip.background = element_rect(fill = "grey90",colour = "grey50"),
+          strip.text = element_text(size = rel(0.9),face="bold"),
+          strip.text.x = element_text(size = rel(0.9),face="bold"),
+          strip.text.y = element_text(size = rel(0.9),face="bold"),
+          legend.text = element_text(),
+          legend.title = element_text(),
+          panel.margin=unit(0.48,"cm")
+          )
+  }
+
+qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb),size=I(2.5))+theme_dpi()+facet_wrap(~gear)+
+  labs(x="My Var",y="Something way too long as usual",title="TEST")
+
+
+qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb))+theme_dpi()+facet_grid(am~gear)+
+  labs(x="My Var",y="Something way too long as usual",title="TEST")+coord_flip()
