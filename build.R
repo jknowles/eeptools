@@ -8,6 +8,7 @@ source('cutandthresh.R')
 # Build documentation 
 prompt(remove_stars,filename="man/remove_stars.Rd")
 prompt(vwReg,filename="man/vwReg.Rd")
+
 #package.skeleton(name='eeptools')
 library(devtools)
 setwd('C:/Users/Jared/Projects')
