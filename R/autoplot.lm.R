@@ -1,7 +1,8 @@
-autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
+library(ggplot2)
+autoplot.lm <- function(x, ..., which=c(1:6), mfrow=c(3,2)){
   require(ggplot2)
   require(grid)
-  df <- fortify(model)
+  df <- fortify(x)
   df <- cbind(df, rows=1:nrow(df))
   
   # residuals vs fitted
@@ -11,7 +12,8 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
-    opts(title="Residuals vs Fitted")
+    labs(title="Residuals vs Fitted")+
+    theme_dpi()
   
   # normal qq
   a <- quantile(df$.stdresid, c(0.25, 0.75))
@@ -23,7 +25,7 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
     geom_abline(slope=slope, intercept=int) +
     scale_x_continuous("Theoretical Quantiles") +
     scale_y_continuous("Standardized Residuals") +
-    opts(title="Normal Q-Q")
+    labs(title="Normal Q-Q")+theme_dpi()
   
   # scale-location
   g3 <- ggplot(df, aes(.fitted, sqrt(abs(.stdresid)))) +
@@ -31,14 +33,14 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
     geom_smooth(se=FALSE) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Root of Standardized Residuals") +
-    opts(title="Scale-Location")
+    labs(title="Scale-Location")+theme_dpi()
   
   # cook's distance
   g4 <-  ggplot(df, aes(rows, .cooksd, ymin=0, ymax=.cooksd)) +
     geom_point() + geom_linerange() +
     scale_x_continuous("Observation Number") +
     scale_y_continuous("Cook's distance") +
-    opts(title="Cook's Distance")
+    labs(title="Cook's Distance")+theme_dpi()
   
   # residuals vs leverage
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
@@ -47,7 +49,7 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
-    opts(title="Residuals vs Leverage")
+    labs(title="Residuals vs Leverage")+theme_dpi()
   
   # cooksd vs leverage
   g6 <- ggplot(df, aes(.hat, .cooksd)) +
@@ -55,7 +57,7 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
     geom_smooth(se=FALSE) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Cook's distance") +
-    opts(title="Cook's dist vs Leverage")
+    labs(title="Cook's dist vs Leverage")+theme_dpi()
   
   plots <- list(g1, g2, g3, g4, g5, g6)
   
@@ -84,4 +86,4 @@ autoplot.lm <- function(x, ..., which=c(1:3, 5), mfrow=c(1,1)){
   }
 }
 
-# From online
+# From online http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/

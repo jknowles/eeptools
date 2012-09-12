@@ -23,9 +23,9 @@ theme_dpi<-function (base_size = 16, base_family = "")
           )
   }
 
-qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb),size=I(2.5))+theme_dpi()+facet_wrap(~gear)+
-  labs(x="My Var",y="Something way too long as usual",title="TEST")
+#qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb),size=I(2.5))+theme_dpi()+facet_wrap(~gear)+
+#  labs(x="My Var",y="Something way too long as usual",title="TEST")
 
 
-qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb))+theme_dpi()+facet_grid(am~gear)+
-  labs(x="My Var",y="Something way too long as usual",title="TEST")+coord_flip()
+#qplot(wt,mpg*100,data=mtcars,color=hp,shape=as.factor(carb))+theme_dpi()+facet_grid(am~gear)+
+#  labs(x="My Var",y="Something way too long as usual",title="TEST")+coord_flip()

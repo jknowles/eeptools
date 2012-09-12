@@ -3,3 +3,7 @@ TODO:
 Upgrade remove_stars to be more general
 Finish documentation for autoplot.lm
 Write an autoplot method for shapefiles
+Finish documentation for vw_reg
+Enforce consistent naming
+Update documentation
+Finish updating all dpi_themes for new ggplot2

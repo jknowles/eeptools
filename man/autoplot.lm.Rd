@@ -8,21 +8,21 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-autoplot.lm(x, ..., which = c(1:3, 5), mfrow = c(1, 1))
+autoplot.lm(x, ..., which = c(1:6), mfrow = c(3, 2))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+  a linear model object
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  functions to pass through
 }
   \item{which}{
-%%     ~~Describe \code{which} here~~
+  which of the tests do we want to display output from
 }
   \item{mfrow}{
-%%     ~~Describe \code{mfrow} here~~
+  Describes the layout of the resulting function
 }
 }
 \details{
