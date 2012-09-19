@@ -42,22 +42,12 @@ Jared E. Knowles
 \code{\link{table}} which this function uses
 }
 \examples{
-for vector
+# for vectors
 a<-c(month.name,month.name)
 statamode(a) # returns "." to show no unique mode; useful for ddply
 a<-c(LETTERS,"A","A")
 statamode(a)
 
-## The function is currently defined as
-function (x) 
-{
-    z <- table(as.vector(x))
-    m <- names(z)[z == max(z)]
-    if (length(m) == 1) {
-        return(m)
-    }
-    return(".")
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

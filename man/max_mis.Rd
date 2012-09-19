@@ -2,58 +2,49 @@
 \alias{max_mis}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+A function to safely take the maximum of a vector that could include only NAs.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+When computing the maximum on arbitrary subsets of data, some of which may only have missing values, it 
+may be necessary to take the maximum of a vector of NAs. This replaces the behavior that returns Inf or
+-Inf and replaces it with simply returning an NA. 
 }
 \usage{
 max_mis(x)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+A vector of data that a maximum can be taken of.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function only returns valid results for vectors with a mix of NA and numeric values.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+If any valid numeric values are in the vector it returns the maximum. If all NAs, it returns NA.
 }
 \references{
-%% ~put references to the literature/web site here ~
+
 }
 \author{
-%%  ~~who you are~~
+Jared E. Knowles
 }
 \note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See also \code{\link{max}} which this function wraps.
 }
+
 \examples{
 
-max(c(7,NA,3,2,0),na.rm=T)
+max(c(7,NA,3,2,0),na.rm=TRUE)
 max_mis(c(7,NA,3,2,0))
-max(c(NA,NA,NA,NA),na.rm=T)
+max(c(NA,NA,NA,NA),na.rm=TRUE)
 max_mis(c(NA,NA,NA,NA))
 
-## The function is currently defined as
-function (x) 
-{
-    suppressWarnings(x <- max(x, na.rm = T))
-    ifelse(is.finite(x), x, NA)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

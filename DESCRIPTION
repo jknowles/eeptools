@@ -6,5 +6,5 @@ Date: 2012-07-21
 Author: Jared E. Knowles
 Maintainer: Jared E. Knowles <jknowles@gmail.com>
 Description: Blah blah blah
-License: Public Domain
-Depends: stringr, ggplot2, plyr
+License: GPL-3
+Depends: stringr, ggplot2, plyr, proto

@@ -40,15 +40,9 @@ Jared Knowles
 \code{\link{source}}
 }
 \examples{
- 
-function (myurl) 
-{
-    s <- str_extract(myurl, "[/][a-z][/]\\d+[/][a-z]*.*")
-    new_url <- paste("http://dl.dropbox.com", s, sep = "")
-    source(new_url)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
+# Not run
+# dropbox_source("https://dropbox.com/public/somekey/cooldata.csv")
+
 \keyword{ ~utilities}
 

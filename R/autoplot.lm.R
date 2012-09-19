@@ -1,4 +1,3 @@
-library(ggplot2)
 autoplot.lm <- function(x, ..., which=c(1:6), mfrow=c(3,2)){
   require(ggplot2)
   require(grid)
@@ -85,5 +84,3 @@ autoplot.lm <- function(x, ..., which=c(1:6), mfrow=c(3,2)){
     j <- j+1
   }
 }
-
-# From online http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/

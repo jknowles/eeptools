@@ -1,5 +1,5 @@
 theme_dpi<-function (base_size = 16, base_family = "") 
-{
+{require(grid)
   theme_grey(base_size = base_size, base_family = base_family) %+replace% 
     theme(axis.title=element_text(size=rel(0.8),face="bold"),
           axis.title.y=element_text(vjust=0.35,angle=90),

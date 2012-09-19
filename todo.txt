@@ -1,9 +1,10 @@
 TODO:
 
 Upgrade remove_stars to be more general
-Finish documentation for autoplot.lm
+# DONE Finish documentation for autoplot.lm
 Write an autoplot method for shapefiles
 Finish documentation for vw_reg
 Enforce consistent naming
-Update documentation
+Update documentation--remove (theme_minimal refs)
 Finish updating all dpi_themes for new ggplot2
+Remove functions I can't support--geom_rangeframe, tufte, vwReg

@@ -41,44 +41,22 @@ Jared E. Knowles
 This uses \code{\link{unit}} from the gridExtra package extensively. See also \code{\link{theme_bw}} or \code{\link{theme_minimal}} from the ggplot2 package.
 }
 \examples{
+
+# Data
 crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
 library(reshape2) # for melt
 crimesm <- melt(crimes, id = 1)
-if (require(maps)) {
-  states_map <- map_data("state")
-  ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat)
-  last_plot() + coord_map()
-  ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat) + facet_wrap( ~ variable)+theme_dpi_map()
-}
 
-## The function is currently defined as
-function (base_size = 14, base_family = "") 
-{
-    require(gridExtra)
-    structure(list(axis.line = theme_blank(), axis.text.x = theme_blank(), 
-        axis.text.y = theme_blank(), axis.ticks = theme_blank(), 
-        axis.title.x = theme_blank(), axis.title.y = theme_blank(), 
-        axis.ticks.length = unit(0.06, "cm"), axis.ticks.margin = unit(0.06, 
-            "cm"), legend.background = theme_rect(colour = NA), 
-        legend.margin = unit(0.2, "cm"), legend.key = theme_rect(colour = "grey80"), 
-        legend.key.size = unit(0.8, "lines"), legend.key.height = NULL, 
-        legend.key.width = NULL, legend.text = theme_text(family = base_family, 
-            size = base_size * 0.65), legend.text.align = NULL, 
-        legend.title = theme_text(family = base_family, size = base_size * 
-            0.8, face = "bold", hjust = 0), legend.title.align = NULL, 
-        legend.position = "bottom", legend.direction = NULL, 
-        legend.justification = "center", legend.box = NULL, panel.background = theme_rect(fill = "white", 
-            colour = NA), panel.border = theme_rect(fill = NA, 
-            colour = "grey50"), panel.grid.major = theme_blank(), 
-        panel.grid.minor = theme_blank(), panel.margin = unit(0.25, 
-            "lines"), strip.background = theme_rect(fill = "grey80", 
-            colour = "grey50"), strip.text.x = theme_text(family = base_family, 
-            size = base_size * 0.8), strip.text.y = theme_text(family = base_family, 
-            size = base_size * 0.8, angle = -90), plot.background = theme_rect(colour = NA), 
-        plot.title = theme_text(family = base_family, size = base_size * 
-            1.4), face = "bold", plot.margin = unit(c(1, 1, 0.5, 
-            0.5), "lines")), class = "options")
-  }
+# No DPI theme
+states_map <- map_data("state")
+ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat)+ labs(title="USA Crime")
+
+# Draw map
+last_plot() + coord_map()
+  
+# DPI theme
+ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat) + facet_wrap( ~ variable)+theme_dpi_map()
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
