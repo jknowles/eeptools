@@ -8,7 +8,7 @@ an alternate ggplot2 theme developed for PDF or SVG maps
 This is a custom ggplot2 theme developed for the Wisconsin Department of Public Instruction for making PDF maps
 }
 \usage{
-theme_dpi(base_size = 16, base_family = "")
+theme_dpi_map2(base_size = 16, base_family = "")
 }
 
 \arguments{
@@ -38,7 +38,7 @@ Jared E. Knowles
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-This uses \code{\link{unit}} from the gridExtra package extensively. See also \code{\link{theme_bw}} or \code{\link{theme_minimal}} from the ggplot2 package.
+This uses \code{\link{unit}} from the gridExtra package extensively. See also \code{\link{theme_bw}} from the ggplot2 package.
 }
 \examples{
 
