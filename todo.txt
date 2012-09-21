@@ -9,3 +9,5 @@ Enforce consistent naming
 # DONE Remove functions I can't support--geom_rangeframe, tufte, vwReg
 # Get R CMD check passed without warnings
 # Clean up data issues
+# Finalize dependencies
+# Finalize description and documentation for final submission
