@@ -1,0 +1,120 @@
+* using log directory 'C:/Users/Jared/Projects/eeptools/eeptools.Rcheck'
+* using R version 2.15.1 (2012-06-22)
+* using platform: x86_64-pc-mingw32 (64-bit)
+* using session charset: ISO8859-1
+* checking for file 'eeptools/DESCRIPTION' ... OK
+* checking extension type ... Package
+* this is package 'eeptools' version '0.1'
+* checking CRAN incoming feasibility ... NOTE
+New submission
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking whether package 'eeptools' can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for portable file names ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking for unstated dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+File 'eeptools/R/eeptools.R':
+  .onAttach calls:
+    cat(c(" eeptools for R version 0.1", " Free and Open Software for Education Evaluation",     "Developed by Jared E. Knowles 2012", " For The Wisconsin Department of Public Instruction",     " Distributed without warranty"), sep = "\n")
+
+Package startup functions should use 'packageStartupMessage' to
+  generate messages.
+See section 'Good practice' in ?.onAttach.
+
+autoplot.lm: no visible binding for global variable '.fitted'
+autoplot.lm: no visible binding for global variable '.resid'
+autoplot.lm: no visible binding for global variable '.stdresid'
+autoplot.lm: no visible binding for global variable 'rows'
+autoplot.lm: no visible binding for global variable '.cooksd'
+autoplot.lm: no visible binding for global variable '.hat'
+* checking Rd files ... NOTE
+prepare_Rd: autoplot.lm.Rd:31-33: Dropping empty section \details
+prepare_Rd: autoplot.lm.Rd:34-40: Dropping empty section \value
+prepare_Rd: autoplot.lm.Rd:47-49: Dropping empty section \note
+prepare_Rd: autoplot.lm.Rd:53-55: Dropping empty section \seealso
+prepare_Rd: cutoff.Rd:38-40: Dropping empty section \note
+prepare_Rd: cutoff.Rd:32-34: Dropping empty section \references
+prepare_Rd: defac.Rd:19-21: Dropping empty section \details
+prepare_Rd: defac.Rd:31-33: Dropping empty section \note
+prepare_Rd: defac.Rd:25-27: Dropping empty section \references
+prepare_Rd: defac.Rd:37-39: Dropping empty section \seealso
+prepare_Rd: destring.Rd:31-33: Dropping empty section \note
+prepare_Rd: destring.Rd:25-27: Dropping empty section \references
+prepare_Rd: destring.Rd:41-43: Dropping empty section \seealso
+prepare_Rd: dropbox_source.Rd:33-35: Dropping empty section \note
+prepare_Rd: dropbox_source.Rd:27-29: Dropping empty section \references
+prepare_Rd: eeptools-package.Rd:31-33: Dropping empty section \seealso
+prepare_Rd: max_mis.Rd:33-35: Dropping empty section \note
+prepare_Rd: max_mis.Rd:27-29: Dropping empty section \references
+prepare_Rd: midsch.Rd:35-37: Dropping empty section \source
+prepare_Rd: midsch.Rd:38-40: Dropping empty section \references
+prepare_Rd: remove_stars.Rd:17-19: Dropping empty section \details
+prepare_Rd: remove_stars.Rd:20-21: Dropping empty section \value
+prepare_Rd: remove_stars.Rd:22-23: Dropping empty section \references
+prepare_Rd: remove_stars.Rd:32-34: Dropping empty section \seealso
+prepare_Rd: statamode.Rd:23-25: Dropping empty section \details
+prepare_Rd: statamode.Rd:35-37: Dropping empty section \note
+prepare_Rd: statamode.Rd:29-31: Dropping empty section \references
+prepare_Rd: stuatt.Rd:31-33: Dropping empty section \references
+prepare_Rd: stulevel.Rd:48-50: Dropping empty section \details
+prepare_Rd: stulevel.Rd:51-53: Dropping empty section \source
+prepare_Rd: stulevel.Rd:54-56: Dropping empty section \references
+prepare_Rd: theme_dpi.Rd:34-36: Dropping empty section \note
+prepare_Rd: theme_dpi_map.Rd:34-36: Dropping empty section \note
+prepare_Rd: theme_dpi_map2.Rd:34-36: Dropping empty section \note
+prepare_Rd: theme_dpi_mapPNG.Rd:34-36: Dropping empty section \note
+prepare_Rd: thresh.Rd:22-24: Dropping empty section \details
+prepare_Rd: thresh.Rd:34-36: Dropping empty section \note
+prepare_Rd: thresh.Rd:28-30: Dropping empty section \references
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... WARNING
+'library' or 'require' call not declared from: 'reshape2'
+* checking contents of 'data' directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... ERROR
+Running examples in 'eeptools-Ex.R' failed
+The error most likely occurred in:
+
+> ### Name: theme_dpi_map
+> ### Title: a ggplot2 theme developed for PDF or SVG maps
+> ### Aliases: theme_dpi_map
+> ### Keywords: ~aplot ~misc
+> 
+> ### ** Examples
+> 
+> 
+> # Data
+> crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
+> require(reshape2) # for melt
+Loading required package: reshape2
+> crimesm <- melt(crimes, id = 1)
+> 
+> # No DPI theme
+> states_map <- map_data("state")
+Error: maps package required for this functionality.  Please install and try again.
+Execution halted

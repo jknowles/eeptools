@@ -1,14 +1,14 @@
-\name{theme_dpi_map2}
-\alias{theme_dpi_map2}
+\name{theme_dpi}
+\alias{theme_dpi}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-an alternate ggplot2 theme developed for PDF or SVG maps
+a ggplot2 theme developed for PDF and PNG
 }
 \description{
-This is a custom ggplot2 theme developed for the Wisconsin Department of Public Instruction for making PDF maps
+This is a custom ggplot2 theme developed for the Wisconsin Department of Public Instruction
 }
 \usage{
-theme_dpi_map2(base_size = 14, base_family = "")
+theme_dpi(base_size = 16, base_family = "")
 }
 
 \arguments{
@@ -41,23 +41,10 @@ Jared E. Knowles
 This uses \code{\link{unit}} from the gridExtra package extensively. See also \code{\link{theme_bw}} from the ggplot2 package.
 }
 \examples{
-
-# Data
-crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
-require(reshape2) # for melt
-crimesm <- melt(crimes, id = 1)
-
-# No DPI theme
-states_map <- map_data("state")
-ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat)+ labs(title="USA Crime")
-
-# Draw map
-last_plot() + coord_map()+theme_dpi_map2()
-  
-# DPI theme
-ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat) + facet_wrap( ~ variable)+theme_dpi_map2()
-
+qplot(mpg, wt, data=mtcars) # standard
+qplot(mpg, wt, data=mtcars) + theme_dpi()
 }
+
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~aplot }

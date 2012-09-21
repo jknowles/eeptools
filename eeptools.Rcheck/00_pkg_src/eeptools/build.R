@@ -14,6 +14,3 @@ library(devtools)
 setwd('C:/Users/Jared/Projects')
 build(pkg=paste(getwd(),"/eeptools",sep=""),binary=TRUE)
 
-Sys.setenv(R_LIBS="C:\\Program Files\\RStudio\\R\\library")
-system('R CMD check --as-cran C:\\Users\\Jared\\Projects\\eeptools_0.1.tar.gz')
-

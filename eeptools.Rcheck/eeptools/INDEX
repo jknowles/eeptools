@@ -1,0 +1,29 @@
+autoplot.lm             A function to replicate the basic plot function
+                        for linear models in ggplot2
+cutoff                  function to calculate thresholds in a vector
+defac                   convert a factor to a character string safely
+destring                a function to convert numeric factors into
+                        numeric class objects
+dropbox_source          A function to source R scripts from Dropbox
+                        public shares
+eeptools-package        Convenience functions
+max_mis                 A function to safely take the maximum of a
+                        vector that could include only NAs.
+midsch                  A dataframe of aggregate test scores for
+                        schools in a Midwest state.
+remove_stars            Function to replace a "*" in redcated data with
+                        an NA in R
+statamode               to mimic the mode function in Stata.
+stuatt                  Student Attributes from the Strategic Data
+                        Project Toolkit
+stulevel                A synthetic data set of K-12 student
+                        attributes.
+theme_dpi               a ggplot2 theme developed for PDF and PNG
+theme_dpi_map           a ggplot2 theme developed for PDF or SVG maps
+theme_dpi_map2          an alternate ggplot2 theme developed for PDF or
+                        SVG maps
+theme_dpi_mapPNG        an alternate ggplot2 theme developed for PNG or
+                        JPG maps
+thresh                  function to return the maximum percentage of
+                        the cumulative sum represented by a subset of
+                        the vector
