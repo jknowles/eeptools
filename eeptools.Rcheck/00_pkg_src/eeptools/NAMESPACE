@@ -1,4 +1,0 @@
-import(ggplot2,grid)
-S3method(autoplot,lm)
-exportPattern("^[[:alpha:]]+")
-
