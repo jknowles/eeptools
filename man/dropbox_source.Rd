@@ -22,7 +22,7 @@ A character string for the full URL of the Dropbox share
 Must be the full URL
 }
 \value{
-The sourced script.
+None. The script is sourced.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -41,9 +41,8 @@ Jared Knowles
 }
 \examples{
 
-# Not run
-# dropbox_source("https://dropbox.com/public/somekey/cooldata.csv")
+\dontrun{
+ dropbox_source("https://dropbox.com/public/somekey/cooldata.csv")
 }
 
 \keyword{ ~utilities}
-

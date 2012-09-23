@@ -3,10 +3,10 @@
 \alias{eeptools}
 \docType{package}
 \title{
-Convenience functions
+Evaluation of educational policy tools
 }
 \description{
-Make R tutorials easier
+Make common tasks for educational evaluation easier to do!
 }
 \details{
 \tabular{ll}{
@@ -14,9 +14,9 @@ Package: \tab eeptools\cr
 Type: \tab Package\cr
 Version: \tab 0.1 \cr
 Date: \tab 2012-07-21\cr
-License: \tab Public Domain \cr
+License: \tab GPL-3 \cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+This package has a number of useful shortcuts for common tasks. It includes some themes for ggplot2 plots, processing arbitrary text files of data, calculating student characteristics, and finding thresholds within vectors. Future development work will include methods for tuning and evaluating early warning system models.
 }
 \author{
 Jared E Knowles
@@ -24,7 +24,7 @@ Jared E Knowles
 Jared E. Knowles <jknowles@gmail.com>
 }
 \references{
-~~ Literature or other references for background information ~~
+This package is developed to support the work at state and local education agencies for evaluating education policies.
 }
 
 \keyword{ package }
@@ -32,5 +32,15 @@ Jared E. Knowles <jknowles@gmail.com>
 
 }
 \examples{
-# Some examples later
+gender<-c("M","M","M","F","F","F")
+statamode(gender)
+statamode(gender[1:5])
+
+missing_data<-c(NA,NA,NA)
+max_mis(missing_data,na.rm=T)
+
+destring(gender)
+gender<-factor(gender)
+defac(gender)
+
 }
