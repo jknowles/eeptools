@@ -44,7 +44,7 @@ This uses \code{\link{unit}} from the gridExtra package extensively. See also \c
 \examples{
 # Data
 crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
-require(reshape2) # for melt
+require(reshape) # for melt
 crimesm <- melt(crimes, id = 1)
 
 # No DPI theme

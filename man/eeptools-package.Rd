@@ -37,7 +37,7 @@ statamode(gender)
 statamode(gender[1:5])
 
 missing_data<-c(NA,NA,NA)
-max_mis(missing_data,na.rm=T)
+max_mis(missing_data)
 
 destring(gender)
 gender<-factor(gender)

@@ -44,5 +44,5 @@ Jared Knowles
 \dontrun{
  dropbox_source("https://dropbox.com/public/somekey/cooldata.csv")
 }
-
+}
 \keyword{ ~utilities}
