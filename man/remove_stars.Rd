@@ -14,13 +14,12 @@ remove_stars(x)
 a vector of data that should be numeric but contains "*" characters forcing R to read it as character
 }
 }
-\details{
 
-}
+
 \value{
+Returns a vector of the same length as the input vector that is numeric without "*" characters.
 }
-\references{
-}
+
 \author{
 Jared E. Knowles
 }
@@ -28,10 +27,6 @@ Jared E. Knowles
 Future versions could be modified to accomodate other indicators of redacted data.
 }
 
-
-\seealso{
-
-}
 \examples{
 a<-c(1,5,3,6,"*",2,5,"*","*")
 b<-remove_stars(a)

@@ -26,10 +26,10 @@ A synthetic dataset of student attributes from the Strategic Data Project which 
 This is the non-clean version of the data to allow for implementing business rules to clean data.
 }
 \source{
-Available from the Strategic Data Project online at http://www.gse.harvard.edu/~pfpie/index.php/sdp/tools
+Available from the Strategic Data Project online at \url{http://www.gse.harvard.edu/~pfpie/index.php/sdp/tools}
 }
 \references{
-%%  ~~ possibly secondary sources and usages ~~
+Visit the Strategic Data Project online at:  \url{http://www.gse.harvard.edu/sdp}
 }
 \examples{
 data(stuatt)

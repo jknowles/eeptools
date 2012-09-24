@@ -14,29 +14,19 @@ to represent a single mode does not exist.
 \usage{
 statamode(x)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{
 a numeric vector, missing values are allowed
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 The modal value of a vector if a unique mode exists, else "."
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{table}} which this function uses
@@ -49,7 +39,7 @@ a<-c(LETTERS,"A","A")
 statamode(a)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
+
 \keyword{ ~manip}
 

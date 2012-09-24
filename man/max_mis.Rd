@@ -24,15 +24,11 @@ This function only returns valid results for vectors with a mix of NA and numeri
 \value{
 If any valid numeric values are in the vector it returns the maximum. If all NAs, it returns NA.
 }
-\references{
 
-}
 \author{
 Jared E. Knowles
 }
-\note{
 
-}
 
 \seealso{
 See also \code{\link{max}} which this function wraps.

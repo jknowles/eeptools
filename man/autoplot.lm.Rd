@@ -12,7 +12,6 @@ This uses ggplot2 to replicate the plot functionality for lm in ggplot2 and allo
 \method{autoplot}{lm}(object,which=c(1:6), mfrow=c(3,2),\dots)
 }
 
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
   a linear model object
@@ -28,15 +27,9 @@ This uses ggplot2 to replicate the plot functionality for lm in ggplot2 and allo
   functions to pass through
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A ggplot2 object that mimics the functionality of a plot of linear model.
 }
 \references{
 Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
@@ -44,15 +37,11 @@ Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{plot.lm}} which this function mimics
 }
+
 \examples{
 
 # Univariate

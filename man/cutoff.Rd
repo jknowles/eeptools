@@ -29,17 +29,11 @@ Calculates the distance through a numeric vector before a certain proportion is 
 \value{
 An integer for the minimum number of elements necessary to reach cutoff
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
+
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{cumsum}} which this function uses
@@ -58,7 +52,6 @@ function (x, cutoff)
     length(xc[xc < cutoff])
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{ ~manip}
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

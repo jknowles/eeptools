@@ -31,11 +31,6 @@ For more information see https://github.com/hadley/ggplot2/wiki/Themes
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 This uses \code{\link{unit}} from the gridExtra package extensively. See also \code{\link{theme_bw}} from the ggplot2 package.

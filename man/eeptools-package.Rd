@@ -28,9 +28,11 @@ This package is developed to support the work at state and local education agenc
 }
 
 \keyword{ package }
-\seealso{
 
+\note{
+This package is still in beta and function names may change in the next release.
 }
+
 \examples{
 gender<-c("M","M","M","F","F","F")
 statamode(gender)
