@@ -1,7 +1,7 @@
 \name{remove_stars}
 \alias{remove_stars}
 \title{
-Function to replace a "*" in redcated data with an NA in R
+Function to replace a "*" in redacted data with an NA in R
 }
 \description{
 Redacted education data files often have a "*" character. When importing into R this is a problem, which this function solves in a simple step by replacing "*" with NA, and then converting the vector to numeric.
