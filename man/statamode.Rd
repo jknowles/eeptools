@@ -12,13 +12,15 @@ and replacing tied categories with a "."
 to represent a single mode does not exist.
 }
 \usage{
-statamode(x)
+statamode(x,method)
 }
 
 \arguments{
   \item{x}{
 a numeric vector, missing values are allowed
 }
+  \item(method){
+a character vector of length 1; either "stata", "sample", or "last"
 }
 
 \value{
