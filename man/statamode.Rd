@@ -23,6 +23,10 @@ a numeric vector, missing values are allowed
 a character vector of length 1; either "stata", "sample", or "last"
 }
 
+\details{
+Specifying method="Stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. 
+}
+
 \value{
 The modal value of a vector if a unique mode exists, else "."
 }
