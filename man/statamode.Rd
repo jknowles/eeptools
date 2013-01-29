@@ -20,7 +20,7 @@ statamode(x,method)
 a numeric vector, missing values are allowed
 }
   \item(method){
-a character vector of length 1; either "stata", "sample", or "last"
+a character vector of length 1 specifying the way to break ties in cases where more than one mode exists; either "stata", "sample", or "last". "stata" provides a "." if more than one mode exists. "sample" randomly samples from among the tied values for a single mode. "last" takes the final modal category appearing in the data.
 }
 
 \details{
@@ -28,7 +28,7 @@ Specifying method="Stata" will result in ties for the mode being replaced with a
 }
 
 \value{
-The modal value of a vector if a unique mode exists, else "."
+The modal value of a vector if a unique mode exists, else output determined by method
 }
 \author{
 Jared E. Knowles
@@ -40,9 +40,11 @@ Jared E. Knowles
 \examples{
 # for vectors
 a<-c(month.name,month.name)
-statamode(a) # returns "." to show no unique mode; useful for ddply
+statamode(a,method="stata") # returns "." to show no unique mode; useful for ddply
+statamode(a,method="sample") # randomly pick one
 a<-c(LETTERS,"A","A")
 statamode(a)
+
 
 }
 
