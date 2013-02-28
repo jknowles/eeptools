@@ -1,9 +1,4 @@
 age_calc <- function(dob, enddate=Sys.time(), units='months'){
-  # dob is expected to be a vector, likely a column in a data.frame
-  # enddate is expected to be a set point in time and is an atomic vector.
-  # This could be refactored to allow for vector enddates if the interested is
-  # in calculating age at the time of a measurement which is different for each
-  # observation.
   if (!inherits(dob, "Date") | !inherits(enddate, "Date"))
     stop("Both dob and enddate must be Date class objects")
   start <- as.POSIXlt(dob)
