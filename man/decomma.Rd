@@ -14,7 +14,7 @@ decomma(x)
 }
 }
 \details{
-This function assumes decimal point notation for numbers. For more information, see \link{http://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}. 
+This function assumes decimal point notation for numbers. For more information, see \url{http://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}. 
 }
 \value{
 A numeric vector.
@@ -27,5 +27,5 @@ Jared E. Knowles
 input <- c("10,243", "11,212", "7,011", "5443", "500")
 output <- decomma(input)
 is.numeric(output)
-
+}
 

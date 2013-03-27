@@ -13,8 +13,10 @@ remove_char(x)
   \item{x}{
 a vector of data that should be numeric but contains characters indicating redaction forcing R to read it as character
 }
+  \item{char}{
+  The character or character string that should be removed from the vector.
+  }
 }
-
 
 \value{
 Returns a vector of the same length as the input vector that is numeric with NAs in place of the character.

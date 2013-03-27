@@ -21,7 +21,7 @@ mapmerge <- function(mapobj,data,xid,yid){
   o <- match(mapobj@data[,x], data[,y])
   d <- data[o, ]
   row.names(d) <- mapobj@data[, x]
-  d <- spCbind(mapobj, d)
+  d <- maptools::spCbind(mapobj, d)
   return(d)
 }
 

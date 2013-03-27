@@ -1,4 +1,4 @@
-statamode <- function(x,method=c("last", "stata","sample"))
+statamode <- function(x, method=c("last", "stata","sample"))
 {  
   x<-as.character(x)
   
