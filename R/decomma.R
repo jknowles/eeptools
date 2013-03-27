@@ -1,4 +1,4 @@
 decomma <- function(x){
   x <- gsub(",", "", x)
-  return(x)
+  return(as.numeric(x))
 }

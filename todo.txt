@@ -1,6 +1,6 @@
 TODO:
 
-Upgrade remove_stars to be more general
+# DONE Upgrade remove_stars to be more general
 # DONE Finish documentation for autoplot.lm
 Write an autoplot method for shapefiles
 Enforce consistent naming

@@ -1,59 +1,31 @@
 \name{decomma}
 \alias{decomma}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
+\title{ Remove commas from numeric fields and return them as numerics
 }
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+\description{ A shortcut function to strip commas out of numeric fields imported
+from other software and convert them into numeric vectors that can be operated on. This assumes decimal point as opposed to decimal comma notation. 
 }
 \usage{
 decomma(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
+  \item{x}{A character vector containing numbers with commas that should be coerced into being numeric.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function assumes decimal point notation for numbers. For more information, see \link{http://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}. 
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A numeric vector.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+Jared E. Knowles
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+input <- c("10,243", "11,212", "7,011", "5443", "500")
+output <- decomma(input)
+is.numeric(output)
 
-## The function is currently defined as
-function (x) 
-{
-    x <- gsub(",", "", x)
-    return(x)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
