@@ -12,5 +12,5 @@ Enforce consistent naming
 # DONE Finalize dependencies
 # Finalize description and documentation for final submission
 
-Reduce dependencies by using import::
+# DONE Reduce dependencies by using import::
 

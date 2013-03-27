@@ -1,7 +1,6 @@
 utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   require(ggplot2)
-  require(grid)
   df <- fortify(object)
   df <- cbind(df, rows=1:nrow(df))
   
@@ -62,7 +61,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   plots <- list(g1, g2, g3, g4, g5, g6)
   
   # making the plots
-  grid.newpage()
+  grid::grid.newpage()
   
   if (prod(mfrow)>1) {
     mypos <- expand.grid(1:mfrow[1], 1:mfrow[2])
