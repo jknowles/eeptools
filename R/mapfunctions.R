@@ -15,16 +15,14 @@
 ##' yy$newvar<-sample(letters,nrow(yy),replace=TRUE)
 ##' yy<-subset(yy,select=c("FIPS","newvar"))
 ##' newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS") 
-mapmerge<-function(mapobj,data,xid,yid){
-  require(maptools)
-  d=mapobj@data
-  d<-subset(d,select=c(yid))
-  eval(parse(text=paste0("d$sort<-d$",yid,"")))
-  di<-merge(d,data,by.y=yid,by.x=xid,all.x=TRUE)
-  di<-di[order(di$sort),]
-  row.names(di)<-di$sort
-  di$sort<-NULL
-  spCbind(mapobj,di)
+mapmerge <- function(mapobj,data,xid,yid){
+  x <- grep(xid,colnames(mapobj@data))
+  y <- grep(yid,colnames(data))
+  o <- match(mapobj@data[,x], data[,y])
+  d <- data[o, ]
+  row.names(d) <- mapobj@data[, x]
+  d <- spCbind(mapobj, d)
+  return(d)
 }
 
 ##' Fortify a SpatialPolygonsDataFrame
