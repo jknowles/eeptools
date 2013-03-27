@@ -9,12 +9,13 @@
 ##' @return A SpatialPolygonsDataFrame with new variables attached from supplied dataframe
 ##' @export
 ##' @examples
-##' xx <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
-##' IDvar="FIPSNO", proj4string=CRS("+proj=longlat +ellps=clrk66"))
+##' \dontrun{
+##' xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
 ##' yy<-as(xx,"data.frame")
 ##' yy$newvar<-sample(letters,nrow(yy),replace=TRUE)
 ##' yy<-subset(yy,select=c("FIPS","newvar"))
-##' newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS") 
+##' newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS")
+##' }
 mapmerge <- function(mapobj,data,xid,yid){
   x <- grep(xid,colnames(mapobj@data))
   y <- grep(yid,colnames(data))
@@ -34,9 +35,10 @@ mapmerge <- function(mapobj,data,xid,yid){
 ##' @return An S3 dataframe suitable for using in a gggplot2 map
 ##' @export
 ##' @examples
-##' xx <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
-##' IDvar="FIPSNO", proj4string=CRS("+proj=longlat +ellps=clrk66"))
+##' \dontrun{
+##' xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
 ##' plotobj<-ggmapmerge(xx,"FIPS")
+##' }
 ggmapmerge <- function(mapobj,xid){
   require(ggplot2)
   df.points = fortify(mapobj, region=xid)

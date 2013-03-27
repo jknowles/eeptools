@@ -7,7 +7,7 @@ Function to replace an arbitrary character like a "*" in redacted data with an N
 Redacted education data files often have a "*" character. When importing into R this is a problem, which this function solves in a simple step by replacing "*" with NA, and then converting the vector to numeric.
 }
 \usage{
-remove_char(x)
+remove_char(x, char)
 }
 \arguments{
   \item{x}{

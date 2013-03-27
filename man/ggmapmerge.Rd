@@ -18,8 +18,9 @@
   SpatialPolygonsDataFrames for ggplot2 plotting.
 }
 \examples{
-xx <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
-IDvar="FIPSNO", proj4string=CRS("+proj=longlat +ellps=clrk66"))
+\dontrun{
+xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
 plotobj<-ggmapmerge(xx,"FIPS")
+}
 }
 

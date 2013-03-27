@@ -23,11 +23,12 @@
   spatial polygon objects.
 }
 \examples{
-xx <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
-IDvar="FIPSNO", proj4string=CRS("+proj=longlat +ellps=clrk66"))
+\dontrun{
+xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
 yy<-as(xx,"data.frame")
 yy$newvar<-sample(letters,nrow(yy),replace=TRUE)
 yy<-subset(yy,select=c("FIPS","newvar"))
 newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS")
+}
 }
 
