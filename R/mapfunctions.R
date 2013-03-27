@@ -37,10 +37,10 @@ mapmerge <- function(mapobj,data,xid,yid){
 ##' xx <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
 ##' IDvar="FIPSNO", proj4string=CRS("+proj=longlat +ellps=clrk66"))
 ##' plotobj<-ggmapmerge(xx,"FIPS")
-ggmapmerge<-function(mapobj,xid){
+ggmapmerge <- function(mapobj,xid){
   require(ggplot2)
-  df.points = fortify(mapobj,region=xid)
-  df.points=merge(df.points,mapobj@data,by.x='id',by.y=xid)
-  df.points<-df.points[order(df.points$group,df.points$piece,
-                             df.points$order),]
+  df.points = fortify(mapobj, region=xid)
+  df.points = merge(df.points, mapobj@data, by.x='id', by.y=xid)
+  df.points <- df.points[order(df.points$group, df.points$piece,
+                             df.points$order), ]
 }

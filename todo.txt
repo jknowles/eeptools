@@ -11,3 +11,6 @@ Enforce consistent naming
 # DONE Clean up data issues
 # DONE Finalize dependencies
 # Finalize description and documentation for final submission
+
+Reduce dependencies by using import::
+
