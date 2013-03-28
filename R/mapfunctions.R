@@ -17,8 +17,8 @@
 ##' newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS")
 ##' }
 mapmerge <- function(mapobj,data,xid,yid){
-  x <- grep(xid,colnames(mapobj@data))
-  y <- grep(yid,colnames(data))
+  x <- match(xid,colnames(mapobj@data))
+  y <- match(yid,colnames(data))
   o <- match(mapobj@data[,x], data[,y])
   d <- data[o, ]
   row.names(d) <- mapobj@data[, x]
@@ -33,6 +33,8 @@ mapmerge <- function(mapobj,data,xid,yid){
 ##' @param mapobj Name of an S4 SpatialPolygonsDataFrame
 ##' @param xid Name of ID variable in the SpatialPolygonsDataFrame
 ##' @return An S3 dataframe suitable for using in a gggplot2 map
+##' @details This function requires maptools to be loaded and \code{\link{gpclibPermit}} 
+##' to be \code{TRUE}. This is because it depends on the \code{\link{fortify}} method in \code{\link{ggplot2}}. 
 ##' @export
 ##' @examples
 ##' \dontrun{
