@@ -19,9 +19,6 @@ a vector of class Date representing the when the observation's age is of interes
 a string that indicates units of age  
 }
 }
-\details{
-%% ~~ Additional details to be added as needed ~~
-}
 \value{
 a vector of class numeric
 }

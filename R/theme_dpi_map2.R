@@ -1,4 +1,4 @@
-theme_dpi_map2 < -function (base_size = 14, base_family = "") {
+theme_dpi_map2 <- function(base_size = 14, base_family = "") {
     theme_grey(base_size = base_size, base_family = base_family) %+replace% 
     theme(axis.title = element_blank(),
           axis.text  = element_blank(),
