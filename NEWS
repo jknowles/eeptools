@@ -1,24 +1,23 @@
-shiny 0.5.0
---------------------------------------------------------------------------------
+eeptools 0.3
+--------------------------
 
-* License for Shiny changed to GPL >= 2, and a few files are dual-licensed
-  under the GPL >= 2 and BSD 3-clause.
+TBD
 
-* Switch from websockets package for handling websocket connections to httpuv.
+eeptools 0.2
+---------------
 
-* New method for detecting hidden output objects. Instead of checking that
-  height and width are 0, it checks that the object or any ancestor in the DOM
-  has style display:none.
+* new functions for building maps with shapefiles including mapmerge to merge a dataframe and a shapefile, and ggmapmerge to conver this to a document for making a map in ggplot2
 
-* Add `clientData` reactive values object, which carries information about the
-  client. This includes the hidden status of output objects, height/width plot
-  output objects, and the URL of the browser.
+* statamode updated to allow for multiple methods for handling multiple modes
 
-* Add `parseQueryString()` function.
+* remove_stars deleted and replaced with remove_char to allow for users to specify an arbitrary character string to be removed
 
-* Add `renderImage()` function for sending arbitrary image files to the client,
-  and its counterpart, `imageOutput()`.
+* add plotForWord function to export plots in a Windows MetaFile for inclusion in Microsoft Office documents
 
-* Add support for high-resolution (Retina) displays.
+* add age_calc function to allow calculating the age of a vector of birthdates relative to the current date
 
-* Fix bug #55, where `renderTable()` would throw error with an empty data frame.
+* fix typos in documentation
+
+* fix startup message behavior
+
+* remove dependencies of the package dramatically so loading is faster and more lightweight
