@@ -4,6 +4,8 @@ TODO:
 # DONE Finish documentation for autoplot.lm
 Write an autoplot method for shapefiles
 Enforce consistent naming
+Unify mapmerge and mapmerge2
+Write unit tests for functions using testthat
 # DONEUpdate documentation--remove (theme_minimal refs)
 # DONE Finish updating all dpi_themes for new ggplot2
 # DONE Remove functions I can't support--geom_rangeframe, tufte, vwReg

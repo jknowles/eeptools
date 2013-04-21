@@ -1,50 +1,39 @@
-statamode <- function(x, method=c("last", "stata","sample"))
-{  
-  x<-as.character(x)
-  
-  stata <- function(x){
+statamode <- function(x, method = c("last", "stata", "sample")){
+  x <- as.character(x)
+  if (method == 'stata'){
     z <- table(as.vector(x))
-    m<-names(z)[z == max(z)]
-    if(length(m)==1){
+    m <- names(z)[z == max(z)]
+    
+    if (length(m) == 1){
       return(m)
     }
+    
     return(".")
   }
-  
-  sample2 <- function(x){
+  else if (method == 'sample'){
     z <- table(as.vector(x))
     m<-names(z)[z == max(z)]
-    if(length(m)==1){
+    if (length(m)==1){
       return(m)
     }
     else if (length(m)>1){
       return(sample(m,1))
     }
     else if (length(m)<1){
-      return(NA)
+      return(NA_character_)
     }
   }
-  
-  last <- function(x){
+  else if (method=='last'){
     z <- table(as.vector(x))
-    m<-names(z)[z == max(z)]
-    if(length(m)==1){
+    m <- names(z)[z == max(z)]
+    if (length(m) == 1){
       return(m)
     }
-    else if(length(m)>1){
+    else if (length(m) > 1){
       return(tail(m,1))
     }
-    else if(length(m)<1){
-      return(NA)
+    else if (length(m) < 1){
+      return(NA_character_)
     }
   }
-  
-  method <- match.arg(method)
-  
-  switch(method,
-         stata = temp <- stata(x),
-         sample = temp <- sample2(x),
-         last = temp <- last(x))
-  
-  return(temp)
 }
