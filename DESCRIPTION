@@ -2,10 +2,10 @@ Package: eeptools
 Type: Package
 Title: Convenience functions for education data
 Version: 0.2
-Date: 2012-07-21
+Date: 2013-03-28
 Author: Jared E. Knowles
 Maintainer: Jared E. Knowles <jknowles@gmail.com>
-Description: Free and open source software to make education evaluation easier.Shortcuts and utilities to make R easier to use in an educational evaluation office.
+Description: Collection of convenience functions to make working with administrative records easier and more consistent. Includes functions to clean strings, identify cutpoints, and quickly combine shapefiles and dataframes for plotting. Includes four alternative themes for ggplot2 as well as a wrapper for exporting graphics for inclusion in MS Office products. Also includes three example datasets of administrative education records for learning how to process records with errors. 
 License: GPL-3
 Depends: R (>= 2.15.1), ggplot2
 Imports: stringr, maptools, maps, grid
