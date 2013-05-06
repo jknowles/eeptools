@@ -9,4 +9,4 @@ Description: Collection of convenience functions to make working with administra
 License: GPL-3
 Depends: R (>= 2.15.1), ggplot2
 Imports: stringr, maptools, maps, grid
-Suggests: reshape, sp, plyr, mapproj
+Suggests: reshape, sp, plyr, mapproj, testthat

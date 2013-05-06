@@ -1,4 +1,5 @@
 statamode <- function(x, method = c("last", "stata", "sample")){
+  method <- match.arg(method)
   x <- as.character(x)
   if (method == 'stata'){
     z <- table(as.vector(x))
