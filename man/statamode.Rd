@@ -24,7 +24,7 @@ a character vector of length 1 specifying the way to break ties in cases where m
 }
 }
 \details{
-Specifying method="Stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. 
+Specifying method="stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. The default behavior is stata.
 }
 
 \value{
