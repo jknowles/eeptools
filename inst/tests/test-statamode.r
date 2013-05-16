@@ -7,9 +7,25 @@ test_that("statamode selects the mode right for each method", {
   expect_that(statamode(c("a", "a", "b", "b"), method="sample"), matches(c("a", "b"),all=FALSE))
 })
 
-context("Correct Type Returned")
 
-# sample and last
+a <- c(7, 7, 3, 1, 9, 8, 4, 4)
+b <- statamode(a, method="last")
+c <- statamode(a, method="stata")
+d <- statamode(a, method="sample")
+e <- statamode(e)
+
+test_that("statamode returns correct modes for each method using numbers", {
+  expect_is(c, "character")
+  expect_is(b, "character")
+  expect_is(d, "character")
+  expect_match(e, ".")
+  expect_match(c, ".")
+  expect_equal(b, "4")
+  expect_true(d %in% c("4", "7"))
+})
+
+context("Correct NA Type Returned")
+
 
 test_that("statamode returns NAs of the proper type", {
   expect_that(statamode(c()), gives_warning())
