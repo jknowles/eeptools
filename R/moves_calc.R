@@ -9,12 +9,6 @@ moves_calc <- function(df,
   # df is a data.frame that minimally contains a student ID (default 'sasid'),
   # a school ID (default 'schno'), and two dates an enrollment date and an 
   # exit date for each sid-schid combination.
-
-  # Load required packages
-  if("data.table" %in% rownames(installed.packages()) == FALSE){
-    install.packages("data.table")
-  } 
-  require(data.table)
   # Type checking inputs.
   if (!inherits(df[[enroll_date]], "Date") | !inherits(df[[exit_date]], "Date"))
       stop("Both enroll_date and exit_date must be Date objects")

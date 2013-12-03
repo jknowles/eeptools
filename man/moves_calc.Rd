@@ -48,9 +48,9 @@ Jason P. Becker
 % }
 
 \examples{
-df <- data.frame(sid=rep(seq(1,10,1), 3), schid=c(rep(1,3), rep(2,4), rep(3,3)),
-                 enroll_date=as.date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="10 day")),
-                 exit_date=as.date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="26 day")))
+\dontrun{df <- data.frame(sid=rep(seq(1,10,1), 3), schid=c(rep(1,3), rep(2,4), rep(3,3)),
+                 enroll_date=as.Date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="10 day")),
+                 exit_date=as.Date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="26 day")))
 
 moves <- moves_calc(df)
 moves
@@ -58,4 +58,4 @@ moves <- moves_calc(df, enrollby='2004-10-15', gap=22)
 moves
 moves <- moves_calc(df, enrollby='2004-10-15', exitby='2005-05-29')
 moves
-}
+}}
