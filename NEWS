@@ -1,7 +1,11 @@
 eeptools 0.3
 --------------------------
 
-TBD
+* unit tests
+
+* statamode updated to work with data.table
+
+* age_calc function from Jason Becker
 
 eeptools 0.2
 ---------------
