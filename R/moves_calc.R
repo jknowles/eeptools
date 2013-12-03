@@ -6,7 +6,6 @@ moves_calc <- function(df,
                        schid='schid',
                        enroll_date='enroll_date',
                        exit_date='exit_date'){
-  # df is a data.frame that minimally contains a student ID (default 'sasid'),
   # df is a data.frame that minimally contains a student ID (default 'sid'),
   # a school ID (default 'schno'), and two dates an enrollment date and an 
   # exit date for each sid-schid combination.
@@ -60,8 +59,6 @@ moves_calc <- function(df,
                                       length = length(unique(df[[sid]]))))
   # Students with missing data receive missing moves
   incomplete <- df[!complete.cases(df[, c(enroll_date, exit_date)]), ]
-  output[which(output[['id']] %in% incomplete[[sid]]),][['moves']] <- NA
-
   if(nrow(incomplete)>0){
     output[which(output[['id']] %in% incomplete[[sid]]),][['moves']] <- NA
   }
@@ -69,7 +66,6 @@ moves_calc <- function(df,
   
   df <- df[complete.cases(df[, c(enroll_date, exit_date)]), ]
   dt <- data.table(df, key=sid)
-  dt$sasid <- as.factor(as.character(dt$sasid))
   dt[[sid]] <- as.factor(as.character(dt[[sid]]))
   setnames(dt, names(dt)[which(names(dt) %in% enroll_date)], "enroll_date")
   setnames(dt, names(dt)[which(names(dt) %in% exit_date)], "exit_date")
