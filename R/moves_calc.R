@@ -66,12 +66,15 @@ moves_calc <- function(df,
     output[which(output[['id']] %in% incomplete[[sid]]),][['moves']] <- NA
   }
   output <- data.table(output, key='id')
+  
   df <- df[complete.cases(df[, c(enroll_date, exit_date)]), ]
   dt <- data.table(df, key=sid)
   dt$sasid <- as.factor(as.character(dt$sasid))
   dt[[sid]] <- as.factor(as.character(dt[[sid]]))
   setnames(dt, names(dt)[which(names(dt) %in% enroll_date)], "enroll_date")
   setnames(dt, names(dt)[which(names(dt) %in% exit_date)], "exit_date")
+  dt[['moves']] <- 0
+
   first <- dt[, list(enroll_date=min(enroll_date)), by=sid]
   last <- dt[, list(exit_date=max(exit_date)), by=sid]
   output[id %in% first[enroll_date>enrollby][[sid]], moves:=moves+1L]
