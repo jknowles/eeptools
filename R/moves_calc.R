@@ -7,6 +7,7 @@ moves_calc <- function(df,
                        enroll_date='enroll_date',
                        exit_date='exit_date'){
   # df is a data.frame that minimally contains a student ID (default 'sasid'),
+  # df is a data.frame that minimally contains a student ID (default 'sid'),
   # a school ID (default 'schno'), and two dates an enrollment date and an 
   # exit date for each sid-schid combination.
 
@@ -65,6 +66,7 @@ moves_calc <- function(df,
   df <- df[complete.cases(df[, c(enroll_date, exit_date)]), ]
   dt <- data.table(df, key=sid)
   dt$sasid <- as.factor(as.character(dt$sasid))
+  dt[[sid]] <- as.factor(as.character(dt[[sid]]))
   setnames(dt, names(dt)[which(names(dt) %in% enroll_date)], "enroll_date")
   setnames(dt, names(dt)[which(names(dt) %in% exit_date)], "exit_date")
   first <- dt[, list(enroll_date=min(enroll_date)), by=sid]
