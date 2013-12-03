@@ -62,6 +62,9 @@ moves_calc <- function(df,
   incomplete <- df[!complete.cases(df[, c(enroll_date, exit_date)]), ]
   output[which(output[['id']] %in% incomplete[[sid]]),][['moves']] <- NA
 
+  if(nrow(incomplete)>0){
+    output[which(output[['id']] %in% incomplete[[sid]]),][['moves']] <- NA
+  }
   output <- data.table(output, key='id')
   df <- df[complete.cases(df[, c(enroll_date, exit_date)]), ]
   dt <- data.table(df, key=sid)
