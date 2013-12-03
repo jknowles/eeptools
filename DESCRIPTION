@@ -1,10 +1,12 @@
 Package: eeptools
 Type: Package
 Title: Convenience functions for education data
-Version: 0.2
-Date: 2013-03-28
-Author: Jared E. Knowles
-Maintainer: Jared E. Knowles <jknowles@gmail.com>
+Version: 0.3
+Date: 2013-12-10
+Authors@R: c(person("Jason", "Becker", "P", role = c("ctb"),
+                     email = "jason+sitemail@jbecker.co"),
+              person("Jared", "Knowles", "E", role=c("aut", "cre"), 
+              email="Jared.Knowles@dpi.wi.gov")
 Description: Collection of convenience functions to make working with administrative records easier and more consistent. Includes functions to clean strings, identify cutpoints, and quickly combine shapefiles and dataframes for plotting. Includes four alternative themes for ggplot2 as well as a wrapper for exporting graphics for inclusion in MS Office products. Also includes three example datasets of administrative education records for learning how to process records with errors. 
 License: GPL-3
 Depends: R (>= 2.15.1), ggplot2
