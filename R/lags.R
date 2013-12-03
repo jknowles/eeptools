@@ -4,7 +4,7 @@
 ##'
 ##' @param df A dataframe with groups, time periods, and a variable to be lagged
 ##' @param group The grouping factor in the dataframe
-##' @param var The names of the variables to be lagged
+##' @param values The names of the variables to be lagged
 ##' @param time The variable representing time periods
 ##' @param periods A scalar for the number of periods to be lagged in the data
 ##' @return A dataframe with a newly created variable lagged
@@ -32,6 +32,6 @@ lag_data <- function(df, group, time, periods, values) {
   tmp.data[,time] <- tmp.data[,time] + periods
   new.vals <- paste0(values, ".lag", periods)
   names(tmp.data) <- c(group, time, new.vals)
-  newdat <- merge(test_data, tmp.data, all.x=TRUE, by=c(group,time))
+  newdat <- merge(df, tmp.data, all.x=TRUE, by=c(group,time))
 }
 

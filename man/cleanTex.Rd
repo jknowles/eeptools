@@ -2,7 +2,7 @@
 \alias{cleanTex}
 \title{Remove Unwanted LaTeX files after building document}
 \usage{
-  cleanTex(mydoc, keepPDF = NULL, keepRnw = NULL)
+  cleanTex(fn, keepPDF = NULL, keepRnw = NULL)
 }
 \arguments{
   \item{fn}{a filename for your .Rnw file}

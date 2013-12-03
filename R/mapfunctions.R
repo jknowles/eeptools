@@ -71,7 +71,6 @@ mapmerge2 <- function (mapobj, data, xid, yid)
 ##' plotobj<-ggmapmerge(xx,"FIPS")
 ##' }
 ggmapmerge <- function(mapobj,xid){
-  require(ggplot2)
   df.points = fortify(mapobj, region=xid)
   df.points = merge(df.points, mapobj@data, by.x='id', by.y=xid)
   df.points <- df.points[order(df.points$group, df.points$piece,

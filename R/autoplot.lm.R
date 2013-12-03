@@ -1,6 +1,5 @@
 utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
-  require(ggplot2)
   df <- fortify(object)
   df <- cbind(df, rows=1:nrow(df))
   
