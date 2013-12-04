@@ -15,43 +15,42 @@ age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
   if(units=='days'){
     result <- difftime(end, start, units='days')
   }else if(units=='months'){
-    months <- length(seq(start, end, by='month')) - 1
+    months <- sapply(mapply(seq, as.POSIXct(start), as.POSIXct(end), 
+                            by='months', SIMPLIFY=FALSE), 
+                     length) - 1
+    # length(seq(start, end, by='month')) - 1
     if(precise){
       month_length_end <- ifelse(end$mon==1, 28,
                                  ifelse(end$mon==1 & end_is_leap, 19,
                                         ifelse(end$mon %in% c(3, 5, 8, 10), 
                                                30, 31)))
-      if(end$mday > start$mday){
-        month_frac <- (end$mday-start$mday)/month_length_end
-      }else if(end$mday < start$mday){
-        month_length_prior <- ifelse((end$mon-1)==1, 28,
+      month_length_prior <- ifelse((end$mon-1)==1, 28,
                                      ifelse((end$mon-1)==1 & start_is_leap, 19,
                                             ifelse((end$mon-1) %in% c(3, 5, 8, 
                                                                       10), 
                                                    30, 31)))
-        month_frac <- sum((month_length_start - start$mday)/(month_length_start),
-                        end$mday/month_length_end)
-      }else{
-        month_frac <- 0.0
-      }
+      month_frac <- ifelse(end$mday > start$mday,
+                           (end$mday-start$mday)/month_length_end,
+                           ifelse(end$mday < start$mday, 
+                            (month_length_prior - start$mday) / 
+                                month_length_prior + 
+                                end$mday/month_length_end, 0.0))
       result <- months + month_frac
     }else{
       result <- months
     }
   }else if(units=='years'){
-    years <- length(seq(start, end, by='year')) - 1
+    years <- sapply(mapply(seq, as.POSIXct(start), as.POSIXct(end), 
+                            by='years', SIMPLIFY=FALSE), 
+                     length) - 1
     if(precise){
-      if(start$yday < end$yday){
-        year_frac <- ifelse(end_is_leap, (end$yday - start$yday) / 366,
-                            (end$yday-start$yday) / 365)
-      }else if(start$yday > end$yday){
-        year_frac <- sum(ifelse(start_is_leap, (366-start$yday) / 366,
-                                (365 - start$yday) / 365),
-                         ifelse(end_is_leap, end$yday / 366,
-                                end$yday / 365))
-      }else{
-        year_frac <- 0.0
-      }
+      start_length <- ifelse(start_is_leap, 366, 365)
+      end_length <- ifelse(end_is_leap, 366, 365)
+      year_frac <- ifelse(start$yday < end$yday,
+                          (end$yday - start$yday)/end_length,
+                          ifelse(start$yday > end$yday, 
+                                 (start_length-start$yday) / start_length +
+                                end$yday / end_length, 0.0))
       result <- years + year_frac
     }else{
       result <- years
