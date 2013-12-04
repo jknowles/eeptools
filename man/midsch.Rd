@@ -1,0 +1,42 @@
+\name{midsch}
+\alias{midsch}
+\docType{data}
+\title{
+A dataframe of aggregate test scores for schools in a Midwest state.
+}
+\description{
+This data comes from publicly available aggregated test scores of a large midwestern state. Each row represents scores for school A in grade X and then scores in school A and grade X+1. Additionally, some regression diagnostics and results from a predictive model of test scores in grade X+1 are included.
+}
+\usage{data(midsch)}
+\format{
+  A data frame with 19985 observations on the following 16 variables.
+  \describe{
+    \item{\code{district_id}}{a numeric vector}
+    \item{\code{school_id}}{a numeric vector}
+    \item{\code{subject}}{a factor with levels \code{math} \code{read} representing the subject of the test scores in the row}
+    \item{\code{grade}}{a numeric vector}
+    \item{\code{n1}}{a numeric vector for the count of students in the school and grade in t}
+    \item{\code{ss1}}{a numeric vector for the scale score in t}
+    \item{\code{n2}}{a numeric vector for the count of students in the school and grade in t+1}
+    \item{\code{ss2}}{a numeric vector for the mean scale score in t+1}
+    \item{\code{predicted}}{a numeric vector of the predicted ss2 for this observation}
+    \item{\code{residuals}}{a numeric vector of residuals from the predicted ss2}
+    \item{\code{resid_z}}{a numeric vector of standardized residuals}
+    \item{\code{resid_t}}{a numeric vector of studentized residuals}
+    \item{\code{cooks}}{a numeric vector of cooks D for the residuals}
+    \item{\code{test_year}}{a numeric vector representing the year the test was taken}
+    \item{\code{tprob}}{a numeric vector representing the probability of a residual appearing}
+    \item{\code{flagged_t95}}{a numeric vector}
+  }
+}
+\details{
+These data were fit with a statistical model by a large newspaper to investigate unusual gains in test scores. Fifty separate models were fit representing all unique combinations of grade,year, and subject
+}
+
+
+\examples{
+data(midsch)
+
+}
+
+\keyword{datasets}

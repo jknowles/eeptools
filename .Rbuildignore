@@ -1,1 +1,7 @@
 ^\.Rproj\.user$
+^.*\.Rproj$
+^.*\.RData
+^.*\.Rhistory
+todo.txt
+.gitignore
+build.R

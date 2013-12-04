@@ -1,0 +1,27 @@
+eeptools 0.3
+--------------------------
+
+* unit tests
+
+* statamode updated to work with data.table
+
+* age_calc function from Jason Becker
+
+eeptools 0.2
+---------------
+
+* new functions for building maps with shapefiles including mapmerge to merge a dataframe and a shapefile, and ggmapmerge to conver this to a document for making a map in ggplot2
+
+* statamode updated to allow for multiple methods for handling multiple modes
+
+* remove_stars deleted and replaced with remove_char to allow for users to specify an arbitrary character string to be removed
+
+* add plotForWord function to export plots in a Windows MetaFile for inclusion in Microsoft Office documents
+
+* add age_calc function to allow calculating the age of a vector of birthdates relative to the current date
+
+* fix typos in documentation
+
+* fix startup message behavior
+
+* remove dependencies of the package dramatically so loading is faster and more lightweight

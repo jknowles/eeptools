@@ -46,16 +46,15 @@ A small dataset of synthetic data on K-12 students with 2700 observations. 1200 
   }
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
+This data is synthetically generated to reflect student test scores and demographic attributes. 
 }
 \source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
+The script to generate this synthetic dataset can be found and modified at \url{https://github.com/jknowles/r_tutorial_ed}
 }
-\references{
-%%  ~~ possibly secondary sources and usages ~~
-}
+
+
 \examples{
 data(stulevel)
-## maybe str(stulevel) ; plot(stulevel) ...
 }
+
 \keyword{datasets}

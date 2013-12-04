@@ -19,23 +19,15 @@ a numeric vector, missing values are allowed
 the number of elements to look at
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 An integer for the proportion of the vector's sum reached at cutoff
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
  \code{\link{cutoff}} which this function is related to
