@@ -21,11 +21,11 @@ age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
     # length(seq(start, end, by='month')) - 1
     if(precise){
       month_length_end <- ifelse(end$mon==1, 28,
-                                 ifelse(end$mon==1 & end_is_leap, 19,
+                                 ifelse(end$mon==1 & end_is_leap, 29,
                                         ifelse(end$mon %in% c(3, 5, 8, 10), 
                                                30, 31)))
       month_length_prior <- ifelse((end$mon-1)==1, 28,
-                                     ifelse((end$mon-1)==1 & start_is_leap, 19,
+                                     ifelse((end$mon-1)==1 & start_is_leap, 29,
                                             ifelse((end$mon-1) %in% c(3, 5, 8, 
                                                                       10), 
                                                    30, 31)))
