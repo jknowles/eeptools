@@ -48,10 +48,31 @@ Jason P. Becker
 % }
 
 \examples{
-\dontrun{df <- data.frame(sid=rep(seq(1,10,1), 3), schid=c(rep(1,3), rep(2,4), rep(3,3)),
-                 enroll_date=as.Date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="10 day")),
-                 exit_date=as.Date(seq(as.POSIXct('2004-08-26 000:00:00'), len=10, by="26 day")))
-
+\dontrun{
+df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)), 
+                 schid = c(1, 2, 2, 2, 3, 1, 1, 1, 3, 1),
+                 enroll_date = as.Date(c('2004-08-26',
+                                         '2004-10-01',
+                                         '2005-05-01',
+                                         '2004-09-01',
+                                         '2004-11-03',
+                                         '2005-01-11',
+                                         '2005-04-02',
+                                         '2004-09-26',
+                                         '2004-09-01',
+                                         '2005-02-02'), 
+                                      format='%Y-%m-%d'),
+                 exit_date = as.Date(c('2004-08-26',
+                                       '2005-04-10',
+                                       '2005-06-15',
+                                       '2004-11-02',
+                                       '2005-01-10',
+                                       '2005-03-01',
+                                       '2005-06-15',
+                                       '2005-05-30',
+                                       NA,
+                                       '2005-06-15'), 
+                                     format='%Y-%m-%d'))
 moves <- moves_calc(df)
 moves
 moves <- moves_calc(df, enrollby='2004-10-15', gap=22)
