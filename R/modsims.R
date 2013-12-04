@@ -29,7 +29,7 @@ gelmansim <- function(mod, newdata, nsims, na.omit=TRUE){
   
   # Get factors
   facs <- mod$model[,sapply(mod$model, not.numeric)]
-  if(exists('facs')){
+  if(length(facs) != 0){
   if(class(facs) == "data.frame"){
     contr.tmp <- lapply(facs, unique)
     for(i in names(contr.tmp)){
