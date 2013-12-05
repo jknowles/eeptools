@@ -1,11 +1,17 @@
 eeptools 0.3
 --------------------------
 
-* unit tests
+* unit tests for decomma, gelmansim, and statamode using `testthat` package
 
 * statamode updated to work with data.table
 
-* age_calc function from Jason Becker
+* age_calc function from Jason Becker given new precision option
+
+* moves_calc function from Jason Becker
+
+* gelmansim function to do post-estimation prediction on new data from model objects using functionality in the `arm` package
+
+* lag_data function to create groupwise nested lags quickly
 
 eeptools 0.2
 ---------------
