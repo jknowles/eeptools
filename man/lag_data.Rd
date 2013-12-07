@@ -2,7 +2,7 @@
 \alias{lag_data}
 \title{Create a lag}
 \usage{
-  lag_data(df, group, time, periods, values)
+lag_data(df, group, time, periods, values)
 }
 \arguments{
   \item{df}{A dataframe with groups, time periods, and a
@@ -18,11 +18,11 @@
   lagged in the data}
 }
 \value{
-  A dataframe with a newly created variable lagged
+A dataframe with a newly created variable lagged
 }
 \description{
-  Lag variables by an arbitrary number of periods even if
-  the data is grouped
+Lag variables by an arbitrary number of periods even if the
+data is grouped
 }
 \examples{
 test_data <- expand.grid(id = sample(letters, 10),

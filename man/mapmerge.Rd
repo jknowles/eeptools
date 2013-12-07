@@ -2,7 +2,7 @@
 \alias{mapmerge}
 \title{Combine an S4 polygon object with a dataframe}
 \usage{
-  mapmerge(mapobj, data, xid, yid)
+mapmerge(mapobj, data, xid, yid)
 }
 \arguments{
   \item{mapobj}{Name of an S4 SpatialPolygonsDataFrame}
@@ -15,12 +15,12 @@
   \item{yid}{Name of ID variable in the S3 dataframe}
 }
 \value{
-  A SpatialPolygonsDataFrame with new variables attached
-  from supplied dataframe
+A SpatialPolygonsDataFrame with new variables attached from
+supplied dataframe
 }
 \description{
-  Convenience function for merging dataframes and S4
-  spatial polygon objects.
+Convenience function for merging dataframes and S4 spatial
+polygon objects.
 }
 \examples{
 \dontrun{

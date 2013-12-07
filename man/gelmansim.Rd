@@ -2,7 +2,7 @@
 \alias{gelmansim}
 \title{Generate prediction intervals for model functions}
 \usage{
-  gelmansim(mod, newdata, nsims, na.omit = TRUE)
+gelmansim(mod, newdata, nsims, na.omit = TRUE)
 }
 \arguments{
   \item{mod}{Name of a model object such as
@@ -17,11 +17,18 @@
   from \code{newdata}}
 }
 \value{
-  A dataframe with newdata and prediction intervals
+A dataframe with newdata and prediction intervals
 }
 \description{
-  Generate prediction intervals from R models following
-  Gelman and Hill
+Generate prediction intervals from R models following
+Gelman and Hill
+}
+\details{
+Currently gelmansim does not work for \code{\link{lm}}
+objects because of the way \code{\link{sim}} in the
+\code{arm} package handles variable names for these
+objects. It is recommended users use \code{\link{glm}} in
+these cases.
 }
 \examples{
 \dontrun{
@@ -29,8 +36,8 @@
 }
 }
 \references{
-  Modified from Gelman and Hill 2006. Data Analysis Using
-  Regression and Multilevel/Hierarchical Models. Cambridge
-  University Press.
+Modified from Gelman and Hill 2006. Data Analysis Using
+Regression and Multilevel/Hierarchical Models. Cambridge
+University Press.
 }
 

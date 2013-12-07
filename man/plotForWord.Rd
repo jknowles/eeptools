@@ -2,7 +2,7 @@
 \alias{plotForWord}
 \title{Save a graphic as a Windows MetaFile}
 \usage{
-  plotForWord(x, fn)
+plotForWord(x, fn)
 }
 \arguments{
   \item{x}{A stored plot object to be printed}
@@ -11,11 +11,11 @@
   extension}
 }
 \value{
-  Nothing. Saves a .wmf with filename \code{fn} in the
-  working directory.
+Nothing. Saves a .wmf with filename \code{fn} in the
+working directory.
 }
 \description{
-  Convenience function for producing Windows MetaFile
-  graphics for Microsoft documents
+Convenience function for producing Windows MetaFile
+graphics for Microsoft documents
 }
 

@@ -2,7 +2,7 @@
 \alias{ggmapmerge}
 \title{Fortify a SpatialPolygonsDataFrame}
 \usage{
-  ggmapmerge(mapobj, xid)
+ggmapmerge(mapobj, xid)
 }
 \arguments{
   \item{mapobj}{Name of an S4 SpatialPolygonsDataFrame}
@@ -11,17 +11,17 @@
   SpatialPolygonsDataFrame}
 }
 \value{
-  An S3 dataframe suitable for using in a gggplot2 map
+An S3 dataframe suitable for using in a gggplot2 map
 }
 \description{
-  Convenience function for fortifying
-  SpatialPolygonsDataFrames for ggplot2 plotting.
+Convenience function for fortifying
+SpatialPolygonsDataFrames for ggplot2 plotting.
 }
 \details{
-  This function requires maptools to be loaded and
-  \code{\link{gpclibPermit}} to be \code{TRUE}. This is
-  because it depends on the \code{\link{fortify}} method in
-  \code{\link{ggplot2}}.
+This function requires maptools to be loaded and
+\code{\link{gpclibPermit}} to be \code{TRUE}. This is
+because it depends on the \code{\link{fortify}} method in
+\code{\link{ggplot2}}.
 }
 \examples{
 \dontrun{

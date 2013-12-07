@@ -2,7 +2,7 @@
 \alias{cleanTex}
 \title{Remove Unwanted LaTeX files after building document}
 \usage{
-  cleanTex(fn, keepPDF = NULL, keepRnw = NULL)
+cleanTex(fn, keepPDF = NULL, keepRnw = NULL)
 }
 \arguments{
   \item{fn}{a filename for your .Rnw file}
@@ -14,11 +14,11 @@
   with filename \code{fn}. Default is TRUE}
 }
 \value{
-  Nothing. All files except the .tex, .pdf and .Rnw are
-  removed from your directory.
+Nothing. All files except the .tex, .pdf and .Rnw are
+removed from your directory.
 }
 \description{
-  Convenience function for cleaning up your directory after
-  running pdflatex
+Convenience function for cleaning up your directory after
+running pdflatex
 }
 
