@@ -10,7 +10,7 @@ This function allows you to convert directly from a numeric factor to the numeri
 \usage{
 destring(x)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{
 a factor with numeric levels
@@ -22,24 +22,17 @@ This function should only be used on factors where all levels are valid numbers 
 \value{
 a vector of class numeric
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jared E. Knowles
 }
-\note{
-
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \section{warning }{
 This will force all levels to be converted to characters and then to numeric objects. Leading zeroes will be stripped off and commas will cause errors.
 }
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{character}}
 }
 \examples{
 
@@ -49,12 +42,4 @@ class(b)
 b
 a
 
-## The function is currently defined as
-function (x) 
-{
-    x <- as.character(x)
-    x <- as.numeric(x)
-    x
-  }
 }
-

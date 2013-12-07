@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Rproj
+.Rproj
+eeptools.Rcheck/*

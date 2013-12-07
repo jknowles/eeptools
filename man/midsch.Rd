@@ -32,12 +32,8 @@ This data comes from publicly available aggregated test scores of a large midwes
 \details{
 These data were fit with a statistical model by a large newspaper to investigate unusual gains in test scores. Fifty separate models were fit representing all unique combinations of grade,year, and subject
 }
-\source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
-}
+
+
 \examples{
 data(midsch)
 

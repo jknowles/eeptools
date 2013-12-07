@@ -12,43 +12,35 @@ the script in one easy line.
 \usage{
 dropbox_source(myurl)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{myurl}{
 A character string for the full URL of the Dropbox share
 }
 }
 \details{
-Must be the full URL
+Must be the full URL including https://
 }
 \value{
-The sourced script.
+None. The script is sourced.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jared Knowles
 }
 \note{
-%%  ~~further notes~~
+This function works with Dropbox as of the release date. If functionality breaks, please e-mail the package maintainer to push an update. 
 }
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{source}}
 }
-\examples{
- 
-function (myurl) 
-{
-    s <- str_extract(myurl, "[/][a-z][/]\\d+[/][a-z]*.*")
-    new_url <- paste("http://dl.dropbox.com", s, sep = "")
-    source(new_url)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~utilities}
 
+\examples{
+
+\dontrun{
+ dropbox_source("https://dropbox.com/public/somekey/cooldata.csv")
+}
+}
+
+\keyword{ ~utilities}

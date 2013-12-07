@@ -1,5 +1,4 @@
-thresh <-
-function(x,cutoff){
+thresh<-function(x,cutoff){
   #x is the column or variable
   #thresh is the number to count to 
   x<-x[order(-x)] # sort vector descending

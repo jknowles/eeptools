@@ -12,54 +12,40 @@ and replacing tied categories with a "."
 to represent a single mode does not exist.
 }
 \usage{
-statamode(x)
+statamode(x,method)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{
 a numeric vector, missing values are allowed
 }
+  \item{method}{
+a character vector of length 1 specifying the way to break ties in cases where more than one mode exists; either "stata", "sample", or "last". "stata" provides a "." if more than one mode exists. "sample" randomly samples from among the tied values for a single mode. "last" takes the final modal category appearing in the data.
+}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Specifying method="stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. The default behavior is stata.
 }
+
 \value{
-The modal value of a vector if a unique mode exists, else "."
-}
-\references{
-%% ~put references to the literature/web site here ~
+The modal value of a vector if a unique mode exists, else output determined by method
 }
 \author{
 Jared E. Knowles
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{table}} which this function uses
 }
 \examples{
-for vector
+# for vectors
 a<-c(month.name,month.name)
-statamode(a) # returns "." to show no unique mode; useful for ddply
+statamode(a,method="stata") # returns "." to show no unique mode; useful for ddply
+statamode(a,method="sample") # randomly pick one
 a<-c(LETTERS,"A","A")
 statamode(a)
-
-## The function is currently defined as
-function (x) 
-{
-    z <- table(as.vector(x))
-    m <- names(z)[z == max(z)]
-    if (length(m) == 1) {
-        return(m)
-    }
-    return(".")
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
+
 \keyword{ ~manip}
 

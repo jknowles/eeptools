@@ -1,15 +1,10 @@
-# Package build
+library(roxygen2)
 
-stulevel<-read.csv('data/smalldata.csv')
-source('dropbox_source.R')
-source('statamode.R')
-source('cutandthresh.R')
-
-# Build documentation 
-prompt(remove_stars,filename="man/remove_stars.Rd")
-
-#package.skeleton(name='eeptools')
-library(devtools)
-setwd('C:/Users/Jared/Projects')
-build(pkg=paste(getwd(),"/eeptools",sep=""),binary=TRUE)
-
+roclet <- rd_roclet()
+roc_out(roclet, "R/plotForWord.R", ".")
+roc_out(roclet, "R/mapfunctions.R", ".")
+roc_out(roclet, "R/cleanTex.R", ".")
+roc_out(roclet, "R/lags.R", ".")
+roc_out(roclet, "R/mapfunctions.R", ".")
+roc_out(roclet, "R/modsims.R", ".")
+roxygenise(getwd(), roclets=c("collate", "namespace", "rd"))
