@@ -24,7 +24,7 @@ PowerPoint documents. These are a width of 12, height of 9,
 poitnsize of 16, and using Windows serif fonts.
 }
 \note{
-Works with \code{\link{gg}} objects in the
+Works with \code{\link{ggplot}} objects in the
 \code{\link{ggplot2}} package. Saves plots to the working
 directory.
 }
