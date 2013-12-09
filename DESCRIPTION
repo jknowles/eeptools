@@ -18,13 +18,13 @@ License: GPL-3
 Depends:
     R (>= 2.15.1),
     ggplot2,
-    arm
+    MASS
 Imports:
     stringr,
     maptools,
     grid,
-    data.table,
     arm,
+    data.table,
     memisc
 Suggests:
     reshape,

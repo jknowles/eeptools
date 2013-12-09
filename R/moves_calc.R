@@ -1,3 +1,4 @@
+utils::globalVariables(c("moves", "switches", ".SD"))
 moves_calc <- function(df, 
                        enrollby,
                        exitby,
@@ -6,7 +7,7 @@ moves_calc <- function(df,
                        schid='schid',
                        enroll_date='enroll_date',
                        exit_date='exit_date'){
-  # df is a data.frame that minimally contains a student ID (default 'sid'),
+    # df is a data.frame that minimally contains a student ID (default 'sid'),
   # a school ID (default 'schno'), and two dates an enrollment date and an 
   # exit date for each sid-schid combination.
   # Type checking inputs.
