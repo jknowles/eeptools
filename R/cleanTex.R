@@ -9,13 +9,14 @@
 ##' Default is TRUE
 ##' @return Nothing. All files except the .tex, .pdf and .Rnw are removed from your directory.
 ##' @export
-cleanTex <- function(fn, keepPDF=NULL, keepRnw=NULL){
+cleanTex <- function(mydoc, keepPDF=NULL, keepRnw=NULL, keepRproj=NULL){
   keepPDF <- ifelse(!is.null(keepPDF), keepPDF, TRUE)
   keepRnw <- ifelse(!is.null(keepRnw), keepRnw, TRUE)
-  a <- list.files(pattern=fn)
+  keepRproj <- ifelse(!is.null(keepRproj), keepRproj, TRUE)
+  a <- list.files(pattern=mydoc)
   save <- a[grep(".tex",a)]
   if(keepPDF==TRUE){  
-    save<-append(save,a[grep(".pdf",a)])
+    save <- append(save,a[grep(".pdf",a)])
   }
   else if(keepPDF==FALSE){
     save <- save
@@ -25,6 +26,13 @@ cleanTex <- function(fn, keepPDF=NULL, keepRnw=NULL){
     save <- append(save, a[grep(".rnw",a)])
   }
   else if(keepRnw==FALSE){
+    save <- save
+  }
+  if(keepRproj==TRUE){
+    save <- append(save, a[grep(".Rproj",a)])
+    save <- append(save, a[grep(".rproj",a)])
+  }
+  else if(keepRproj==FALSE){
     save <- save
   }
   rm <- setdiff(a,save)
