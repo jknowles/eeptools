@@ -6,7 +6,9 @@
 ##' @param keepPDF Logical. Should function save PDF files with filename \code{fn}. 
 ##' Default is TRUE.
 ##' @param keepRnw Logical. Should function save Rnw files with filename \code{fn}. 
-##' Default is TRUE
+##' Default is TRUE.
+##' @param keepRproj Logical. Should function save .Rproj files with filename \code{fn}. 
+##' Default is TRUE.
 ##' @return Nothing. All files except the .tex, .pdf and .Rnw are removed from your directory.
 ##' @export
 cleanTex <- function(mydoc, keepPDF=NULL, keepRnw=NULL, keepRproj=NULL){
