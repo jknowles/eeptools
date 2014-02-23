@@ -1,5 +1,5 @@
 context("Check bivariate GLM case")
-
+require(MASS)
 #Examples of "sim" 
 set.seed (1)
 J <- 15

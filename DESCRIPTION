@@ -1,7 +1,7 @@
 Package: eeptools
 Type: Package
 Title: Convenience functions for education data
-Version: 0.3
+Version: 0.3.1
 Date: 2013-12-10
 Authors@R: c(person(c("Jason", "P."), "Becker", role = c("ctb"),
     email = "jason+sitemail@jbecker.co"),

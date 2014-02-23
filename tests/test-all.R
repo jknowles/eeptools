@@ -1,7 +1,7 @@
 library(testthat)
 library(eeptools)
 
-test_package("eeptools")
+test_check("eeptools")
 # 
 # source("R/statamode.R")
 # test_file("tests/testthat/test-statamode.R")
