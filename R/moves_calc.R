@@ -98,7 +98,9 @@ moves_calc <- function(df,
   }
   dt[, moves:= school_switch(.SD), by=sid]
   dt <- dt[,list(switches=unique(moves)), by=sid]
-  output[dt, moves:=moves+switches]
   # Need to combine dt with output
-  return(output)
+  output[dt, moves:=moves+switches]
+  # Set names properly and return data.frame as supplied.
+  setnames(output, 'id', sid)
+  return(as.data.frame(output))
 }
