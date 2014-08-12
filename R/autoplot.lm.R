@@ -6,7 +6,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # residuals vs fitted
   g1 <- ggplot(df, aes(.fitted, .resid)) +
     geom_point()  +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
@@ -28,7 +28,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # scale-location
   g3 <- ggplot(df, aes(.fitted, sqrt(abs(.stdresid)))) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Root of Standardized Residuals") +
     labs(title="Scale-Location")+theme_dpi()
@@ -43,7 +43,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # residuals vs leverage
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
@@ -52,7 +52,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # cooksd vs leverage
   g6 <- ggplot(df, aes(.hat, .cooksd)) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Cook's distance") +
     labs(title="Cook's dist vs Leverage")+theme_dpi()
