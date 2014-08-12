@@ -18,7 +18,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   b <- qnorm(c(0.25, 0.75))
   slope <- diff(a)/diff(b)
   int <- a[1] - slope * b[1]
-  g2 <- ggplot(df, aes(sample=.resid)) +
+  g2 <- ggplot(df, aes(sample=.stdresid)) +
     stat_qq() +
     geom_abline(slope=slope, intercept=int) +
     scale_x_continuous("Theoretical Quantiles") +
