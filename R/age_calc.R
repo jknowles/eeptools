@@ -46,11 +46,17 @@ age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
     if(precise){
       start_length <- ifelse(start_is_leap, 366, 365)
       end_length <- ifelse(end_is_leap, 366, 365)
-      year_frac <- ifelse(start$yday < end$yday,
-                          (end$yday - start$yday)/end_length,
-                          ifelse(start$yday > end$yday, 
-                                 (start_length-start$yday) / start_length +
-                                   end$yday / end_length, 0.0))
+      start_day <- ifelse(start_is_leap & start$yday >= 60,
+                          start$yday - 1,
+                          start$yday)
+      end_day <- ifelse(end_is_leap & end$yday >=60,
+                        end$yday - 1,
+                        end$yday)
+      year_frac <- ifelse(start_day < end_day,
+                          (end_day - start_day)/end_length,
+                          ifelse(start_day > end_day, 
+                                 (start_length-start_day) / start_length +
+                                   end_day / end_length, 0.0))
       result <- years + year_frac
     }else{
       result <- years
