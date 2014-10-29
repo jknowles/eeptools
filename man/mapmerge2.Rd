@@ -1,8 +1,8 @@
-\name{mapmerge}
-\alias{mapmerge}
+\name{mapmerge2}
+\alias{mapmerge2}
 \title{Combine an S4 polygon object with a dataframe}
 \usage{
-mapmerge(mapobj, data, xid, yid)
+mapmerge2(mapobj, data, xid, yid)
 }
 \arguments{
   \item{mapobj}{Name of an S4 SpatialPolygonsDataFrame}

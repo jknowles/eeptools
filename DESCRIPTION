@@ -1,11 +1,57 @@
 Package: eeptools
 Type: Package
 Title: Convenience functions for education data
-Version: 0.1
-Date: 2012-07-21
-Author: Jared E. Knowles
-Maintainer: Jared E. Knowles <jknowles@gmail.com>
-Description: Free and open source software to make education evaluation easier.Shortcuts and utilities to make R easier to use in an educational evaluation office.
+Version: 0.3.1
+Date: 2013-12-10
+Authors@R: c(person(c("Jason", "P."), "Becker", role = c("ctb"),
+    email = "jason+sitemail@jbecker.co"),
+    person(c("Jared", "E."), "Knowles", role=c("aut", "cre"),
+    email="jknowles@gmail.com"))
+Description: Collection of convenience functions to make working with
+    administrative records easier and more consistent. Includes functions to
+    clean strings, identify cutpoints, and quickly combine shapefiles and
+    dataframes for plotting. Includes four alternative themes for ggplot2 as
+    well as a wrapper for exporting graphics for inclusion in MS Office
+    products. Also includes three example datasets of administrative education
+    records for learning how to process records with errors.
 License: GPL-3
-Depends: R (>= 2.15.1), stringr, ggplot2, plyr, proto, grid, maps,mapproj
-Suggests: reshape
+Depends:
+    R (>= 2.15.1),
+    ggplot2,
+    MASS
+Imports:
+    stringr,
+    maptools,
+    grid,
+    arm,
+    data.table,
+    memisc
+Suggests:
+    reshape,
+    sp,
+    plyr,
+    mapproj,
+    testthat
+Collate:
+    'age_calc.R'
+    'autoplot.lm.R'
+    'cleanTex.R'
+    'cutoff.R'
+    'decomma.R'
+    'defac.R'
+    'destring.R'
+    'dropbox_source.R'
+    'eeptools.R'
+    'lags.R'
+    'mapfunctions.R'
+    'max_mis.R'
+    'modsims.R'
+    'moves_calc.R'
+    'plotForWord.R'
+    'remove_char.R'
+    'statamode.R'
+    'theme_dpi.R'
+    'theme_dpi_map.R'
+    'theme_dpi_map2.R'
+    'theme_dpi_mapPNG.R'
+    'thresh.R'

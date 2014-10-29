@@ -1,4 +1,4 @@
-import(ggplot2,grid)
+import(ggplot2, grid, arm, data.table, maptools, stringr, memisc, MASS)
 S3method(autoplot,lm)
 exportPattern("^[[:alpha:]]+")
 

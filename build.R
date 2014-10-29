@@ -1,0 +1,10 @@
+library(roxygen2)
+# 
+# roclet <- rd_roclet()
+# roc_out(roclet, "R/plotForWord.R", ".")
+# roc_out(roclet, "R/mapfunctions.R", ".")
+# roc_out(roclet, "R/cleanTex.R", ".")
+# roc_out(roclet, "R/lags.R", ".")
+# roc_out(roclet, "R/mapfunctions.R", ".")
+# roc_out(roclet, "R/modsims.R", ".")
+roxygenise(getwd(), roclets="rd")

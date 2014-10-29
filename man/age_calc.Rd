@@ -7,7 +7,7 @@ Function to calculate age from date of birth.
 \description{
 This function calculates age in days, months, or years from a date of birth to another arbitrary date. This returns a numeric vector in the specified units.
 }
-\usage{age_calc(dob, enddate, units)}
+\usage{age_calc(dob, enddate = Sys.Date(), units = "months", precise = TRUE)}
 \arguments{
   \item{dob}{
 a vector of class Date representing the date of birth/start date
@@ -18,9 +18,9 @@ a vector of class Date representing the when the observation's age is of interes
   \item{units}{
 a string that indicates units of age  
 }
+  \item{precise}{
+logical indicating whether or not to calculate with leap year and leap second precision
 }
-\details{
-%% ~~ Additional details to be added as needed ~~
 }
 \value{
 a vector of class numeric
@@ -40,7 +40,7 @@ See also \code{\link{difftime}} which this function uses and mimics some functio
 
 a <- as.Date(seq(as.POSIXct('1987-05-29 018:07:00'), len=26, by="21 day"))
 b <- as.Date(seq(as.POSIXct('2002-05-29 018:07:00'), len=26, by="21 day"))
-a
+
 age <- age_calc(a, units='years')
 age
 age <- age_calc(a, units='months')

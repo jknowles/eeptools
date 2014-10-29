@@ -4,4 +4,5 @@
 ^.*\.Rhistory
 todo.txt
 .gitignore
+build.R
 

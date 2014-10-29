@@ -5,7 +5,8 @@
 a ggplot2 theme developed for PDF or SVG maps
 }
 \description{
-This is a custom ggplot2 theme developed for the Wisconsin Department of Public Instruction for making PDF maps
+This is a custom ggplot2 theme developed for the Wisconsin Department of Public Instruction for 
+making PDF maps
 }
 \usage{
 theme_dpi_map(base_size = 14, base_family = "")
@@ -44,13 +45,15 @@ crimesm <- melt(crimes, id = 1)
 
 # No DPI theme
 states_map <- map_data("state")
-ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat)+ labs(title="USA Crime")
+ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + 
+expand_limits(x = states_map$long, y = states_map$lat)+ labs(title="USA Crime")
 
 # Draw map
 last_plot() + coord_map()
   
 # DPI theme
-ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + expand_limits(x = states_map$long, y = states_map$lat) + facet_wrap( ~ variable)+theme_dpi_map()
+ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + 
+expand_limits(x = states_map$long, y = states_map$lat) + facet_wrap( ~ variable)+theme_dpi_map()
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

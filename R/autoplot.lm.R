@@ -1,14 +1,12 @@
 utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
-  require(ggplot2)
-  require(grid)
   df <- fortify(object)
   df <- cbind(df, rows=1:nrow(df))
   
   # residuals vs fitted
   g1 <- ggplot(df, aes(.fitted, .resid)) +
     geom_point()  +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
@@ -20,7 +18,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   b <- qnorm(c(0.25, 0.75))
   slope <- diff(a)/diff(b)
   int <- a[1] - slope * b[1]
-  g2 <- ggplot(df, aes(sample=.resid)) +
+  g2 <- ggplot(df, aes(sample=.stdresid)) +
     stat_qq() +
     geom_abline(slope=slope, intercept=int) +
     scale_x_continuous("Theoretical Quantiles") +
@@ -30,7 +28,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # scale-location
   g3 <- ggplot(df, aes(.fitted, sqrt(abs(.stdresid)))) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Root of Standardized Residuals") +
     labs(title="Scale-Location")+theme_dpi()
@@ -45,7 +43,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # residuals vs leverage
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     geom_hline(linetype=2, size=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
@@ -54,7 +52,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   # cooksd vs leverage
   g6 <- ggplot(df, aes(.hat, .cooksd)) +
     geom_point() +
-    geom_smooth(se=FALSE) +
+    geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Cook's distance") +
     labs(title="Cook's dist vs Leverage")+theme_dpi()
@@ -62,7 +60,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   plots <- list(g1, g2, g3, g4, g5, g6)
   
   # making the plots
-  grid.newpage()
+  grid::grid.newpage()
   
   if (prod(mfrow)>1) {
     mypos <- expand.grid(1:mfrow[1], 1:mfrow[2])

@@ -48,6 +48,7 @@ Jason P. Becker
 % }
 
 \examples{
+\dontrun{
 df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)), 
                  schid = c(1, 2, 2, 2, 3, 1, 1, 1, 3, 1),
                  enroll_date = as.Date(c('2004-08-26',
@@ -72,11 +73,10 @@ df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)),
                                        NA,
                                        '2005-06-15'), 
                                      format='%Y-%m-%d'))
-
 moves <- moves_calc(df)
 moves
 moves <- moves_calc(df, enrollby='2004-10-15', gap=22)
 moves
 moves <- moves_calc(df, enrollby='2004-10-15', exitby='2005-05-29')
 moves
-}
+}}

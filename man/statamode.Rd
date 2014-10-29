@@ -19,12 +19,12 @@ statamode(x,method)
   \item{x}{
 a numeric vector, missing values are allowed
 }
-  \item(method){
+  \item{method}{
 a character vector of length 1 specifying the way to break ties in cases where more than one mode exists; either "stata", "sample", or "last". "stata" provides a "." if more than one mode exists. "sample" randomly samples from among the tied values for a single mode. "last" takes the final modal category appearing in the data.
 }
-
+}
 \details{
-Specifying method="Stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. 
+Specifying method="stata" will result in ties for the mode being replaced with a "." character. Specifying "sample" will result in the function randomly sampling among the tied values and picking a single value. Finally, specifying "last" will result in the function picking the value that appears last in the dataset. The default behavior is stata.
 }
 
 \value{
@@ -44,8 +44,6 @@ statamode(a,method="stata") # returns "." to show no unique mode; useful for ddp
 statamode(a,method="sample") # randomly pick one
 a<-c(LETTERS,"A","A")
 statamode(a)
-
-
 }
 
 
