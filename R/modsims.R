@@ -11,6 +11,7 @@
 ##' @details Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link{sim}} in the 
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 ##' @export
+##' @import arm
 ##' @examples
 ##'  #Examples of "sim" 
 ##' set.seed (1)

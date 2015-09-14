@@ -9,6 +9,7 @@
 ##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
 ##' @seealso \code{\link{plot.lm}} which this function mimics
 ##' @export
+##' @import ggplot2
 ##' @examples
 ##' # Univariate
 ##' a <- runif(1000)
@@ -21,7 +22,7 @@
 ##' autoplot(mymod)
 ##' 
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
-  df <- fortify(object)
+  df <- ggplot2::fortify(object)
   df <- cbind(df, rows=1:nrow(df))
   
   # residuals vs fitted
