@@ -1,4 +1,25 @@
-utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
+##' A function to replicate the basic plot function for linear models in ggplot2
+##' @description This uses ggplot2 to replicate the plot functionality for lm 
+##' in ggplot2 and allow themes.
+##' @param object a linear model object from \code{\link{lm}}
+##' @param which which of the tests do we want to display output from
+##' @param mfrow Describes the layout of the resulting function in the plot frames
+##' @param parameters to pass through
+##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
+##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
+##' @seealso \code{\link{plot.lm}} which this function mimics
+##' @export
+##' @examples
+##' # Univariate
+##' a <- runif(1000)
+##' b <- 7*a+rnorm(1)
+##' mymod <- lm(b~a)
+##' autoplot(mymod)
+##' # Multivariate
+##' data(mpg)
+##' mymod <- lm(cty~displ + cyl + drv, data=mpg)
+##' autoplot(mymod)
+##' 
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   df <- fortify(object)
   df <- cbind(df, rows=1:nrow(df))
@@ -83,3 +104,4 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
     j <- j+1
   }
 }
+utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
