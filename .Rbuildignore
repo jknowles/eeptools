@@ -7,3 +7,4 @@ todo.txt
 build.R
 
 ^\.travis\.yml$
+^cran-comments\.md$

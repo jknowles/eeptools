@@ -233,26 +233,26 @@ profpoly.mat<-function(x){
   
   
 }
-
-
-len<-ncol(z)-3
-gs<-rep(rep.invert(z[,1]),len)
-length(gs)
-
-bb<-c(z[,2],invt(z[,3]),z[,3]+1,invt(z[,4]),z[,4]+1,invt(z[,5]),z[,5]+1,invt(z[,6]))
-
-length(bb)
-proflvls<-length(bb)/(2*length(z[,1]))
-proflvls<-seq(1:proflvls)
-proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
-
-profpoly<-cbind(gs,bb,proflvls)
-profpoly<-as.data.frame(profpoly)
-profpoly$proflvls<-as.factor(profpoly$proflvls)
-
-p<-ggplot(profpoly,aes(x=gs,y=bb,fill=proflvls,colour=proflvls,group=proflvls))
-p+geom_polygon()+scale_fill_brewer(type='seq')
-
+# 
+# 
+# len<-ncol(z)-3
+# gs<-rep(rep.invert(z[,1]),len)
+# length(gs)
+# 
+# bb<-c(z[,2],invt(z[,3]),z[,3]+1,invt(z[,4]),z[,4]+1,invt(z[,5]),z[,5]+1,invt(z[,6]))
+# 
+# length(bb)
+# proflvls<-length(bb)/(2*length(z[,1]))
+# proflvls<-seq(1:proflvls)
+# proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
+# 
+# profpoly<-cbind(gs,bb,proflvls)
+# profpoly<-as.data.frame(profpoly)
+# profpoly$proflvls<-as.factor(profpoly$proflvls)
+# 
+# p<-ggplot(profpoly,aes(x=gs,y=bb,fill=proflvls,colour=proflvls,group=proflvls))
+# p+geom_polygon()+scale_fill_brewer(type='seq')
+# 
 
 
 ##
