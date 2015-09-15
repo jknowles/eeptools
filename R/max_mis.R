@@ -1,25 +1,20 @@
-##' A function to replicate the basic plot function for linear models in ggplot2
-##' @description This uses ggplot2 to replicate the plot functionality for lm 
-##' in ggplot2 and allow themes.
-##' @param object a linear model object from \code{\link{lm}}
-##' @param which which of the tests do we want to display output from
-##' @param mfrow Describes the layout of the resulting function in the plot frames
-##' @param parameters to pass through
-##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
-##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
-##' @seealso \code{\link{plot.lm}} which this function mimics
+##' A function to safely take the maximum of a vector that could include only NAs.
+##' @description When computing the maximum on arbitrary subsets of data, some 
+##' of which may only have missing values, it may be necessary to take the maximum 
+##' of a vector of NAs. This replaces the behavior that returns Inf or-Inf and 
+##' replaces it with simply returning an NA. 
+##' @param x A vector of data that a maximum can be taken of.
+##' @return A vector with the maximum value or with an NA of the proper type
+##' @details This function only returns valid results for vectors with a mix of 
+##' NA and numeric values.
+##' @seealso See also \code{\link{max}} which this function wraps.
+##' @author Jared E. Knowles
 ##' @export
-##' @import ggplot2
 ##' @examples
-##' # Univariate
-##' a <- runif(1000)
-##' b <- 7*a+rnorm(1)
-##' mymod <- lm(b~a)
-##' autoplot(mymod)
-##' # Multivariate
-##' data(mpg)
-##' mymod <- lm(cty~displ + cyl + drv, data=mpg)
-##' autoplot(mymod)
+##' max(c(7,NA,3,2,0),na.rm=TRUE)
+##' max_mis(c(7,NA,3,2,0))
+##' max(c(NA,NA,NA,NA),na.rm=TRUE)
+##' max_mis(c(NA,NA,NA,NA))
 ##' 
 max_mis <- function(x){
   varclass <- class(x)

@@ -1,7 +1,7 @@
 Package: eeptools
 Type: Package
 Title: Convenience functions for education data
-Version: 0.3.2
+Version: 0.9.0
 Date: 2014-12-10
 Authors@R: c(person(c("Jason", "P."), "Becker", role = c("aut"),
     email = "jason+sitemail@jbecker.co"),
@@ -25,35 +25,12 @@ Imports:
     grid,
     arm,
     data.table,
-    memisc
+    memisc,
+    vcd
 Suggests:
     reshape,
     sp,
     plyr,
     mapproj,
     testthat
-Collate:
-    'age_calc.R'
-    'autoplot.lm.R'
-    'cleanTex.R'
-    'cutoff.R'
-    'decomma.R'
-    'defac.R'
-    'destring.R'
-    'dropbox_source.R'
-    'eeptools.R'
-    'lags.R'
-    'leading_zero.R'
-    'mapfunctions.R'
-    'max_mis.R'
-    'modsims.R'
-    'moves_calc.R'
-    'plotForWord.R'
-    'remove_char.R'
-    'retained_calc.R'
-    'statamode.R'
-    'theme_dpi.R'
-    'theme_dpi_map.R'
-    'theme_dpi_map2.R'
-    'theme_dpi_mapPNG.R'
-    'thresh.R'
+LazyData: true

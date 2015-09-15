@@ -4,6 +4,9 @@
 \alias{mosaictabs.label}
 \title{Draw a visual crosstab (mosaid plot) with shading for correlations
 and labels in each cell.}
+\source{
+http://www.rexdouglass.com/blog:3
+}
 \usage{
 mosaictabs.label(data, rowvar, colvar, varnames, title, subtitle)
 }

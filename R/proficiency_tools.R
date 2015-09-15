@@ -14,6 +14,7 @@
 #' @param title a character vector of length one that contains the main title for the plot
 #' @param subtitle a character vector of length one that contains the subtitle displayed 
 #'    beneath the plot
+#' @source http://www.rexdouglass.com/blog:3
 #' @keywords mosaic
 #' @keywords crosstabs
 #' @keywords vcd
@@ -23,15 +24,14 @@
 #'
 #'  \code{\link{structure}} which does the data manipulation for the crosstab
 #' 
+#' @import vcd
 #' @export
 #' @examples
 #' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 #' fac=sample(LETTERS[1:4], 60, replace=TRUE))
 #' varnames<-c('Quality','Grade')
 #' mosaictabs.label(df,df$y,df$fac,varnames,'My Plot','Foo')
-
-mosaictabs.label<-function(data,rowvar,colvar,varnames,title,subtitle){
-  require(vcd)
+mosaictabs.label <- function(data, rowvar, colvar, varnames, title, subtitle){
   mosaictabs <-function(rowvar,colvar,varnames){
     crosstab<-table(rowvar,colvar)
     rowvarcat<-levels(as.factor(rowvar))
@@ -53,15 +53,20 @@ mosaictabs.label<-function(data,rowvar,colvar,varnames,title,subtitle){
   with(data,mosaictabs(rowvar,colvar,varnames))
   labeling_cells(text=TABSPROPORTIONS , clip_cells=FALSE)(TABS)
 }
-
-
-##Mosaic function with labels
-# http://www.rexdouglass.com/blog:3
-
 #TODO: Add better handling of inputs
 #TODO: Shading on and off
 #TODO: generalize to multivariate
 #Correct call still requires data elements to be specified using $var
+
+
+
+
+# basic, proficient, and advanced need to be the bottom threshold
+# minimal is the top threshold for the minimal category
+# HOSS and LOSS are highest and lowest obtainable scale score vectors
+# grades is the vector of tested grades to draw polygon for
+# All vectors are grade ordered and same length
+# Returns a ggplot object
 
 #' Creates a proficiency polygon in ggplot2 for showing assessment categories
 #'
@@ -92,17 +97,7 @@ mosaictabs.label<-function(data,rowvar,colvar,varnames,title,subtitle){
 #' 
 #' z<-profpoly(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
 #' z
-
-
-# basic, proficient, and advanced need to be the bottom threshold
-# minimal is the top threshold for the minimal category
-# HOSS and LOSS are highest and lowest obtainable scale score vectors
-# grades is the vector of tested grades to draw polygon for
-# All vectors are grade ordered and same length
-# Returns a ggplot object
-
-profpoly<-function(grades,LOSS,minimal,basic,proficient,advanced,HOSS...){
-  require(ggplot2)
+profpoly<-function(grades, LOSS, minimal, basic, proficient, advanced, HOSS){
   g<-length(grades)
   #
   rep.invert<-function(x){
@@ -160,9 +155,7 @@ profpoly<-function(grades,LOSS,minimal,basic,proficient,advanced,HOSS...){
 #' 
 #' z<-profpoly.df(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
 #' z
-
-profpoly.df<-function(grades,LOSS,minimal,basic,proficient,advanced,HOSS...){
-  require(ggplot2)
+profpoly.df <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
   g<-length(grades)
   #
   rep.invert<-function(x){
@@ -187,8 +180,6 @@ profpoly.df<-function(grades,LOSS,minimal,basic,proficient,advanced,HOSS...){
 }
 
 # Proficiency Polygon From Matrix
-
-
 ############################################
 # Take a matrix of proficiency scores and  #
 # produce a polygon like the blue mountain #
@@ -199,40 +190,40 @@ profpoly.df<-function(grades,LOSS,minimal,basic,proficient,advanced,HOSS...){
 #
 # Need a HOSS and a LOSS as well           #
 ############################################
-
-profpoly.mat<-function(x){
-  z<-t(apply(x),1,sort)
-  
-  #
-  invt<-function(x){
-    x[order(-x)]
-  }
-  #
-  len<-ncol(z)-3 # subtract high low and grades
-  #
-  rep.invert<-function(x){
-    c(x,x[order(-x)])
-  }
-  #
-  gs<-rep(rep.invert(z[,1]),len)
-  
-  bb<-z[,2]
-  x<-NULL
-  for(i in 4:ncol(z)-1){
-    x<-append(x,c(z[,i],invt(z[,i])))
-  }
-  x
-  bb<-append(bb,x)
-  bb<-append(bb,z[,ncol(z)])
-  bb
-  length(bb)
-  
-  proflvls<-length(bb)/(2*length(z[,1]))
-  proflvls<-seq(1:proflvls)
-  proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
-  
-  
-}
+# 
+# profpoly.mat<-function(x){
+#   z<-t(apply(x),1,sort)
+#   
+#   #
+#   invt<-function(x){
+#     x[order(-x)]
+#   }
+#   #
+#   len<-ncol(z)-3 # subtract high low and grades
+#   #
+#   rep.invert<-function(x){
+#     c(x,x[order(-x)])
+#   }
+#   #
+#   gs<-rep(rep.invert(z[,1]),len)
+#   
+#   bb<-z[,2]
+#   x<-NULL
+#   for(i in 4:ncol(z)-1){
+#     x<-append(x,c(z[,i],invt(z[,i])))
+#   }
+#   x
+#   bb<-append(bb,x)
+#   bb<-append(bb,z[,ncol(z)])
+#   bb
+#   length(bb)
+#   
+#   proflvls<-length(bb)/(2*length(z[,1]))
+#   proflvls<-seq(1:proflvls)
+#   proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
+#   
+#   
+# }
 # 
 # 
 # len<-ncol(z)-3

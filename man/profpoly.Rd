@@ -4,7 +4,7 @@
 \alias{profpoly}
 \title{Creates a proficiency polygon in ggplot2 for showing assessment categories}
 \usage{
-profpoly(grades, LOSS, minimal, basic, proficient, advanced, HOSS...)
+profpoly(grades, LOSS, minimal, basic, proficient, advanced, HOSS)
 }
 \arguments{
 \item{grades}{a vector of tested grades in sequential order}

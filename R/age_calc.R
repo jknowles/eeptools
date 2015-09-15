@@ -1,26 +1,31 @@
-##' A function to replicate the basic plot function for linear models in ggplot2
-##' @description This uses ggplot2 to replicate the plot functionality for lm 
-##' in ggplot2 and allow themes.
-##' @param object a linear model object from \code{\link{lm}}
-##' @param which which of the tests do we want to display output from
-##' @param mfrow Describes the layout of the resulting function in the plot frames
-##' @param parameters to pass through
-##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
-##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
-##' @seealso \code{\link{plot.lm}} which this function mimics
+##' unction to calculate age from date of birth.
+##' @description his function calculates age in days, months, or years from a 
+##' date of birth to another arbitrary date. This returns a numeric vector in 
+##' the specified units.
+##' @param dob a vector of class \code{Date} representing the date of birth/start date
+##' @param enddate a vector of class Date representing the when the observation's 
+##' age is of interest, defaults to current date.
+##' @param units character, which units of age should be calculated? allowed values are 
+##' days, months, and years
+##' @param precise logical indicating whether or not to calculate with leap year 
+##' and leap second precision
+##' @return A numeric vector of ages the same length as the dob vector
+##' @source This function was developed in part from this response on the R-Help mailing list.
+##' \url{https://stat.ethz.ch/pipermail/r-help/2009-November/217649.html}
+##' @seealso See also \code{\link{difftime}} which this function uses and mimics 
+##' some functionality but at higher unit levels.
+##' @author Jason P. Becker
 ##' @export
-##' @import ggplot2
 ##' @examples
-##' # Univariate
-##' a <- runif(1000)
-##' b <- 7*a+rnorm(1)
-##' mymod <- lm(b~a)
-##' autoplot(mymod)
-##' # Multivariate
-##' data(mpg)
-##' mymod <- lm(cty~displ + cyl + drv, data=mpg)
-##' autoplot(mymod)
+##' a <- as.Date(seq(as.POSIXct('1987-05-29 018:07:00'), len=26, by="21 day"))
+##' b <- as.Date(seq(as.POSIXct('2002-05-29 018:07:00'), len=26, by="21 day"))
 ##' 
+##' age <- age_calc(a, units='years')
+##' age
+##' age <- age_calc(a, units='months')
+##' age
+##' age <- age_calc(a, as.Date('2005-09-01'))
+##' age
 age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
   if (!inherits(dob, "Date") | !inherits(enddate, "Date")){
     stop("Both dob and enddate must be Date class objects")

@@ -4,7 +4,7 @@
 \alias{profpoly.df}
 \title{Creates a data frame suitable for building custom polygon layers in ggplot2 objects}
 \usage{
-profpoly.df(grades, LOSS, minimal, basic, proficient, advanced, HOSS...)
+profpoly.df(grades, LOSS, minimal, basic, proficient, advanced, HOSS)
 }
 \arguments{
 \item{grades}{a vector of tested grades in sequential order}
