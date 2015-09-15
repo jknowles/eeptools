@@ -13,7 +13,7 @@
 
 \item{mfrow}{Describes the layout of the resulting function in the plot frames}
 
-\item{parameters}{to pass through}
+\item{...}{additional parameters to pass through}
 }
 \value{
 A ggplot2 object that mimics the functionality of a plot of linear model.

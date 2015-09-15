@@ -4,12 +4,13 @@
 ##' @param object a linear model object from \code{\link{lm}}
 ##' @param which which of the tests do we want to display output from
 ##' @param mfrow Describes the layout of the resulting function in the plot frames
-##' @param parameters to pass through
+##' @param ... additional parameters to pass through
 ##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
 ##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
 ##' @seealso \code{\link{plot.lm}} which this function mimics
 ##' @export
 ##' @import ggplot2
+##' @import grid
 ##' @examples
 ##' # Univariate
 ##' a <- runif(1000)
@@ -21,7 +22,7 @@
 ##' mymod <- lm(cty~displ + cyl + drv, data=mpg)
 ##' autoplot(mymod)
 ##' 
-autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
+autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
   df <- ggplot2::fortify(object)
   df <- cbind(df, rows=1:nrow(df))
   
@@ -87,14 +88,14 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2),...){
   if (prod(mfrow)>1) {
     mypos <- expand.grid(1:mfrow[1], 1:mfrow[2])
     mypos <- mypos[with(mypos, order(Var1)), ]
-    pushViewport(viewport(layout = grid.layout(mfrow[1], mfrow[2])))
+    grid::pushViewport(grid::viewport(layout = grid.layout(mfrow[1], mfrow[2])))
     formatter <- function(.){}
   } else {
     mypos <- data.frame(matrix(1, length(which), 2))
-    pushViewport(viewport(layout = grid.layout(1, 1)))
+    grid::pushViewport(grid::viewport(layout = grid.layout(1, 1)))
     formatter <- function(.) {
       .dontcare <- readline("Hit <Return> to see next plot: ")
-      grid.newpage()
+      grid::grid.newpage()
     }
   }
   

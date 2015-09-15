@@ -14,6 +14,8 @@
 #' @param title a character vector of length one that contains the main title for the plot
 #' @param subtitle a character vector of length one that contains the subtitle displayed 
 #'    beneath the plot
+#' @param label logical, if TRUE cells will be labeled, else they will not
+#' @param shade logical, if TRUE cells will be shaded with Pearson residuals
 #' @source http://www.rexdouglass.com/blog:3
 #' @keywords mosaic
 #' @keywords crosstabs
@@ -31,8 +33,9 @@
 #' fac=sample(LETTERS[1:4], 60, replace=TRUE))
 #' varnames<-c('Quality','Grade')
 #' mosaictabs.label(df,df$y,df$fac,varnames,'My Plot','Foo')
-mosaictabs.label <- function(data, rowvar, colvar, varnames, title, subtitle){
-  mosaictabs <-function(rowvar,colvar,varnames){
+mosaictabs.label <- function(data, rowvar, colvar, varnames, title = NULL, 
+                             subtitle = NULL, label = FALSE, shade = TRUE){
+  mosaictabs <-function(rowvar, colvar, varnames){
     crosstab<-table(rowvar,colvar)
     rowvarcat<-levels(as.factor(rowvar))
     colvarcat<-levels(as.factor(colvar))
@@ -41,18 +44,23 @@ mosaictabs.label <- function(data, rowvar, colvar, varnames, title, subtitle){
     names=varnames
     dims<-c(length((rowvarcat)),length(colvarcat))
     dimnames<-structure( list(rowvarcat,colvarcat ),.Names = c(names) )
-    TABS <<- structure( c(values), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
+    TABS <- structure( c(values), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
     PROPORTIONS <- structure( c(proportions), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
-    TABSPROPORTIONS <<- structure( c(paste(PROPORTIONS,"%","\n", "(",values,")",sep="")), .Dim = as.integer(dims), 
+    TABSPROPORTIONS <- structure( c(paste(PROPORTIONS,"%","\n", "(",values,")",sep="")), .Dim = as.integer(dims), 
                                    .Dimnames = dimnames, class = "table") 
-    #grid.newpage()
-    # pushViewport(viewport(x=6,y=6,w=unit(1,'inches'),h=unit(1,'inches'),clip='off'))
-    mosaic(TABS,pop=FALSE, shade=TRUE, main=title, sub=subtitle)
+    out <- list(TABS = TABS, PROPORTIONS = PROPORTIONS, 
+                TABSPROPORTIONS = TABSPROPORTIONS)
     #labeling_cells(text=TABSPROPORTIONS , clip_cells=FALSE)(TABS, prefix="plot1")
   }
-  with(data,mosaictabs(rowvar,colvar,varnames))
-  labeling_cells(text=TABSPROPORTIONS , clip_cells=FALSE)(TABS)
+  out <- with(data, mosaictabs(rowvar, colvar, varnames))
+  if(label){
+    vcd::mosaic(out$TABS, shade=shade, main = title, sub = subtitle)
+    labeling_cells(text=out$TABSPROPORTIONS, clip_cells=FALSE)(out$TABS)
+  } else{
+    vcd::mosaic(out$TABS, shade=shade, main = title, sub = subtitle)
+  }
 }
+
 #TODO: Add better handling of inputs
 #TODO: Shading on and off
 #TODO: generalize to multivariate

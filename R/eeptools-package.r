@@ -1,3 +1,4 @@
+utils::globalVariables(c("TABSPROPORTIONS", "TABS", "adv", "grade", "count", "id"))
 #' Evaluation of educational policy tools
 #' @description Make common tasks for educational evaluation easier to do!
 #' @name eeptools

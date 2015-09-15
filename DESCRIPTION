@@ -17,16 +17,15 @@ Description: Collection of convenience functions to make working with
 License: GPL-3
 Depends:
     R (>= 2.15.1),
-    ggplot2,
-    MASS
+    ggplot2
 Imports:
     stringr,
     maptools,
     grid,
     arm,
     data.table,
-    memisc,
-    vcd
+    vcd,
+    memisc
 Suggests:
     reshape,
     sp,

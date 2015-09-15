@@ -8,7 +8,8 @@ and labels in each cell.}
 http://www.rexdouglass.com/blog:3
 }
 \usage{
-mosaictabs.label(data, rowvar, colvar, varnames, title, subtitle)
+mosaictabs.label(data, rowvar, colvar, varnames, title = NULL,
+  subtitle = NULL, label = FALSE, shade = TRUE)
 }
 \arguments{
 \item{data}{a data object, matrix or dataframe, that contains the categorical
@@ -27,6 +28,10 @@ respectively}
 
 \item{subtitle}{a character vector of length one that contains the subtitle displayed
 beneath the plot}
+
+\item{label}{logical, if TRUE cells will be labeled, else they will not}
+
+\item{shade}{logical, if TRUE cells will be shaded with Pearson residuals}
 }
 \value{
 A mosaic plot

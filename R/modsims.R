@@ -12,6 +12,7 @@
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 ##' @export
 ##' @import arm
+##' @import memisc
 ##' @examples
 ##'  #Examples of "sim" 
 ##' set.seed (1)
@@ -46,7 +47,7 @@
 ##'  
 ##' }
 gelmansim <- function(mod, newdata, nsims, na.omit=TRUE){
-    sims.tmp <- sim(mod, n.sims=nsims)
+    sims.tmp <- arm::sim(mod, n.sims=nsims)
   if("lm" %in% class(mod)[1]){
     form.tmp <- as.formula(paste("~",as.character(formula(mod)[3])))
   } else{
