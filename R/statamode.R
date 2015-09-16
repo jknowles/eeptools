@@ -12,7 +12,7 @@
 #' replaced with a "." character. Specifying "sample" will result in the function 
 #' randomly sampling among the tied values and picking a single value. Finally, 
 #' specifying "last" will result in the function picking the value that appears 
-#' last in the dataset. The default behavior is stata.
+#' last in the original x vector. The default behavior is stata.
 #' @return The modal value of a vector if a unique mode exists, else output 
 #' determined by method
 #' @author Jared E. Knowles
@@ -26,32 +26,33 @@
 #' a <- c(LETTERS, "A" , "A")
 #' statamode(a)
 statamode <- function(x, method = c("last", "stata", "sample")){
-  method <- match.arg(method)
   if (missing(method)){
     method <- "stata"
   } else {
     method <- match.arg(method)
   }
-
+  xClass <- class(x)
   x <- as.character(x)
   if (method == 'stata'){
     z <- table(as.vector(x))
     m <- names(z)[z == max(z)]
     
     if (length(m) == 1){
+      class(m) <- xClass
       return(m)
     }
-    
     return(".")
   }
   else if (method == 'sample'){
     z <- table(as.vector(x))
     m<-names(z)[z == max(z)]
     if (length(m)==1){
+      class(m) <- xClass
       return(m)
     }
     else if (length(m)>1){
-      return(sample(m,1))
+      class(m) <- xClass
+      return(sample(m, 1))
     }
     else if (length(m)<1){
       return(NA_character_)
@@ -61,10 +62,14 @@ statamode <- function(x, method = c("last", "stata", "sample")){
     z <- table(as.vector(x))
     m <- names(z)[z == max(z)]
     if (length(m) == 1){
+      class(m) <- xClass
       return(m)
     }
     else if (length(m) > 1){
-      return(tail(m,1))
+      m <- max(x[match(x, m) == max(match(x,m), na.rm=TRUE)], 
+               na.rm=TRUE)
+      class(m) <- xClass
+      return(tail(m, 1))
     }
     else if (length(m) < 1){
       return(NA_character_)

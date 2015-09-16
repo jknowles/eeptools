@@ -62,12 +62,8 @@ mosaictabs.label <- function(data, rowvar, colvar, varnames, title = NULL,
 }
 
 #TODO: Add better handling of inputs
-#TODO: Shading on and off
 #TODO: generalize to multivariate
 #Correct call still requires data elements to be specified using $var
-
-
-
 
 # basic, proficient, and advanced need to be the bottom threshold
 # minimal is the top threshold for the minimal category
