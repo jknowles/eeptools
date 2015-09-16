@@ -7,6 +7,7 @@
 ##' @param x a numeric vector, missing values are allowed
 ##' @param cutoff a user defined numeric value to stop the cutoff specified as 
 ##' a proportion 0 to 1
+##' @param na.rm logical, should missing values be excluded?
 ##' @details Calculates the distance through a numeric vector before a certain 
 ##' proportion of the sum is reached by sorting the vector and calculating the 
 ##' cumulative proportion of each element

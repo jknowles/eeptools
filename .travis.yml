@@ -1,9 +1,23 @@
 language: r
 sudo: required
+
+env:
+  global:
+    - WARNINGS_ARE_ERRORS=1
+  matrix:
+    - NOT_CRAN="true"
+    - NOT_CRAN="false"
+
 notifications:
   email:
     on_success: change
     on_failure: change
+
+r_binary_packages:
+  - ggplot2
+  - reshape
+  - testthat
+  - knitr
 
 r_github_packages:
   - jimhester/covr

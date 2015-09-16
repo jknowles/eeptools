@@ -11,6 +11,8 @@ cutoff(x, cutoff, na.rm = TRUE)
 
 \item{cutoff}{a user defined numeric value to stop the cutoff specified as
 a proportion 0 to 1}
+
+\item{na.rm}{logical, should missing values be excluded?}
 }
 \value{
 An integer for the minimum number of elements necessary to reach cutoff

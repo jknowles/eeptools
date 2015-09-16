@@ -1,6 +1,4 @@
 # Test utils
-
-#defac
 context("Test defac conversion of factors")
 
 test_that("defac works for all types of factors", {
@@ -59,23 +57,39 @@ test_that("thresh gets the accurate result", {
 context("Test that max_mis works correctly")
 
 test_that("max_mis handles missing data correctly", {
-  #maxmis
-  ##' max(c(7,NA,3,2,0),na.rm=TRUE)
-  ##' max_mis(c(7,NA,3,2,0))
-  ##' max(c(NA,NA,NA,NA),na.rm=TRUE)
-  ##' max_mis(c(NA,NA,NA,NA))
-  ##' 
-
-  
+  expect_identical(max(c(7,NA,3,2,0),na.rm=TRUE), max_mis(c(7,NA,3,2,0)))
+  max(c(NA,NA,NA,NA),na.rm=TRUE)
+  expect_identical(max_mis(c(NA,NA,NA,NA)), NA_real_)
+  expect_identical(max_mis(c(NA_real_, NA_real_)), NA_real_)
+  expect_identical(max_mis(c()), NA_real_)
+  expect_error(max_mis(c("A", "B", "C")))
+  expect_error(max_mis(factor("A", "B", "C")))
+  expect_error(max_mis(ordered("A", "B", "C")))
 })
 
 context("Remove character")
 
 test_that("Remove character works for multiple character type", {
-  # remov_char
-  ##' a <- c(1, 5, 3, 6, "*", 2, 5, "*", "*")
-  ##' b <- remove_char(a, "*")
-  ##' as.numeric(b)
+  a <- c(1, 5, 3, 6, "*", 2, 5, "*", "*")
+  b <- remove_char(a, "*")
+  expect_is(b, "character")
+  expect_identical(length(a), length(b))
+  expect_equal(length(b[is.na(b)]), 3)
+  a <- c(1, 3, 5, "B", "D", ".", ".", ".")
+  b <- remove_char(a, ".")
+  expect_is(b, "character")
+  expect_identical(length(a), length(b))
+  expect_equal(length(b[is.na(b)]), 3)
+  a <- c(1, 3, 5, "B", "D", "Unk.", "Unk.", "Unk.")
+  b <- remove_char(a, "Unk.")
+  expect_is(b, "character")
+  expect_identical(length(a), length(b))
+  expect_equal(length(b[is.na(b)]), 3)
+  a <- c(1, 3, 5, "B", "D", "Unk.", "Unk.", "Unk.", NA, NA, NA)
+  b <- remove_char(a, "Unk.")
+  expect_is(b, "character")
+  expect_identical(length(a), length(b))
+  expect_equal(length(b[is.na(b)]), 6)
 })
 
 
@@ -105,4 +119,27 @@ test_that("Function works for multiple types of inputs", {
                          "0400", "4000"))
 })
 
+context("Test decomma")
+
+a <- c("12,124", "21,131", "A,b")
+b <- c("12124", "21131", "Ab")
+
+c <- a[1:2]
+d <- as.numeric(b[1:2])
+
+test_that("decomma returns the right class", {
+  expect_that(decomma(c), equals(d))
+  expect_that(decomma(a), gives_warning())
+  expect_that(decomma(a), is_a("numeric"))
+  expect_that(decomma(b), is_a("numeric"))
+  expect_that(decomma(c), is_a("numeric"))
+  expect_that(decomma(d), is_a("numeric"))
+})
+
+n <- c(NA, NA, NA, "7,102", "27,125", "23,325,22", "Ab")
+
+test_that("decomma handles NAs properly", {
+  expect_that(length(decomma(n)[!is.na(decomma(n))]), equals(3))
+  expect_that(decomma(n)[6], equals(2332522))
+})
 
