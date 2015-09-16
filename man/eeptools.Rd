@@ -33,8 +33,8 @@ statamode(gender[1:5])
 missing_data<-c(NA,NA,NA)
 max_mis(missing_data)
 
-destring(gender)
-gender<-factor(gender)
+makenum(gender)
+gender <- factor(gender)
 defac(gender)
 }
 \author{
