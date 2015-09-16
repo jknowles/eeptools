@@ -5,12 +5,14 @@
 \title{A function to return the maximum percentage of the cumulative sum represented
 by a subset of the vector}
 \usage{
-thresh(x, cutoff)
+thresh(x, cutoff, na.rm = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector, missing values are allowed}
 
 \item{cutoff}{numeric, the number of elements to look at}
+
+\item{na.rm}{logical, should missing values be excluded?}
 }
 \value{
 A numeric proportion

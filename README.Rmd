@@ -10,6 +10,8 @@ output:
 [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues)
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls)
 [![Downloads](http://cranlogs.r-pkg.org/badges/eeptools)](http://cran.rstudio.com/package=eeptools)
+
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}

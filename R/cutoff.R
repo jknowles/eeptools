@@ -20,6 +20,9 @@
 ##' cutoff(a, .7) #return minimum number of elements to account 70 percent of total
 ##' 
 cutoff <- function(x, cutoff, na.rm = TRUE){
+  if(cutoff <=0 | cutoff > 1 | is.na(cutoff)){
+    stop("Cutoff value must be a numeric between 0 and 1 and nonmissing")
+  }
   if(na.rm){
     x <- x[order(-x, na.last = TRUE)]
     xb <- cumsum(x)
@@ -29,7 +32,12 @@ cutoff <- function(x, cutoff, na.rm = TRUE){
   } else{
     x <- x[order(-x)]
     xb <- cumsum(x)
-    xc <- xb/sum(x, na.rm=FALSE)
-    length(xc[xc < cutoff])
+    xc <- xb/sum(x, na.rm = FALSE)
+    xc <- na.omit(xc)
+    if(length(xc) == 0){
+      NA
+    } else {
+      length(xc[xc < cutoff])
+    }
   }
 }

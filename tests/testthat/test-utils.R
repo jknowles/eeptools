@@ -36,22 +36,46 @@ test_that("makenum works for all types of factors", {
 context("Test that cutoff is numerically accurate")
 
 test_that("cutoff gets the desired result", {
+  set.seed(1024)
   a <- rnorm(1000, mean = 0, sd = 1)
   b <- rlnorm(1000, meanlog = 2, sdlog = 1)
-  cutoff(a, .05) 
-  cutoff(b, .8)
+  expect_equal(cutoff(a, .05), 0)
+  expect_equal(cutoff(a, 0.5), 2)
+  expect_equal(cutoff(b, .8), 427)
   
+  d <- b
+  d[400:500] <- NA
+  expect_equal(cutoff(d, 0.2), 131)
+  expect_equal(cutoff(d, 0.9, na.rm=FALSE), NA)
+  expect_equal(cutoff(d, 0.2, na.rm=FALSE), NA)
+  expect_equal(cutoff(d, 0.9, na.rm=TRUE), 648)
+  expect_equal(cutoff(d, 0.2, na.rm=TRUE), 131)
+  expect_error(cutoff(d, 39))
+  expect_error(cutoff(d, -39))
+  expect_error(cutoff(d, -0.00039))
 })
 
 context("Test the threshold function for numeric accuracy")
 
 
 test_that("thresh gets the accurate result", {
-  #thresh
-  ##' # for vector
-  ##' a <- rnorm(100, mean=6, sd=1)
-  ##' thresh(a, 8) #return minimum number of elements to account 70 percent of total
-  ##' 
+  set.seed(1024)
+  a <- rnorm(1000, mean = 0, sd = 1)
+  b <- rlnorm(1000, meanlog = 2, sdlog = 1)
+  expect_error(thresh(a, 0))
+  expect_equal(thresh(a, 2), 0.5, tol = 0.03, scale = 1)
+  expect_equal(thresh(b, 427), 0.8, tol = 0.01)
+  
+  d <- b
+  d[400:500] <- NA
+  expect_equal(thresh(d, 131), 0.48, tol = 0.01)
+  expect_equal(thresh(d, 648, na.rm=FALSE), NA)
+  expect_equal(thresh(d, 131, na.rm=FALSE), NA)
+  expect_equal(thresh(d, 600, na.rm=TRUE), 0.92, tol = 0.005)
+  expect_equal(thresh(d, 131, na.rm=TRUE), 0.48, tol = 0.01)
+  expect_error(thresh(d, 0.39))
+  expect_error(thresh(d, -0.39))
+  expect_error(thresh(d, -39))
 })
 
 context("Test that max_mis works correctly")

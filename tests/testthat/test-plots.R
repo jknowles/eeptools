@@ -43,4 +43,13 @@ test_that("Autoplot works as expected for linear models", {
   expect_true(file.exists(test_plot_file))
   unlink(test_plot_file)
   
+  test_plot_file <- "lmautoplot.png"
+  png(test_plot_file)
+  p2 <- autoplot(mymod, which = 1:5, mfrow = c(1, 5))
+  dev.off()
+  expect_true(file.exists(test_plot_file))
+  unlink(test_plot_file)
+
 })
+
+

@@ -12,3 +12,4 @@ build.R
 ^README-.*\.png$
 readmeplot
 ^CONDUCT\.md$
+^revdep$
