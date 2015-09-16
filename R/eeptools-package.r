@@ -25,7 +25,7 @@ utils::globalVariables(c("adv", "grade", "count", "id"))
 #' missing_data<-c(NA,NA,NA)
 #' max_mis(missing_data)
 #' 
-#' destring(gender)
+#' makenum(gender)
 #' gender<-factor(gender)
 #' defac(gender)
 NULL
