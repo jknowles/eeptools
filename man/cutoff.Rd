@@ -2,9 +2,9 @@
 % Please edit documentation in R/cutoff.R
 \name{cutoff}
 \alias{cutoff}
-\title{A function to calculate thresholds in a vector.}
+\title{A function to calculate thresholds of cumulative sums in a vector.}
 \usage{
-cutoff(x, cutoff)
+cutoff(x, cutoff, na.rm = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector, missing values are allowed}
@@ -24,7 +24,8 @@ percentage terms (fixed cumulative sum)
 }
 \details{
 Calculates the distance through a numeric vector before a certain
-proportion is reached by sorting the vector and calculating the cumulative proportion of each element
+proportion of the sum is reached by sorting the vector and calculating the
+cumulative proportion of each element
 }
 \examples{
 # for vector

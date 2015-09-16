@@ -15,12 +15,12 @@
 ##' @export
 ##' @examples
 ##' a <- ordered(c(1, 3, '09', 7, 5))
-##' b <- destring(a)
+##' b <- makenum(a)
 ##' class(b)
 ##' b
 ##' a
 ##' 
-destring<-function(x){
+makenum <- function(x){
   x <- as.character(x)
   x <- as.numeric(x)
   return(x)

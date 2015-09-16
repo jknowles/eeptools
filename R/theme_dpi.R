@@ -52,7 +52,7 @@ theme_dpi <- function (base_size = 16, base_family = "") {
 #' @seealso his uses \code{\link{unit}} from the grid package extensively. 
 #' See also \code{\link{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
-#' @importFrom grid unit
+#' @import grid
 #' @import ggplot2
 #' @export
 #'
@@ -110,7 +110,7 @@ theme_dpi_map <- function(base_size = 14, base_family = "") {
 #' @seealso his uses \code{\link{unit}} from the grid package extensively. 
 #' See also \code{\link{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
-#' @importFrom grid unit
+#' @import grid
 #' @import ggplot2
 #' @export
 #' @examples
@@ -170,7 +170,7 @@ theme_dpi_map2 <- function(base_size = 14, base_family = "") {
 #' @seealso his uses \code{\link{unit}} from the grid package extensively. 
 #' See also \code{\link{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
-#' @importFrom grid unit
+#' @import grid 
 #' @import ggplot2
 #' @export
 #' @examples

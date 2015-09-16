@@ -1,3 +1,16 @@
+eeptools 0.9
+--------------------------
+
+This is a major update including removing little used functions and renaming 
+and restructuring functions.
+
+* fix major bugs for statamode including faulty default to method and returning
+objects of the wrong class
+
+* add unit tests and continuous integration support for better package updating
+
+* renamed `destring` to `makenum` to better reflect the use of the function
+
 eeptools 0.3
 --------------------------
 
