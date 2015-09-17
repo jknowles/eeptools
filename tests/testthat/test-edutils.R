@@ -129,8 +129,9 @@ test_that("profpoly.data produces correct objects", {
   prof <- c(380,410,430,450,480,500)
   adv <- c(480,510,530,550,580,600)
   
-  z<-profpoly(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
-  
+  z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof, 
+                     advanced = adv, HOSS)
+  expect_is(z, "data.frame")
   
 })
 
@@ -144,8 +145,10 @@ test_that("plot.profpoly makes valid ggplot objects", {
   prof <- c(380,410,430,450,480,500)
   adv <- c(480,510,530,550,580,600)
   
-  z <- profpoly(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
+  z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof, 
+                     advanced = adv, HOSS)
   p1 <- plot.profpoly(z)
+  expect_is(p1, c("gg", "ggplot"))
   
 })
 

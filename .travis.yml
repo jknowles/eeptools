@@ -8,6 +8,11 @@ env:
     - NOT_CRAN="true"
     - NOT_CRAN="false"
 
+before_install:
+  - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+  - sudo apt-get update -q
+  - sudo apt-get install -q libgeos-dev libgeos-3.4.2
+
 notifications:
   email:
     on_success: change
