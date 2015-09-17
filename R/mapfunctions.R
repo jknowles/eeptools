@@ -3,10 +3,11 @@
 ##' Convenience function for merging dataframes and S4 spatial polygon objects. 
 ##'
 ##' @param mapobj Name of an S4 SpatialPolygonsDataFrame
-##' @param data Name of an S3 dataframe
+##' @param data Name of a dataframe
 ##' @param xid Name of ID variable in the SpatialPolygonsDataFrame
-##' @param yid Name of ID variable in the S3 dataframe
+##' @param yid Name of ID variable in the dataframe
 ##' @return A SpatialPolygonsDataFrame with new variables attached from supplied dataframe
+##' @importFrom maptools spCbind
 ##' @export
 ##' @examples
 ##' \dontrun{
@@ -22,35 +23,6 @@ mapmerge <- function(mapobj,data,xid,yid){
   o <- match(mapobj@data[,x], data[,y])
   d <- data[o, ]
   row.names(d) <- mapobj@data[, x]
-  d <- maptools::spCbind(mapobj, d)
-  return(d)
-}
-
-##' Combine an S4 polygon object with a dataframe
-##'
-##' Convenience function for merging dataframes and S4 spatial polygon objects. 
-##'
-##' @param mapobj Name of an S4 SpatialPolygonsDataFrame
-##' @param data Name of an S3 dataframe
-##' @param xid Name of ID variable in the SpatialPolygonsDataFrame
-##' @param yid Name of ID variable in the S3 dataframe
-##' @return A SpatialPolygonsDataFrame with new variables attached from supplied dataframe
-##' @export
-##' @examples
-##' \dontrun{
-##' xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
-##' yy<-as(xx,"data.frame")
-##' yy$newvar<-sample(letters,nrow(yy),replace=TRUE)
-##' yy<-subset(yy,select=c("FIPS","newvar"))
-##' newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS")
-##' }
-mapmerge2 <- function (mapobj, data, xid, yid) 
-{
-  x <- match(xid, colnames(mapobj@data))
-  y <- match(yid, colnames(data))
-  o <- match(mapobj@data[, x], data[, y])
-  d <- data[o, ]
-  row.names(d) <- row.names(mapobj@data)
   d <- maptools::spCbind(mapobj, d)
   return(d)
 }

@@ -6,7 +6,8 @@
 ##' @param group The grouping factor in the dataframe
 ##' @param values The names of the variables to be lagged
 ##' @param time The variable representing time periods
-##' @param periods A scalar for the number of periods to be lagged in the data
+##' @param periods A scalar for the number of periods to be lagged in the data. Can 
+##' be negative to indicate leading variable.
 ##' @return A dataframe with a newly created variable lagged
 ##' @export
 ##' @examples
@@ -24,14 +25,27 @@
 ##' newdat <- lag_data(test_data, group="id", time="time", 
 ##'                  values=c("value1", "value2"), periods=3)
 lag_data <- function(df, group, time, periods, values) {
-  group <- group
-  time <- time
-  periods <- periods
+  if(any(group %in% values) | any(time %in% values)){
+    stop("Cannot lag a grouping or a time variable")
+  }
+  if(!class(df[, time]) %in% c("integer", "numeric")){
+    stop("Time must be a numeric or integer value")
+  }
+  if(!class(periods) %in% c("integer", "numeric")){
+    stop("Periods must be a numeric or integer value")
+  }
+  if(periods - as.integer(periods) != 0){
+    periods <- as.integer(periods)
+    warning(paste0("parameter periods has been forced to integer of value ", 
+                   periods))
+  }
   vars <- c(group, time, values)
-  tmp.data <- subset(df, select=vars)
-  tmp.data[,time] <- tmp.data[,time] + periods
-  new.vals <- paste0(values, ".lag", periods)
+  tmp.data <- df[, vars]
+  tmp.data[, time] <- tmp.data[, time] + periods
+  lab <- ifelse(periods < 0, ".lead", ".lag")
+  new.vals <- paste0(values, lab, abs(periods))
   names(tmp.data) <- c(group, time, new.vals)
   newdat <- merge(df, tmp.data, all.x=TRUE, by=c(group,time))
+  return(newdat)
 }
 

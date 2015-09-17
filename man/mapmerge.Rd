@@ -9,11 +9,11 @@ mapmerge(mapobj, data, xid, yid)
 \arguments{
 \item{mapobj}{Name of an S4 SpatialPolygonsDataFrame}
 
-\item{data}{Name of an S3 dataframe}
+\item{data}{Name of a dataframe}
 
 \item{xid}{Name of ID variable in the SpatialPolygonsDataFrame}
 
-\item{yid}{Name of ID variable in the S3 dataframe}
+\item{yid}{Name of ID variable in the dataframe}
 }
 \value{
 A SpatialPolygonsDataFrame with new variables attached from supplied dataframe

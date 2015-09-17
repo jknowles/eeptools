@@ -11,8 +11,10 @@ use of the function
 
 ### Deprecated
 - `plotForWord` function deprecated in favor of packages like `knitr` and `rmarkdown`
+- `mapmerge2` has been deprecated in favor of a tested `mapmerge`
 
 ### Bug Fixes
+- `lag_data` now can do leads and lags and includes proper error messages
 - fix major bugs for `statamode` including faulty default to method and returning
 objects of the wrong class
 - add unit tests and continuous integration support for better package updating

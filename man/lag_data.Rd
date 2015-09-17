@@ -13,7 +13,8 @@ lag_data(df, group, time, periods, values)
 
 \item{time}{The variable representing time periods}
 
-\item{periods}{A scalar for the number of periods to be lagged in the data}
+\item{periods}{A scalar for the number of periods to be lagged in the data. Can
+be negative to indicate leading variable.}
 
 \item{values}{The names of the variables to be lagged}
 }
