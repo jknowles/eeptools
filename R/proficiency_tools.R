@@ -73,7 +73,7 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
   crosstab <- table(data[, rowvar], data[, colvar])
   rowvarcat <- levels(as.factor(data[, rowvar]))
   colvarcat <- levels(as.factor(data[, colvar]))
-  proportions <- round(prop.table(crosstab , digits) * 100)
+  proportions <- round(prop.table(crosstab), digits) * 100
   values <- c(crosstab)
   dims <- c(length((rowvarcat)), length(colvarcat))
   dimnames  <- structure(list(rowvarcat,colvarcat ), .Names = c(varnames))
@@ -105,18 +105,19 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
 #'
 #' @export
 #' @examples
-#'grades<-c(3,4,5,6,7,8)
-#' g<-length(grades)
-#' LOSS<-rep(200,6)
-#' HOSS<-rep(650,6)
-#' basic<-c(320,350,370,390,420,440)
-#' minimal<-basic-30
-#' prof<-c(380,410,430,450,480,500)
-#' adv<-c(480,510,530,550,580,600)
-#' z <- profpoly.data
-#' plot.profpoly(z)
-plot.profpoly <- function(data){
-  if(!all(c("gradeP", "prof", "vals") %in% names(z))){
+#' grades<-c(3,4,5,6,7,8)
+#' g <- length(grades)
+#' LOSS <- rep(200, g)
+#' HOSS <- rep(650, g)
+#' basic <- c(320,350,370,390,420,440)
+#' minimal <- basic-30
+#' prof <- c(380,410,430,450,480,500)
+#' adv <- c(480,510,530,550,580,600)
+#' z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof, 
+#'                   advanced = adv, HOSS)
+#' profpoly(z)
+profpoly <- function(data){
+  if(!all(c("gradeP", "prof", "vals") %in% names(data))){
     stop("Please run profpoly first to generate the polygon data")
   }
   p <- ggplot(data, aes(x=gradeP, y=vals))
@@ -151,29 +152,28 @@ plot.profpoly <- function(data){
 #' prof<-c(380,410,430,450,480,500)
 #' adv<-c(480,510,530,550,580,600)
 #' 
-#' z<-profpoly.data(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
+#' z<-profpoly.data(grades,LOSS,minimal,basic,
+#'                proficient = prof,advanced = adv, HOSS)
 #' z
 profpoly.data <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
   g<-length(grades)
-  #
-  rep.invert<-function(x){
+  rep.invert <- function(x){
     c(x,x[order(-x)])
   }
-  #
-  grades<-rep.invert(grades)
-  len<-length(grades)
-  minimala<-c(LOSS,minimal[order(-minimal)])
-  basica<-c(minimal+1,prof[order(-prof)])
-  profa<-c(proficient+1,adv[order(-advanced)])
-  adva<-c(advanced+1,HOSS)
-  prof<-c(rep(1,len),rep(2,len),rep(3,len),rep(4,len))
-  vals<-c(minimala,basica,profa,adva)
-  gradeP<-rep(grades,4)
-  profpoly<-cbind(gradeP,prof,vals)
-  profpoly<-as.data.frame(profpoly)
-  profpoly$vals<-as.character(profpoly$vals)
-  profpoly$vals<-as.numeric(profpoly$vals)
-  profpoly$prof<-factor(profpoly$prof,levels=unique(as.numeric(prof)))
+  grades <- rep.invert(grades)
+  len <- length(grades)
+  minimala <- c(LOSS,minimal[order(-minimal)])
+  basica <- c(minimal + 1, proficient[order(-proficient)])
+  profa <- c(proficient + 1, advanced[order(-advanced)])
+  adva <- c(advanced + 1, HOSS)
+  prof <- c(rep(1,len), rep(2,len), rep(3,len), rep(4,len))
+  vals <- c(minimala, basica, profa, adva)
+  gradeP <- rep(grades, 4)
+  profpoly <- cbind(gradeP, prof, vals)
+  profpoly <- as.data.frame(profpoly)
+  profpoly$vals <- as.character(profpoly$vals)
+  profpoly$vals <- as.numeric(profpoly$vals)
+  profpoly$prof <- factor(profpoly$prof, levels=unique(as.numeric(prof)))
   return(profpoly)
 }
 

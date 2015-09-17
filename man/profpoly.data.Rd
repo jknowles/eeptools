@@ -38,7 +38,8 @@ minimal<-basic-30
 prof<-c(380,410,430,450,480,500)
 adv<-c(480,510,530,550,580,600)
 
-z<-profpoly.data(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
+z<-profpoly.data(grades,LOSS,minimal,basic,
+               proficient = prof,advanced = adv, HOSS)
 z
 }
 \seealso{

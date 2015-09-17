@@ -147,11 +147,8 @@ test_that("plot.profpoly makes valid ggplot objects", {
   
   z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof, 
                      advanced = adv, HOSS)
-  p1 <- plot.profpoly(z)
+  p1 <- profpoly(z)
   expect_is(p1, c("gg", "ggplot"))
   
 })
-
-
-
 
