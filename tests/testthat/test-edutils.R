@@ -61,15 +61,60 @@ test_that("Object values are correct", {
   }  
 })
 
+context("Test crossplot functionality")
 
+test_that("Crossplots work and get right answers", {
+  set.seed(1213)
+  sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
+                                                        replace=TRUE)),
+                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
+  varnames<-c('Quality','Grade')
+  
+  out <- crosstabs(sampDat, "y", "fac", varnames = varnames)
+  expect_is(out, "list")
+  expect_equal(names(out), c("TABS", "PROPORTIONS", "TABSPROPORTIONS"))
+  
+  
+})
 
 context("Test mosaictabs with labels")
 
-#' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
-#' fac=sample(LETTERS[1:4], 60, replace=TRUE))
-#' varnames<-c('Quality','Grade')
-#' mosaictabs.label(df,df$y,df$fac,varnames,'My Plot','Foo')
-
+test_that("Plots work correctly", {
+  sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
+                                                        replace=TRUE)),
+                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
+  varnames<-c('Quality','Grade')
+  test_plot_file <- "crosstabplot.png"
+  png(test_plot_file)
+  crosstabplot(sampDat, "y", "fac", varnames = varnames)
+  dev.off()
+  expect_true(file.exists(test_plot_file))
+  unlink(test_plot_file)
+  
+  test_plot_file <- "crosstabplot.png"
+  png(test_plot_file)
+  crosstabplot(sampDat, "y", "fac", varnames = varnames, shade = TRUE)
+  dev.off()
+  expect_true(file.exists(test_plot_file))
+  unlink(test_plot_file)
+  
+  
+  test_plot_file <- "crosstabplot.png"
+  png(test_plot_file)
+  crosstabplot(sampDat, "y", "fac", varnames = varnames, shade = FALSE)
+  dev.off()
+  expect_true(file.exists(test_plot_file))
+  unlink(test_plot_file)
+  
+  test_plot_file <- "crosstabplot.png"
+  png(test_plot_file)
+  crosstabplot(sampDat, "y", "fac", varnames = varnames, label = TRUE)
+  dev.off()
+  expect_true(file.exists(test_plot_file))
+  unlink(test_plot_file)
+  
+  
+})
 
 context("Test proficiency polygons")
 

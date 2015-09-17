@@ -37,6 +37,7 @@ mapmerge <- function(mapobj,data,xid,yid){
 ##' @details This function requires maptools to be loaded and \code{\link{gpclibPermit}} 
 ##' to be \code{TRUE}. This is because it depends on the \code{\link{fortify}} method in \code{\link{ggplot2}}. 
 ##' @export
+##' @import rgeos
 ##' @examples
 ##' \dontrun{
 ##' xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")

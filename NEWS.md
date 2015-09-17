@@ -8,10 +8,13 @@ and restructuring functions.
 ### New Functionality
 - `destring` function deprecated and renamed to `makenum` to better reflect the 
 use of the function
+- `crosstabs` function exported to allow the user to generate the data behind 
+`crosstabplot` but not draw the plot
 
 ### Deprecated
 - `plotForWord` function deprecated in favor of packages like `knitr` and `rmarkdown`
 - `mapmerge2` has been deprecated in favor of a tested `mapmerge`
+- `mosaictabs.labels` has been deprecated in favor of `crosstabplot`
 
 ### Bug Fixes
 - `lag_data` now can do leads and lags and includes proper error messages

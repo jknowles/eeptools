@@ -5,9 +5,9 @@
 #'
 #' @param data a data object, matrix or dataframe, that contains the categorical 
 #'    variables to compose the crosstab
-#' @param rowvar a reference to the column in data that will be displayed on the rows
-#'    of the crosstab, expressed as data$rowvar
-#' @param colvar a reference to the column in data that will be displayed in columns of the 
+#' @param rowvar a character value for the column in data that will be displayed on the rows
+#'    of the crosstab
+#' @param colvar a character vlue for the column in data that will be displayed in columns of the 
 #'    crosstab
 #' @param varnames a character vector of length two with the labels for rowvar and colvar
 #'    respectively
@@ -16,6 +16,7 @@
 #'    beneath the plot
 #' @param label logical, if TRUE cells will be labeled, else they will not
 #' @param shade logical, if TRUE cells will be shaded with Pearson residuals
+#' @param ... additional arguments to \code{\link{crosstabs}} e.g. digits
 #' @source http://www.rexdouglass.com/blog:3
 #' @keywords mosaic
 #' @keywords crosstabs
@@ -23,8 +24,7 @@
 #' @return A mosaic plot
 #' @seealso
 #'  \code{\link{mosaic}} which this function wraps
-#'
-#'  \code{\link{structure}} which does the data manipulation for the crosstab
+#'  \code{\link{crosstabs}} which does the data manipulation for the crosstab
 #' 
 #' @import vcd
 #' @export
@@ -32,33 +32,60 @@
 #' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 #' fac=sample(LETTERS[1:4], 60, replace=TRUE))
 #' varnames<-c('Quality','Grade')
-#' mosaictabs.label(df,df$y,df$fac,varnames,'My Plot','Foo')
-mosaictabs.label <- function(data, rowvar, colvar, varnames, title = NULL, 
-                             subtitle = NULL, label = FALSE, shade = TRUE){
-  mosaictabs <-function(rowvar, colvar, varnames){
-    crosstab<-table(rowvar,colvar)
-    rowvarcat<-levels(as.factor(rowvar))
-    colvarcat<-levels(as.factor(colvar))
-    proportions<-round(prop.table(crosstab , 2)*100)
-    values<-c(crosstab)
-    names=varnames
-    dims<-c(length((rowvarcat)),length(colvarcat))
-    dimnames<-structure( list(rowvarcat,colvarcat ),.Names = c(names) )
-    TABS <- structure( c(values), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
-    PROPORTIONS <- structure( c(proportions), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
-    TABSPROPORTIONS <- structure( c(paste(PROPORTIONS,"%","\n", "(",values,")",sep="")), .Dim = as.integer(dims), 
-                                   .Dimnames = dimnames, class = "table") 
-    out <- list(TABS = TABS, PROPORTIONS = PROPORTIONS, 
-                TABSPROPORTIONS = TABSPROPORTIONS)
-    #labeling_cells(text=TABSPROPORTIONS , clip_cells=FALSE)(TABS, prefix="plot1")
-  }
-  out <- with(data, mosaictabs(rowvar, colvar, varnames))
+#' myCT <- crosstabs(df, rowvar = "x",colvar = "y", varnames = varnames, digits =2)
+#' crosstabplot(df, rowvar = "x",colvar = "y", varnames = varnames, 
+#' title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
+crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL, 
+                             subtitle = NULL, label = FALSE, shade = TRUE, ...){
+  out <- crosstabs(data = data, rowvar = rowvar, colvar = colvar, 
+                   varnames = varnames, ...)
   if(label){
-    vcd::mosaic(out$TABS, shade=shade, main = title, sub = subtitle)
-    labeling_cells(text=out$TABSPROPORTIONS, clip_cells=FALSE)(out$TABS)
+    vcd::mosaic(out$TABS, shade = shade, main = title, sub = subtitle, 
+                labeling = labeling_cells(text = out$TABSPROPORTIONS, 
+                                               clip_cells=FALSE))
   } else{
-    vcd::mosaic(out$TABS, shade=shade, main = title, sub = subtitle)
+    vcd::mosaic(out$TABS, shade =shade, main = title, sub = subtitle)
   }
+}
+
+
+#' Build a list of crosstabulations from a dataset
+#'
+#' @param data a data object, matrix or dataframe, that contains the categorical 
+#'    variables to compose the crosstab
+#' @param rowvar a character value for the column in data that will be displayed on the rows
+#'    of the crosstab
+#' @param colvar a character vlue for the column in data that will be displayed in columns of the 
+#'    crosstab
+#' @param varnames a character vector of length two with the labels for rowvar and colvar
+#'    respectively
+#' @param digits an integer for how much to round the proportion calculations by, 
+#' default is 2
+#' @return a list with crosstab calculations
+#' @export
+#'
+#' @examples
+#' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
+#' fac=sample(LETTERS[1:4], 60, replace=TRUE))
+#' varnames<-c('Quality','Grade')
+#' myCT <- crosstabs(df, rowvar = "x",colvar = "y", varnames = varnames, digits =2)
+crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
+  crosstab <- table(data[, rowvar], data[, colvar])
+  rowvarcat <- levels(as.factor(data[, rowvar]))
+  colvarcat <- levels(as.factor(data[, colvar]))
+  proportions <- round(prop.table(crosstab , digits) * 100)
+  values <- c(crosstab)
+  dims <- c(length((rowvarcat)), length(colvarcat))
+  dimnames  <- structure(list(rowvarcat,colvarcat ), .Names = c(varnames))
+  TABS <- structure( c(values), .Dim = as.integer(dims), .Dimnames = dimnames, class = "table") 
+  PROPORTIONS <- structure(c(proportions), .Dim = as.integer(dims), 
+                           .Dimnames = dimnames, class = "table") 
+  TABSPROPORTIONS <- structure(c(paste(PROPORTIONS,"%","\n", "(",values,")",sep="")), 
+                               .Dim = as.integer(dims), 
+                                .Dimnames = dimnames, class = "table") 
+  out <- list(TABS = TABS, PROPORTIONS = PROPORTIONS, 
+              TABSPROPORTIONS = TABSPROPORTIONS)
+  return(out)
 }
 
 #TODO: Add better handling of inputs

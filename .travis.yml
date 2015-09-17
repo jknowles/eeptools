@@ -18,6 +18,13 @@ r_binary_packages:
   - reshape
   - testthat
   - knitr
+  - rgeos
+  - arm
+  - grid
+  - data.table
+  - vcd
+  - maptools
+  - stringr
 
 r_github_packages:
   - jimhester/covr

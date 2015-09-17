@@ -24,7 +24,8 @@ Imports:
     arm,
     data.table,
     vcd,
-    memisc
+    memisc,
+    rgeos
 Suggests:
     reshape,
     sp,
