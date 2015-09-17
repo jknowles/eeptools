@@ -42,11 +42,11 @@ A mosaic plot
 Improves labeling of mosaic plots over \code{mosaic} from the vcd package
 }
 \examples{
-df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
+df <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 fac=sample(LETTERS[1:4], 60, replace=TRUE))
 varnames<-c('Quality','Grade')
-myCT <- crosstabs(df, rowvar = "x",colvar = "y", varnames = varnames, digits =2)
-crosstabplot(df, rowvar = "x",colvar = "y", varnames = varnames,
+myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
+crosstabplot(df, rowvar = "x",colvar = "fac", varnames = varnames,
 title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
 }
 \seealso{

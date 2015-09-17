@@ -20,7 +20,6 @@ r_binary_packages:
   - knitr
   - rgeos
   - arm
-  - grid
   - data.table
   - vcd
   - maptools

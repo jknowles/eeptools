@@ -29,11 +29,11 @@
 #' @import vcd
 #' @export
 #' @examples
-#' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
+#' df <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 #' fac=sample(LETTERS[1:4], 60, replace=TRUE))
 #' varnames<-c('Quality','Grade')
-#' myCT <- crosstabs(df, rowvar = "x",colvar = "y", varnames = varnames, digits =2)
-#' crosstabplot(df, rowvar = "x",colvar = "y", varnames = varnames, 
+#' myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
+#' crosstabplot(df, rowvar = "x",colvar = "fac", varnames = varnames, 
 #' title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
 crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL, 
                              subtitle = NULL, label = FALSE, shade = TRUE, ...){
@@ -68,7 +68,7 @@ crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL,
 #' df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 #' fac=sample(LETTERS[1:4], 60, replace=TRUE))
 #' varnames<-c('Quality','Grade')
-#' myCT <- crosstabs(df, rowvar = "x",colvar = "y", varnames = varnames, digits =2)
+#' myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
 crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
   crosstab <- table(data[, rowvar], data[, colvar])
   rowvarcat <- levels(as.factor(data[, rowvar]))
@@ -88,27 +88,15 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
   return(out)
 }
 
-#TODO: Add better handling of inputs
-#TODO: generalize to multivariate
-#Correct call still requires data elements to be specified using $var
 
-# basic, proficient, and advanced need to be the bottom threshold
-# minimal is the top threshold for the minimal category
-# HOSS and LOSS are highest and lowest obtainable scale score vectors
-# grades is the vector of tested grades to draw polygon for
-# All vectors are grade ordered and same length
-# Returns a ggplot object
+#TODO: generalize to multivariate
+
+
 
 #' Creates a proficiency polygon in ggplot2 for showing assessment categories
 #'
-#' @param grades a vector of tested grades in sequential order
-#' @param LOSS is a vector of the lowest obtainable scale score on 
-#'        an assessment by grade
-#' @param minimal is a vector of the floor of the minimal assessment category by grade
-#' @param basic is a vector of the floor of the basic assessment category by grade
-#' @param proficient is a vector of the floor of the proficient assessment category by grade
-#' @param advanced is a vectof of the floor of the advanced assessment category by grade
-#' @param HOSS is a vector of the highest obtainable scale score by grade
+#' @param data a data.frame produced by \code{\link{profpoly.data}}
+#' @import ggplot2
 #' @keywords ggplot2
 #' @keywords polygon
 #' @return a ggplot2 object that can be printed or saved
@@ -125,37 +113,16 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
 #' minimal<-basic-30
 #' prof<-c(380,410,430,450,480,500)
 #' adv<-c(480,510,530,550,580,600)
-#' 
-#' z<-profpoly(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
-#' z
-profpoly<-function(grades, LOSS, minimal, basic, proficient, advanced, HOSS){
-  g<-length(grades)
-  #
-  rep.invert<-function(x){
-    c(x,x[order(-x)])
+#' z <- profpoly.data
+#' plot.profpoly(z)
+plot.profpoly <- function(data){
+  if(!all(c("gradeP", "prof", "vals") %in% names(z))){
+    stop("Please run profpoly first to generate the polygon data")
   }
-  #
-  grades<-rep.invert(grades)
-  len<-length(grades)
-  minimala<-c(LOSS,minimal[order(-minimal)])
-  basica<-c(minimal+1,prof[order(-prof)])
-  profa<-c(prof+1,adv[order(-adv)])
-  adva<-c(adv+1,HOSS)
-  prof<-c(rep(1,len),rep(2,len),rep(3,len),rep(4,len))
-  vals<-c(minimala,basica,profa,adva)
-  gradeP<-rep(grades,4)
-  profpoly<-cbind(gradeP,prof,vals)
-  profpoly<-as.data.frame(profpoly)
-  profpoly$vals<-as.character(profpoly$vals)
-  profpoly$vals<-as.numeric(profpoly$vals)
-  profpoly$prof<-factor(profpoly$prof,levels=unique(as.numeric(prof)))
-  p<-ggplot(profpoly,aes(x=gradeP,y=vals))
-  p+geom_polygon(aes(fill=prof,group=prof))+scale_fill_brewer('Proficiency',type='seq')
+  p <- ggplot(data, aes(x=gradeP, y=vals))
+  p + geom_polygon(aes(fill=prof, group=prof)) + 
+    scale_fill_brewer('Proficiency',type='seq')
 }
-
-##########################################################
-# More flexible output from profpoly
-##########################################################
 
 #' Creates a data frame suitable for building custom polygon layers in ggplot2 objects
 #'
@@ -184,9 +151,9 @@ profpoly<-function(grades, LOSS, minimal, basic, proficient, advanced, HOSS){
 #' prof<-c(380,410,430,450,480,500)
 #' adv<-c(480,510,530,550,580,600)
 #' 
-#' z<-profpoly.df(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
+#' z<-profpoly.data(grades,LOSS,minimal,basic,proficient,advanced,HOSS)
 #' z
-profpoly.df <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
+profpoly.data <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
   g<-length(grades)
   #
   rep.invert<-function(x){
@@ -210,71 +177,6 @@ profpoly.df <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
   return(profpoly)
 }
 
-# Proficiency Polygon From Matrix
-############################################
-# Take a matrix of proficiency scores and  #
-# produce a polygon like the blue mountain #
-# Grades must be column 1 in the matrix    #
-# It will sort other columns in ascending  #
-# order so the order does not matter.      #
-# Can take arbitrary number of levels      #
-#
-# Need a HOSS and a LOSS as well           #
-############################################
-# 
-# profpoly.mat<-function(x){
-#   z<-t(apply(x),1,sort)
-#   
-#   #
-#   invt<-function(x){
-#     x[order(-x)]
-#   }
-#   #
-#   len<-ncol(z)-3 # subtract high low and grades
-#   #
-#   rep.invert<-function(x){
-#     c(x,x[order(-x)])
-#   }
-#   #
-#   gs<-rep(rep.invert(z[,1]),len)
-#   
-#   bb<-z[,2]
-#   x<-NULL
-#   for(i in 4:ncol(z)-1){
-#     x<-append(x,c(z[,i],invt(z[,i])))
-#   }
-#   x
-#   bb<-append(bb,x)
-#   bb<-append(bb,z[,ncol(z)])
-#   bb
-#   length(bb)
-#   
-#   proflvls<-length(bb)/(2*length(z[,1]))
-#   proflvls<-seq(1:proflvls)
-#   proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
-#   
-#   
-# }
-# 
-# 
-# len<-ncol(z)-3
-# gs<-rep(rep.invert(z[,1]),len)
-# length(gs)
-# 
-# bb<-c(z[,2],invt(z[,3]),z[,3]+1,invt(z[,4]),z[,4]+1,invt(z[,5]),z[,5]+1,invt(z[,6]))
-# 
-# length(bb)
-# proflvls<-length(bb)/(2*length(z[,1]))
-# proflvls<-seq(1:proflvls)
-# proflvls<-rep(proflvls,each=length(gs)/length(proflvls))
-# 
-# profpoly<-cbind(gs,bb,proflvls)
-# profpoly<-as.data.frame(profpoly)
-# profpoly$proflvls<-as.factor(profpoly$proflvls)
-# 
-# p<-ggplot(profpoly,aes(x=gs,y=bb,fill=proflvls,colour=proflvls,group=proflvls))
-# p+geom_polygon()+scale_fill_brewer(type='seq')
-# 
 
 
 ##
