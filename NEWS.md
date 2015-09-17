@@ -17,6 +17,8 @@ use of the function
 - `mosaictabs.labels` has been deprecated in favor of `crosstabplot`
 
 ### Bug Fixes
+- Fixed issue with `age_calc` which lead to wrong fraction of age during leap 
+years
 - `lag_data` now can do leads and lags and includes proper error messages
 - fix major bugs for `statamode` including faulty default to method and returning
 objects of the wrong class
@@ -25,6 +27,7 @@ objects of the wrong class
 vector of NA
 - `leading_zero` function made robust to negative values
 - added NA handling options to `cutoff` and `thresh`
+- Codebase is now tested with `lintr` to improve readability
 
 ## eeptools 0.3
 
