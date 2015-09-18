@@ -30,3 +30,22 @@ max_mis <- function(x){
     NA_real_
   }
 }
+
+
+#' Find the nth maximum value
+#'
+#' @param x a vector of numeric values 
+#' @param n which max to return
+#'
+#' @return the value of the nth most maximum value in a vector
+#' @export
+#'
+#' @examples
+#' x <- c(1:20, 20:1)
+#' nth_max(x, n = 1) #20
+#' nth_max(x, n = 2) #19
+nth_max <- function(x, n = 1){
+  idx <- unique(x)
+  idx <- idx[order(-idx)]
+  return(idx[n])
+}

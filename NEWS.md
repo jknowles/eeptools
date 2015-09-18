@@ -6,6 +6,7 @@ This is a major update including removing little used functions and renaming
 and restructuring functions.
 
 ### New Functionality
+- `nth_max` function for finding the `nth` highest value in a vector
 - `retained_calc` now accepts user specified values for `sid` and `grade`
 - `destring` function deprecated and renamed to `makenum` to better reflect the 
 use of the function
