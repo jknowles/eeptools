@@ -5,7 +5,7 @@ output:
 ---
 
 [![Build Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools)
-[![Coverage Status](https://img.shields.io/coveralls/jknowles/eeptools.svg)](https://coveralls.io/r/jknowles/eeptools?branch=master)
+[![Coverage Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/eeptools)](http://cran.r-project.org/package=eeptools)
 [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues)
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls)
