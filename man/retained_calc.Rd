@@ -4,7 +4,7 @@
 \alias{retained_calc}
 \title{Function to calculate whether a student has repeated a grade.}
 \usage{
-retained_calc(df, sid = "sid", grade_val = 9)
+retained_calc(df, sid = "sid", grade = "grade", grade_val = 9)
 }
 \arguments{
 \item{df}{a data.frame containing minimally a student identifier and their
@@ -12,6 +12,9 @@ grade.}
 
 \item{sid}{a character that indicates the name of the student id attribute in
 \code{df}. The default value is \code{sid}.}
+
+\item{grade}{a character that indicates the name of the student grade attribute in
+\code{df}. The default value is \code{grade}.}
 
 \item{grade_val}{a numeric vector that contains the value of the grade that is
 being checked for retention. The default value is \code{9}.}
