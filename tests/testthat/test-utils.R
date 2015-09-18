@@ -177,6 +177,6 @@ test_that("Numeric accuracy", {
   f <- c(10, 10, 10, 10, 9, 9, 10.0001, 10.0001)
   expect_equal(nth_max(a), 20)
   expect_error(nth_max(b))
-  expect_equal(nth_max(z), 1.240189e+13)
+  expect_equal(nth_max(z), 12401892377905)
   expect_equal(nth_max(f), 10.0001)
 })
