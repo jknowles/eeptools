@@ -31,5 +31,6 @@ Suggests:
     sp,
     plyr,
     mapproj,
-    testthat
+    testthat, 
+    maps
 LazyData: true

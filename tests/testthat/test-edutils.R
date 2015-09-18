@@ -135,7 +135,7 @@ test_that("profpoly.data produces correct objects", {
   
 })
 
-test_that("plot.profpoly makes valid ggplot objects", {
+test_that("profpoly makes valid ggplot objects", {
   grades<-c(3,4,5,6,7,8)
   g <- length(grades)
   LOSS <- rep(200, g)

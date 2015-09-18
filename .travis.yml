@@ -29,6 +29,9 @@ r_binary_packages:
   - vcd
   - maptools
   - stringr
+  - maps
+  - sp
+  - mapproj
 
 r_github_packages:
   - jimhester/covr
