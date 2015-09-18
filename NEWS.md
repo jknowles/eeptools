@@ -12,11 +12,14 @@ use of the function
 `crosstabplot` but not draw the plot
 
 ### Deprecated
+- `dropbox_source` deprecated, use the `rdrop2` package
 - `plotForWord` function deprecated in favor of packages like `knitr` and `rmarkdown`
 - `mapmerge2` has been deprecated in favor of a tested `mapmerge`
 - `mosaictabs.labels` has been deprecated in favor of `crosstabplot`
 
 ### Bug Fixes
+- Inserted a meaningful error in `age_calc` when the enddate is before the date 
+of birth
 - Fixed issue with `age_calc` which lead to wrong fraction of age during leap 
 years
 - `lag_data` now can do leads and lags and includes proper error messages

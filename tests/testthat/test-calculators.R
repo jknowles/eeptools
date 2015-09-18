@@ -4,10 +4,14 @@ context("Test age calculator")
 
 test_that("Leap year calculations work", {
   # from @larmarange
-  expect_equal(age_calc(as.Date('2004-01-15'),as.Date('2004-02-16')), 1.034483, 
+  expect_equal(age_calc(as.Date('2004-01-15'), as.Date('2004-02-16')), 1.034483, 
                tol = .00001)
-  expect_equal(age_calc(as.Date('2005-01-15'),as.Date('2005-02-16')), 1.035714, 
+  expect_equal(age_calc(as.Date('2005-01-15'), as.Date('2005-02-16')), 1.035714, 
                tol = .00001)
+  expect_equal(age_calc(as.Date('1995-01-15'), as.Date('2003-02-16')), 
+               age_calc(as.Date('1994-01-15'), as.Date('2002-02-16')))
+  expect_false(age_calc(as.Date('1996-01-15'), as.Date('2004-02-16')) ==
+                 age_calc(as.Date('1994-01-15'), as.Date('2002-02-16')))
 })
 
 test_that("All function parameters result in a numeric calculations with sane inputs", {
@@ -34,7 +38,17 @@ test_that("All function parameters result in a numeric calculations with sane in
 
 })
 
-
+test_that("Bad inputs yield correct errors", {
+  expect_error(age_calc('2004-01-15', '2004-02-16'), 
+               "Both dob and enddate must be Date class objects")
+  expect_error(age_calc(as.Date('2004-01-15'), '2004-02-16'), 
+               "Both dob and enddate must be Date class objects")
+  expect_error(age_calc('2004-01-15', as.Date('2004-02-16')), 
+               "Both dob and enddate must be Date class objects")
+  expect_error(age_calc(as.Date('2004-02-16'), as.Date('2004-01-15')), 
+               "End date must be a date after date of birth")
+  
+})
 
 
 context("Test retention calculator")

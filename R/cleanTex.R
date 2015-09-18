@@ -11,10 +11,7 @@
 ##' Default is TRUE.
 ##' @return Nothing. All files except the .tex, .pdf and .Rnw are removed from your directory.
 ##' @export
-cleanTex <- function(fn, keepPDF=NULL, keepRnw=NULL, keepRproj=NULL){
-  keepPDF <- ifelse(!is.null(keepPDF), keepPDF, TRUE)
-  keepRnw <- ifelse(!is.null(keepRnw), keepRnw, TRUE)
-  keepRproj <- ifelse(!is.null(keepRproj), keepRproj, TRUE)
+cleanTex <- function(fn, keepPDF = TRUE, keepRnw = TRUE, keepRproj = TRUE){
   a <- list.files(pattern=fn)
   save <- a[grep(".tex",a)]
   if(keepPDF==TRUE){  
