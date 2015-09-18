@@ -6,6 +6,7 @@ This is a major update including removing little used functions and renaming
 and restructuring functions.
 
 ### New Functionality
+- `retained_calc` now accepts user specified values for `sid` and `grade`
 - `destring` function deprecated and renamed to `makenum` to better reflect the 
 use of the function
 - `crosstabs` function exported to allow the user to generate the data behind 
@@ -18,6 +19,8 @@ use of the function
 - `mosaictabs.labels` has been deprecated in favor of `crosstabplot`
 
 ### Bug Fixes
+- Fixed bug in `retained_calc` where user specified `sid` resulted in wrong 
+ids being returned
 - Inserted a meaningful error in `age_calc` when the enddate is before the date 
 of birth
 - Fixed issue with `age_calc` which lead to wrong fraction of age during leap 
