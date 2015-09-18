@@ -150,11 +150,11 @@ test_that("profpoly makes valid ggplot objects", {
   p1 <- profpoly(z)
   expect_is(p1, c("gg", "ggplot"))
   
-  test_plot_file <- "profpoly.png"
-  png(test_plot_file)
-  profpoly(z)
-  dev.off()
-  expect_true(file.exists(test_plot_file))
-  unlink(test_plot_file)
+#   test_plot_file <- "profpoly.png"
+#   png(test_plot_file)
+#   profpoly(z)
+#   dev.off()
+#   expect_true(file.exists(test_plot_file))
+#   unlink(test_plot_file)
 })
 
