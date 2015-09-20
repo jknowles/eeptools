@@ -26,6 +26,9 @@
 #' a <- c(LETTERS, "A" , "A")
 #' statamode(a)
 statamode <- function(x, method = c("last", "stata", "sample")){
+  if(is.null(x)){
+    return(NA)
+  }
   if (missing(method)){
     method <- "stata"
   } else {
@@ -36,9 +39,12 @@ statamode <- function(x, method = c("last", "stata", "sample")){
   if (method == 'stata'){
     z <- table(as.vector(x))
     m <- names(z)[z == max(z)]
-    
     if (length(m) == 1){
-      class(m) <- xClass
+      if(xClass == "factor"){
+        m <- factor(m)
+      } else{
+        class(m) <- xClass
+      }
       return(m)
     }
     return(".")
@@ -47,32 +53,62 @@ statamode <- function(x, method = c("last", "stata", "sample")){
     z <- table(as.vector(x))
     m<-names(z)[z == max(z)]
     if (length(m)==1){
-      class(m) <- xClass
+      if(xClass == "factor"){
+        m <- factor(m)
+      } else{
+        class(m) <- xClass
+      }
       return(m)
     }
-    else if (length(m)>1){
-      class(m) <- xClass
+    else if (length(m) > 1){
+      if(xClass == "factor"){
+        m <- factor(m)
+      } else{
+        class(m) <- xClass
+      }
       return(sample(m, 1))
     }
-    else if (length(m)<1){
-      return(NA_character_)
+    else if (length(m) < 1){
+      if(xClass == "character"){
+        return(NA_character_)
+      } else if(xClass == "numeric"){
+        return(NA_real_)
+      } else if(xClass == "integer"){
+        return(NA_integer)
+      }
     }
   }
   else if (method=='last'){
     z <- table(as.vector(x))
     m <- names(z)[z == max(z)]
     if (length(m) == 1){
-      class(m) <- xClass
+      if(xClass == "factor"){
+        m <- factor(m)
+      } else{
+        class(m) <- xClass
+      }
       return(m)
     }
     else if (length(m) > 1){
       m <- max(x[match(x, m) == max(match(x,m), na.rm=TRUE)], 
                na.rm=TRUE)
-      class(m) <- xClass
+      if(xClass == "factor"){
+        m <- factor(m)
+      } else{
+        class(m) <- xClass
+      }
       return(tail(m, 1))
     }
     else if (length(m) < 1){
-      return(NA_character_)
+      if(xClass == "character"){
+        return(NA_character_)
+      } else if(xClass == "numeric"){
+        return(NA_real_)
+      } else if(xClass == "integer"){
+        return(NA_integer)
+      } else if(xClass == "factor"){
+        return(NA_character_)
+      }
     }
   }
 }

@@ -29,11 +29,105 @@ test_that("statamode defaults to stata", {
                    statamode(x, method='stata'))
 })
 
-#context("Correct NA Type Returned")
-
-test_that("statamode returns NAs of the proper type", {
-  expect_that(statamode(c()), gives_warning())
-  expect_that(statamode(c()), equals("."))
-  expect_that(statamode(c(), method="sample"), equals(NA_character_))
-  expect_that(statamode(c(), method="last"), equals(NA_character_))
+test_that("statamode handles all types of modes", {
+  set.seed(21341)
+  tests <- expand.grid(class = c("numeric", "factor", "character"), 
+                       method = c("last", "stata", "sample"), 
+                       stringsAsFactors = FALSE)
+  
+  for(i in nrow(tests)){
+    if(tests[i, "class"] == "numeric"){
+      vecA <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+      vecB <- c(1, 1, 1, 3:10)
+      vecC <- c(1, 1, 1, NA, NA, 5:10)
+      vecD <- c()
+      vecE <- c(NA, NA, NA, NA, NA, NA)
+      class(vecE) <- "numeric"
+      vecF <- c(1L, 2L, 3L, NA, NA, NA, 4L, 4L, 4L)
+      if(tests[i, "method"] == "last"){
+        expect_equal(statamode(vecA, method = tests[i, "method"]), 10)
+        expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecC, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+        expect_equal(statamode(vecE, method = tests[i, "method"]), NA_real_)
+        expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+      } else if(tests[i, "method"] == "stata"){
+        expect_equal(statamode(vecA, method = tests[i, "method"]), ".")
+        expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecC, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecD, method = tests[i, "method"]), ".")
+        expect_equal(statamode(vecE, method = tests[i, "method"]), ".")
+        expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+      } else{
+        expect_equal(statamode(vecA, method = tests[i, "method"]), 3)
+        expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecC, method = tests[i, "method"]), 1)
+        expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+        expect_equal(statamode(vecE, method = tests[i, "method"]), NA_real_)
+        expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+      }
+    } else if(tests[i, "class"] == "factor"){
+        vecA <- c(LETTERS[1:10]); vecA <- factor(vecA)
+        vecB <- c("A", "A", "A", LETTERS[3:10]); vecB <- factor(vecB)
+        vecC <- c("A", "A", "A", NA, NA, LETTERS[5:10]); vecC <- factor(vecC)
+        vecD <- c()
+        vecE <- c(NA, NA, NA, NA, NA, NA)
+        vecE <- as.factor(vecE)
+        vecF <- c("A", "B", "C", NA, NA, NA, "D", "D", "D")
+        vecF <- factor(vecF)
+        if(tests[i, "method"] == "last"){
+          expect_equal(statamode(vecA, method = tests[i, "method"]), "J")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+          expect_equal(statamode(vecE, method = tests[i, "method"]), NA_character_)
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        } else if(tests[i, "method"] == "stata"){
+          expect_equal(statamode(vecA, method = tests[i, "method"]), ".")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), ".")
+          expect_equal(statamode(vecE, method = tests[i, "method"]), ".")
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        } else{
+          expect_equal(statamode(vecA, method = tests[i, "method"]), "G")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+          expect_equal(statamode(vecE, method = tests[i, "method"]), "NULL")
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        }
+    } else{
+        vecA <- c(LETTERS[1:10])
+        vecB <- c("A", "A", "A", LETTERS[3:10])
+        vecC <- c("A", "A", "A", NA, NA, LETTERS[5:10])
+        vecD <- c()
+        vecE <- c(NA, NA, NA, NA, NA, NA)
+        vecE <- as.character(vecE)
+        vecF <- c("A", "B", "C", NA, NA, NA, "D", "D", "D")
+        if(tests[i, "method"] == "last"){
+          expect_equal(statamode(vecA, method = tests[i, "method"]), "J")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+          expect_equal(statamode(vecE, method = tests[i, "method"]), NA_character_)
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        } else if(tests[i, "method"] == "stata"){
+          expect_equal(statamode(vecA, method = tests[i, "method"]), ".")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+          expect_equal(statamode(vecE, method = tests[i, "method"]), ".")
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        } else{
+          expect_equal(statamode(vecA, method = tests[i, "method"]), "B")
+          expect_equal(statamode(vecB, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecC, method = tests[i, "method"]), "A")
+          expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
+          expect_equal(statamode(vecE, method = tests[i, "method"]), NA_character_)
+          expect_equal(statamode(vecF, method = tests[i, "method"]), "D")
+        }
+    }
+  }
 })
+
