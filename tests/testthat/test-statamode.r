@@ -44,6 +44,7 @@ test_that("statamode handles all types of modes", {
       vecE <- c(NA, NA, NA, NA, NA, NA)
       class(vecE) <- "numeric"
       vecF <- c(1L, 2L, 3L, NA, NA, NA, 4L, 4L, 4L)
+      vecG <- c(1L, 2L, 3L, NA, NA, NA, NA, 4L, 4L, 4L)
       if(tests[i, "method"] == "last"){
         expect_equal(statamode(vecA, method = tests[i, "method"]), 10)
         expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
@@ -51,6 +52,7 @@ test_that("statamode handles all types of modes", {
         expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
         expect_equal(statamode(vecE, method = tests[i, "method"]), NA_real_)
         expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+        expect_equal(statamode(vecG, method = tests[i, "method"]), NA_integer_)
       } else if(tests[i, "method"] == "stata"){
         expect_equal(statamode(vecA, method = tests[i, "method"]), ".")
         expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
@@ -58,6 +60,7 @@ test_that("statamode handles all types of modes", {
         expect_equal(statamode(vecD, method = tests[i, "method"]), ".")
         expect_equal(statamode(vecE, method = tests[i, "method"]), ".")
         expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+        expect_equal(statamode(vecG, method = tests[i, "method"]), NA_integer_)
       } else{
         expect_equal(statamode(vecA, method = tests[i, "method"]), 3)
         expect_equal(statamode(vecB, method = tests[i, "method"]), 1)
@@ -65,6 +68,7 @@ test_that("statamode handles all types of modes", {
         expect_equal(statamode(vecD, method = tests[i, "method"]), NA)
         expect_equal(statamode(vecE, method = tests[i, "method"]), NA_real_)
         expect_equal(statamode(vecF, method = tests[i, "method"]), 4)
+        expect_equal(statamode(vecG, method = tests[i, "method"]), NA_integer_)
       }
     } else if(tests[i, "class"] == "factor"){
         vecA <- c(LETTERS[1:10]); vecA <- factor(vecA)

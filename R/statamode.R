@@ -74,7 +74,9 @@ statamode <- function(x, method = c("last", "stata", "sample")){
       } else if(xClass == "numeric"){
         return(NA_real_)
       } else if(xClass == "integer"){
-        return(NA_integer)
+        return(NA_integer_)
+      } else if(xClass == "factor"){
+        return(NA_character_)
       }
     }
   }
@@ -105,7 +107,7 @@ statamode <- function(x, method = c("last", "stata", "sample")){
       } else if(xClass == "numeric"){
         return(NA_real_)
       } else if(xClass == "integer"){
-        return(NA_integer)
+        return(NA_integer_)
       } else if(xClass == "factor"){
         return(NA_character_)
       }
