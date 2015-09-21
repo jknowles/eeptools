@@ -14,10 +14,10 @@ Description: Collection of convenience functions to make working with
     includes three example datasets of administrative education records for 
     learning how to process records with errors.
 License: GPL-3
-Depends:
+Depends: 
     R (>= 2.15.1),
     ggplot2
-Imports:
+Imports: 
     maptools,
     grid,
     arm,
@@ -25,12 +25,15 @@ Imports:
     vcd,
     memisc,
     rgeos
-Suggests:
+Suggests: 
     reshape,
     sp,
     plyr,
     mapproj,
     testthat, 
     maps,
-    stringr
+    stringr,
+    knitr,
+    rmarkdown
 LazyData: true
+VignetteBuilder: knitr
