@@ -4,7 +4,7 @@
 ##'
 ##' @param mod Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{merMod}
 ##' @param newdata Sets of new data to generate predictions for
-##' @param nsims Number of simulations per case
+##' @param n.sims Number of simulations per case
 ##' @param na.omit Logical indicating whether to remove NAs from \code{newdata}
 ##' @return A dataframe with newdata and prediction intervals
 ##' @references Modified from Gelman and Hill 2006. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press.
@@ -34,7 +34,7 @@
 ##' M1 <- glm (y1 ~ x1)
 ##'
 ##' cases <- data.frame(x1 = seq(-2, 2, by=0.1))
-##' sim.results <- gelmansim(M1, newdata=cases, nsims=200, na.omit=TRUE)
+##' sim.results <- gelmansim(M1, newdata=cases, n.sims=200, na.omit=TRUE)
 ##' \dontrun{
 ##' 
 ##' dat <- as.data.frame(y123.dat)
@@ -43,11 +43,11 @@
 ##' cases <- expand.grid(x1 = seq(-2, 2, by=0.1), 
 ##'                      group=seq(1, 14, by=2))
 ##' 
-##' sim.results <- gelmansim(M2, newdata=cases, nsims=200, na.omit=TRUE)
+##' sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 ##'  
 ##' }
-gelmansim <- function(mod, newdata, nsims, na.omit=TRUE){
-    sims.tmp <- arm::sim(mod, n.sims=nsims)
+gelmansim <- function(mod, newdata, n.sims, na.omit=TRUE){
+    sims.tmp <- arm::sim(mod, n.sims=n.sims)
   if("lm" %in% class(mod)[1]){
     form.tmp <- as.formula(paste("~",as.character(formula(mod)[3])))
   } else{
@@ -94,9 +94,9 @@ gelmansim <- function(mod, newdata, nsims, na.omit=TRUE){
   X.tilde <- X.tilde[, unlist(colnames(X.tilde)) %in% pred.tmp]
   X.tilde <- reorder(X.tilde, dim=2, names=pred.tmp)
   n.tilde <- nrow(X.tilde)
-  y.tilde <- array(NA, c(nsims, n.tilde))
+  y.tilde <- array(NA, c(n.sims, n.tilde))
   
-  for(s in 1:nsims){
+  for(s in 1:n.sims){
     y.tilde[s,] <- rnorm(n.tilde, X.tilde %*% sims.tmp@coef[s,], 
                          sims.tmp@sigma[s])
   }

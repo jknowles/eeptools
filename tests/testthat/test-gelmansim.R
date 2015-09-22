@@ -20,7 +20,7 @@ y1 <- y123.dat[,1]
 M1 <- glm (y1 ~ x1)
 
 cases <- data.frame(x1 = seq(-2, 2, by=0.1))
-sim.results <- gelmansim(mod = M1, newdata = cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(mod = M1, newdata = cases, n.sims=200, na.omit=TRUE)
 
 
 test_that("returned dataframe is correct size", {
@@ -45,7 +45,7 @@ M2 <- glm (y1 ~ x1 + group, data=dat)
 cases <- expand.grid(x1 = seq(-2, 2, by=0.1), 
                     group=seq(1, 14, by=2))
 
-sim.results <- gelmansim(M2, newdata=cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 
 test_that("returned dataframe is correct size", {
   expect_that(dim(sim.results)[1], equals(nrow(cases)))
@@ -70,7 +70,7 @@ cases <- expand.grid(x1 = seq(-2, 2, by=0.1),
                      group=seq(1, 14, by=2))
 cases$group <- factor(cases$group)
 
-sim.results <- gelmansim(M3, newdata=cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(M3, newdata=cases, n.sims=200, na.omit=TRUE)
 
 test_that("returned dataframe is correct size", {
   expect_that(dim(sim.results)[1], equals(nrow(cases)))
@@ -95,7 +95,7 @@ cases <- expand.grid(x1 = seq(-2, 2, by=0.1),
                      group=seq(1, 14, by=2))
 cases$group <- factor(cases$group)
 
-sim.results <- gelmansim(M4, newdata=cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(M4, newdata=cases, n.sims=200, na.omit=TRUE)
 
 
 test_that("returned dataframe is correct size", {

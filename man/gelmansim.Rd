@@ -4,14 +4,14 @@
 \alias{gelmansim}
 \title{Generate prediction intervals for model functions}
 \usage{
-gelmansim(mod, newdata, nsims, na.omit = TRUE)
+gelmansim(mod, newdata, n.sims, na.omit = TRUE)
 }
 \arguments{
 \item{mod}{Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{merMod}}
 
 \item{newdata}{Sets of new data to generate predictions for}
 
-\item{nsims}{Number of simulations per case}
+\item{n.sims}{Number of simulations per case}
 
 \item{na.omit}{Logical indicating whether to remove NAs from \code{newdata}}
 }
@@ -46,7 +46,7 @@ y1 <- y123.dat[,1]
 M1 <- glm (y1 ~ x1)
 
 cases <- data.frame(x1 = seq(-2, 2, by=0.1))
-sim.results <- gelmansim(M1, newdata=cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(M1, newdata=cases, n.sims=200, na.omit=TRUE)
 \dontrun{
 
 dat <- as.data.frame(y123.dat)
@@ -55,7 +55,7 @@ M2 <- glm (y1 ~ x1 + group, data=dat)
 cases <- expand.grid(x1 = seq(-2, 2, by=0.1),
                      group=seq(1, 14, by=2))
 
-sim.results <- gelmansim(M2, newdata=cases, nsims=200, na.omit=TRUE)
+sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 
 }
 }

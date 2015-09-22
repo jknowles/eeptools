@@ -20,6 +20,7 @@ use of the function
 - `mosaictabs.labels` has been deprecated in favor of `crosstabplot`
 
 ### Bug Fixes
+- `nsims` in `gelmansim` was renamed to `n.sims` to align with the `arm` package
 - Fixed bug in `retained_calc` where user specified `sid` resulted in wrong 
 ids being returned
 - Inserted a meaningful error in `age_calc` when the enddate is before the date 

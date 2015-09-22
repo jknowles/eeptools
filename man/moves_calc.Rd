@@ -18,7 +18,8 @@ time without being credited with having moved at least once.}
 
 \item{gap}{a number, of days,  that represents the largest gap between an exit date
 and the next enrollment date that can occur without indicating the student
-moved to a third school not contained within the data set. The default value is \code{14}.}
+moved to a third school not contained within the data set. The default value is
+\code{14}.}
 
 \item{sid}{a character that indicates the name of the student id attribute
 in \code{df}. The default value is \code{sid}.}
@@ -33,12 +34,17 @@ attribute in \code{df}. The default value is \code{enroll_date}.}
 attribute in \code{df}. The default value is \code{exit_date}.}
 }
 \value{
-a data.table
+a data.frame
 }
 \description{
 This function calculates the number of times a student has changed
 schools, including accounting for gaps in enrollment data. It returns a
 \code{\link{data.table}} with the student ID and the number of student moves.
+}
+\details{
+\code{enrollby} and \code{exitby} are specified automatically if not
+defined. They are assigned to the default dates of -09-15 and -06-01 of the min
+and max year respectively.
 }
 \examples{
 \dontrun{

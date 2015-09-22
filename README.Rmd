@@ -57,7 +57,9 @@ head(stulevel)
 
 ```
 
-The `stulevel` dataset is a simulated student-level longitudinal record. 
+The `stulevel` dataset is a simulated student-level longitudinal record. It contains 
+student and school level attributes and is useful for practicing evaluating 
+longitudinal analyses of student unit-record data. 
 
 ```{r}
 data("midsch")
@@ -66,71 +68,174 @@ head(midsch)
 ```
 
 The `midsch` dataset contains an analysis on abnormality in school average 
-assessment scores. 
+assessment scores. It contains observed and predicted values of aggregated 
+test scores at the school level for a large midwestern state. 
 
 # Administrative Data Functions
 
 For analysts using unit-record data of some type, there are several `calc` functions 
 which automate common tasks including calculating ages (`age_calc`), 
-grade retention (`retained_calc`), and student mobility (`moves_calc`).
+grade retention (`retained_calc`), and student mobility (`moves_calc`). 
 
 
 ```{r}
-age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'))
-
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+         units = "years")
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+         units = "months")
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+         units = "days")
 ```
 
-```{r}
+`age_calc` also now properly accounts for leap years and leap seconds by default. 
 
+`retained_calc` takes a vector of student identifiers and a vector of grades and 
+checks whether or not the student was retained in the grade level specified by 
+the user. It returns a data.frame of all students who could have been retained 
+and a yes or no indicator of whether they were retained. 
+
+
+```{r}
 x <- data.frame(sid = c(101, 101, 102, 103, 103, 103, 104, 105, 105, 106, 106),
                  grade = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7))
-  retained_calc(x)
+retained_calc(df = x, sid = "sid", grade = "grade", grade_val = 9)
 ```
 
+`retained_calc` is intended to be used after you have processed your data as it 
+does not take into account time or sequence other than the order in which the 
+data is passed to it. 
+
+`moves_calc` is intended to identify based on enrollment dates whether a student 
+experienced a school move within a school year. 
 
 
 ```{r}
-
 df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)),
                    schid = c(1, 2, 2, 2, 3, 1, 1, 1, 3, 1),
                    enroll_date = as.Date(c('2004-08-26',
-                                           '2004-10-01',
-                                           '2005-05-01',
-                                           '2004-09-01',
-                                           '2004-11-03',
-                                           '2005-01-11',
-                                           '2005-04-02',
-                                           '2004-09-26',
-                                           '2004-09-01',
-                                           '2005-02-02'),
-                                         format='%Y-%m-%d'),
-                   exit_date = as.Date(c('2004-08-26',
-                                         '2005-04-10',
-                                         '2005-06-15',
-                                         '2004-11-02',
-                                         '2005-01-10',
-                                         '2005-03-01',
-                                         '2005-06-15',
-                                         '2005-05-30',
-                                         NA,
-                                         '2005-06-15'),
-                                       format='%Y-%m-%d'))
-  moves <- moves_calc(df)
-  moves
+                   '2004-10-01', '2005-05-01', '2004-09-01',
+                   '2004-11-03', '2005-01-11', '2005-04-02',
+                   '2004-09-26', '2004-09-01','2005-02-02'), format='%Y-%m-%d'),
+                   exit_date = as.Date(c('2004-08-26', '2005-04-10',
+                    '2005-06-15', '2004-11-02', '2005-01-10',
+                    '2005-03-01', '2005-06-15', '2005-05-30',
+                    NA, '2005-06-15'), format='%Y-%m-%d'))
+
+moves <- moves_calc(df, sid = "sid", schid = "schid", enroll_date = "enroll_date", 
+                    exit_date = "exit_date")
+moves
 
 ```
 
 # Manipulate Data
 
+Another set of key functions in the package are to make basic data manipulation 
+easier. One thing users of other statistical packaegs may miss when using R is 
+a convenient function for determining the `mode` of a vector. The `statamode` 
+function is designed to do just that. `statamode` works with numeric, character,
+ and factor data types. It also includes various options for how to deal with a 
+ tie demonstrated below.
 
+```{r statamode}
+vecA <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+statamode(vecA, method = "stata")
+vecB <- c(1, 1, 1, 3:10)
+statamode(vecB, method = "last")
+vecC <- c(1, 1, 1, NA, NA, 5:10)
+statamode(vecC, method = "last")
+vecA <- c(LETTERS[1:10]); vecA <- factor(vecA)
+statamode(vecA, method = "last")
+vecB <- c("A", "A", "A", LETTERS[3:10]); vecB <- factor(vecB)
+statamode(vecB, method = "last")
+vecA <- c(LETTERS[1:10])
+statamode(vecA, method = "sample")
+vecB <- c("A", "A", "A", LETTERS[3:10])
+statamode(vecB, method = "stata")
+vecC <- c("A", "A", "A", NA, NA, LETTERS[5:10])
+statamode(vecC, method = "stata")
+```
 
+There are a number of functions to save you keystrokes like `defac` for converting 
+a factor to a character, `makenum` for turning a factor variable into a numeric 
+variable, `max_mis` for taking the maximum of a vector of numerics and ignoring 
+any NAs (useful for inclusion in `do.call` or `apply` constructions). `remove_char` 
+allows you to quickly `gsub` out a specific character from a string vector such 
+as an `*` or `...`. `decomma` is a somewhat specialized version of this for 
+processing data where numerics are written with commas. `nth_max` allows you to 
+identify the 2nd, 3rd, etc. maximum value in a vector. 
 
 
 # Regression Models
 
+`eeptools` includes ways to simplify the use of regression analyses tools recommended 
+by Gelman and Hill 2006 through the `gelmansim` function, which itself is a wrapper 
+for the `arm::sim()` function. 
+
+```{r sim}
+require(MASS)
+#Examples of "sim" 
+set.seed (1)
+J <- 15
+n <- J*(J+1)/2
+group <- rep (1:J, 1:J)
+mu.a <- 5
+sigma.a <- 2
+a <- rnorm (J, mu.a, sigma.a)
+b <- -3
+x <- rnorm (n, 2, 1)
+sigma.y <- 6
+y <- rnorm (n, a[group] + b*x, sigma.y)
+u <- runif (J, 0, 3)
+dat <- cbind (y, x, group)
+# Linear regression 
+dat <- as.data.frame(dat)
+dat$group <- factor(dat$group)
+M3 <- glm (y ~ x + group, data=dat)
+cases <- expand.grid(x = seq(-2, 2, by=0.1), 
+                     group=seq(1, 14, by=2))
+cases$group <- factor(cases$group)
+sim.results <- gelmansim(mod = M3, newdata = cases, n.sims=200, na.omit=TRUE)
+head(sim.results)
+```
+
+
 # Plotting Themes
 
+The package includes a number of themes for `ggplot2` named `theme_dpi` to reflect 
+their internal use at the Wisconsin Department of Public Instruction. These themes 
+are very similar to the `theme_bw()` within `ggplot2` but with font sizes optimized 
+for presentations and publications. 
 
+```{r map}
+crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
+require(reshape) # for melt
+crimesm <- melt(crimes, id = 1)
+states_map <- map_data("state")
+p1 <- ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), 
+                                                     linetype = 1, map = states_map) + 
+       expand_limits(x = states_map$long, y = states_map$lat) + labs(title="USA Crime")
+p1 <- p1 + coord_map()
+p1 + theme_dpi_map()
+```
+
+There is also a `ggplot2` version of `plot.lm` included:
+
+```{r lmautoplot}
+data(mpg)
+mymod <- lm(cty~displ + cyl + drv, data=mpg)
+autoplot(mymod)
+```
+
+Finally, there is a convenient method for creating labeled mosaic plots. 
+
+```{r crossplot}
+sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
+                                                        replace=TRUE)),
+                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
+varnames<-c('Quality','Grade')
+crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE, 
+             title = "Crosstab Plot", shade = FALSE)
+```
 
 
 
