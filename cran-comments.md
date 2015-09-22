@@ -7,12 +7,11 @@
 There were no ERRORs or WARNINGs. 
 
 There were no NOTES:
-
-* Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
-to fix notes about unexported objects.
+* Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd", "rows",".hat"))
+to fix notes about unexported objects in `autoplot.lm`
 * Used utils::globalVariables(c("moves", "switches", ".SD")) to fix notes about 
 unexported objects in `moves_calc`
-* Used utils::globalVariables(c("adv", "grade", "count", "id")) to fix notes about 
+* Used utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof")) to fix notes about 
 unexported objects in `profpoly`
 
 ## Downstream dependencies
