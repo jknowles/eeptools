@@ -11,17 +11,11 @@ vignette: >
 
 # Introduction
 
-eeptools is a project for R that seeks to make it easier for administrators at 
+`eeptools` is an R package that seeks to make it easier for analysts at 
 state and local education agencies to analyze and visualize their data on student, 
 school, and district performance. By putting simple wrappers around a number of 
-R functions to make many common tasks simpler and lower the barrier to entry to 
-statistical analysis.
-
-The goal is not to invent new functionality for R, but instead to lower the 
-barrier of entry to doing common and routine data manipulation, visualization, 
-and analysis tasks with education data. By collaborating with other users of 
-education data we can build transparent, efficient, reproducible, and easy to use 
-functions for analysts.
+R functions, `eeptools` strives to make many common tasks simpler and less prone 
+to error specific to analysis of education data.
 
 ```{r setup, echo = FALSE, message=FALSE, warning=FALSE, results='hide'}
 knitr::opts_chunk$set(
@@ -50,6 +44,9 @@ age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'),
 ```
 
 `age_calc` also now properly accounts for leap years and leap seconds by default. 
+`age_calc` can be passed a vector of dates of birth and a vector of end dates or 
+a single end-date and produce a vector of ages as well -- suitable for computing 
+student age on the fly from date-of-birth records. 
 
 `retained_calc` takes a vector of student identifiers and a vector of grades and 
 checks whether or not the student was retained in the grade level specified by 
@@ -131,7 +128,11 @@ identify the 2nd, 3rd, etc. maximum value in a vector.
 
 `eeptools` includes ways to simplify the use of regression analyses tools recommended 
 by Gelman and Hill 2006 through the `gelmansim` function, which itself is a wrapper 
-for the `arm::sim()` function. 
+for the `arm::sim()` function. This function allows the distribution of predicted 
+values to be generated automatically which is useful for gauging uncertainty in 
+a statistical model and also to compare predictions from multiple models on the 
+same case data to see if the values of those models overlap or are distinct 
+from one another. 
 
 ```{r sim}
 library(MASS)
@@ -159,7 +160,6 @@ cases$group <- factor(cases$group)
 sim.results <- gelmansim(mod = M3, newdata = cases, n.sims=200, na.omit=TRUE)
 head(sim.results)
 ```
-
 
 # Plotting Themes
 
@@ -197,11 +197,14 @@ sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60,
 varnames<-c('Quality','Grade')
 crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE, 
              title = "Crosstab Plot", shade = FALSE)
+crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = FALSE, 
+             title = "Crosstab Plot", shade = TRUE)
 ```
 
 # Datasets
 
-`eeptools` provides three new datasets of interest to education researchers. 
+`eeptools` provides three new datasets of interest to education researchers. These 
+datasets are also used in the [R Bootcamp for Education Analysts](www.jaredknowles.com/r-bootcamp)
 
 ```{r}
 library(eeptools)
@@ -209,8 +212,8 @@ data("stuatt")
 head(stuatt)
 ```
 
-The `stuatt`, student attributes, dataset is provided from the [Strategic Data 
-Project Toolkit for Effective Data Use](http://sdp.cepr.harvard.edu/toolkit-effective-data-use). 
+The `stuatt`, student attributes, dataset is provided from the 
+[Strategic Data Project Toolkit for Effective Data  Use](http://sdp.cepr.harvard.edu/toolkit-effective-data-use). 
 This dataset is useful for learning how to clean data in R and how to aggregate 
 and summarize individual unit-record data into group-level data. 
 

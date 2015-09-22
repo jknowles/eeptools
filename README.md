@@ -4,14 +4,12 @@
 Introduction
 ============
 
-eeptools is a project for R that seeks to make it easier for administrators at state and local education agencies to analyze and visualize their data on student, school, and district performance. By putting simple wrappers around a number of R functions to make many common tasks simpler and lower the barrier to entry to statistical analysis.
-
-The goal is not to invent new functionality for R, but instead to lower the barrier of entry to doing common and routine data manipulation, visualization, and analysis tasks with education data. By collaborating with other users of education data we can build transparent, efficient, reproducible, and easy to use functions for analysts.
+`eeptools` is an R package that seeks to make it easier for analysts at state and local education agencies to analyze and visualize their data on student, school, and district performance. By putting simple wrappers around a number of R functions, `eeptools` strives to make many common tasks simpler and less prone to error specific to analysis of education data.
 
 Datasets
 ========
 
-`eeptools` provides three new datasets of interest to education researchers.
+`eeptools` provides three new datasets of interest to education researchers. These datasets are also used in the [R Bootcamp for Education Analysts](www.jaredknowles.com/r-bootcamp)
 
 ``` r
 library(eeptools)
@@ -189,7 +187,7 @@ statamode(vecB, method = "last")
 #> Levels: A
 vecA <- c(LETTERS[1:10])
 statamode(vecA, method = "sample")
-#> [1] "D"
+#> [1] "G"
 vecB <- c("A", "A", "A", LETTERS[3:10])
 statamode(vecB, method = "stata")
 #> [1] "A"
@@ -287,4 +285,4 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
 Helping Out
 ===========
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+`eeptools` is intended to be a useful project for the education analytics community. Contributions are welcomed. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
