@@ -17,6 +17,10 @@ the value of the nth most maximum value in a vector
 \description{
 Find the nth maximum value
 }
+\note{
+If \code{n} is smaller/larger than \code{0}/\code{length(unique(x))}
+the error \sQuote{index outside bounds} is thrown.
+}
 \examples{
 x <- c(1:20, 20:1)
 nth_max(x, n = 1) #20

@@ -34,7 +34,10 @@ max_mis <- function(x){
 
 #' Find the nth maximum value
 #'
-#' @param x a vector of numeric values 
+#' @note If \code{n} is smaller/larger than \code{0}/\code{length(unique(x))}
+#' the error \sQuote{index outside bounds} is thrown.
+#'
+#' @param x a vector of numeric values
 #' @param n which max to return
 #'
 #' @return the value of the nth most maximum value in a vector
