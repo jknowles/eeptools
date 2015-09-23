@@ -5,7 +5,6 @@
 \title{unction to calculate age from date of birth.}
 \source{
 This function was developed in part from this response on the R-Help mailing list.
-\url{https://stat.ethz.ch/pipermail/r-help/2009-November/217649.html}
 }
 \usage{
 age_calc(dob, enddate = Sys.Date(), units = "months", precise = TRUE)

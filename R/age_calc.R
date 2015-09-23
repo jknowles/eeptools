@@ -11,7 +11,6 @@
 ##' and leap second precision
 ##' @return A numeric vector of ages the same length as the dob vector
 ##' @source This function was developed in part from this response on the R-Help mailing list.
-##' \url{https://stat.ethz.ch/pipermail/r-help/2009-November/217649.html}
 ##' @seealso See also \code{\link{difftime}} which this function uses and mimics 
 ##' some functionality but at higher unit levels.
 ##' @author Jason P. Becker
