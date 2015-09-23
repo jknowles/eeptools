@@ -45,7 +45,7 @@ max_mis <- function(x){
 #' nth_max(x, n = 1) #20
 #' nth_max(x, n = 2) #19
 nth_max <- function(x, n = 1){
-  idx <- unique(x)
-  idx <- idx[order(-idx)]
-  return(idx[n])
+  x <- unique(x)
+  n <- length(x) - n + 1
+  sort(x, partial=n)[n]
 }
