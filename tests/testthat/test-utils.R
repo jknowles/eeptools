@@ -175,6 +175,8 @@ test_that("Numeric accuracy", {
   b <- c(LETTERS[c(2, 9, 3, 12, 1)])
   z <- c(121253125, 12401892377905, 31221, 12, 45, -2145125, -123, 0)
   f <- c(10, 10, 10, 10, 9, 9, 10.0001, 10.0001)
+  expect_error(nth_max(a, 100), "index .* outside bounds")
+  expect_error(nth_max(a, -1), "index .* outside bounds")
   expect_equal(nth_max(a), 20)
   expect_equal(nth_max(b, 3), "C")
   expect_equal(nth_max(z), 12401892377905)
