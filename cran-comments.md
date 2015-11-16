@@ -11,8 +11,8 @@ There were no NOTES:
 to fix notes about unexported objects in `autoplot.lm`
 * Used utils::globalVariables(c("moves", "switches", ".SD")) to fix notes about 
 unexported objects in `moves_calc`
-* Used utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof")) to fix notes about 
-unexported objects in `profpoly`
+* Used utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof")) 
+to fix notes about unexported objects in `profpoly`
 
 ## Downstream dependencies
 There are currently no downstream dependencies on CRAN.

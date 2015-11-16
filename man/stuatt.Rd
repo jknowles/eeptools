@@ -18,7 +18,7 @@
   }}
 \source{
 Available from the Strategic Data Project online at 
-\url{http://www.gse.harvard.edu/~pfpie/index.php/sdp/tools}
+\url{http://sdp.cepr.harvard.edu/toolkit-effective-data-use}
 }
 \usage{
 stuatt
@@ -37,7 +37,7 @@ data(stuatt)
 head(stuatt)
 }
 \references{
-Visit the Strategic Data Project online at:  \url{http://www.gse.harvard.edu/sdp}
+Visit the Strategic Data Project online at:  \url{http://sdp.cepr.harvard.edu/}
 }
 \keyword{datasets}
 

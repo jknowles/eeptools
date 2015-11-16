@@ -5,6 +5,9 @@
 ### Bug Fixes
 - Compatibility with `ggplot2` and `roxygen` updates
 
+### Enhancements
+- `nth_max`  performance is improved thanks to use of partial sort contributed by @sgibb
+
 ## eeptools 0.9
 
 This is a major update including removing little used functions and renaming 
