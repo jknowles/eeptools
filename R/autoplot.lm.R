@@ -29,7 +29,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
   g1 <- ggplot(df, aes(.fitted, .resid)) +
     geom_point()  +
     geom_smooth(se=FALSE, method = "loess") +
-    geom_hline(linetype=2, size=.2) +
+    geom_hline(yintercept = 0, linetype=2, size=.2) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
     labs(title="Residuals vs Fitted")+
@@ -62,7 +62,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
     geom_point() +
     geom_smooth(se=FALSE, method = "loess") +
-    geom_hline(linetype=2, size=.2) +
+    geom_hline(yintercept = 0, linetype=2, size=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
     labs(title="Residuals vs Leverage")+theme_dpi()

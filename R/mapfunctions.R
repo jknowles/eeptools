@@ -38,13 +38,14 @@ mapmerge <- function(mapobj,data,xid,yid){
 ##' to be \code{TRUE}. This is because it depends on the \code{\link{fortify}} method in \code{\link{ggplot2}}. 
 ##' @export
 ##' @import rgeos
+##' @import ggplot2
 ##' @examples
 ##' \dontrun{
 ##' xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
 ##' plotobj<-ggmapmerge(xx,"FIPS")
 ##' }
 ggmapmerge <- function(mapobj,xid){
-  df.points = fortify(mapobj, region=xid)
+  df.points = ggplot2::fortify(mapobj, region=xid)
   df.points = merge(df.points, mapobj@data, by.x='id', by.y=xid)
   df.points <- df.points[order(df.points$group, df.points$piece,
                              df.points$order), ]

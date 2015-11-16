@@ -1,5 +1,10 @@
 # NEWS
 
+## eeptools 0.9.1
+
+### Bug Fixes
+- Compatibility with `ggplot2` and `roxygen` updates
+
 ## eeptools 0.9
 
 This is a major update including removing little used functions and renaming 
