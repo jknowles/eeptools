@@ -19,12 +19,12 @@ Convenience function for fortifying SpatialPolygonsDataFrames for ggplot2 plotti
 }
 \details{
 This function requires maptools to be loaded and \code{\link{gpclibPermit}} 
-to be \code{TRUE}. This is because it depends on the \code{\link{fortify}} method in \code{\link{ggplot2}}.
+to be \code{TRUE}. This is because it depends on the \code{\link{fortify}} method in \code{ggplot2}.
 }
 \examples{
 \dontrun{
 xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
-plotobj<-ggmapmerge(xx,"FIPS")
+plotobj <- ggmapmerge(xx,"FIPS")
 }
 }
 

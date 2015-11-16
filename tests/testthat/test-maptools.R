@@ -31,7 +31,7 @@ context("Test that ggmapmerge works")
 
 test_that("It returns the correct data.frame", {
   xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
-  plotobj<-ggmapmerge(xx, "FIPS")
+  plotobj <- ggmapmerge(xx, "FIPS")
   expect_is(plotobj, "data.frame")
   expect_identical(names(plotobj), c("id", "long", "lat", "order", "hole", 
                                      "piece", "group", "AREA", "PERIMETER", 

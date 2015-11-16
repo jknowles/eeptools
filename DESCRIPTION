@@ -23,8 +23,7 @@ Imports:
     arm,
     data.table,
     vcd,
-    memisc,
-    rgeos
+    memisc
 Suggests:
     reshape,
     sp,

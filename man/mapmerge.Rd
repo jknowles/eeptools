@@ -24,10 +24,10 @@ Convenience function for merging dataframes and S4 spatial polygon objects.
 \examples{
 \dontrun{
 xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], IDvar="FIPSNO")
-yy<-as(xx,"data.frame")
-yy$newvar<-sample(letters,nrow(yy),replace=TRUE)
-yy<-subset(yy,select=c("FIPS","newvar"))
-newpoly<-mapmerge(xx,yy,xid="FIPS",yid="FIPS")
+yy <- as(xx,"data.frame")
+yy$newvar <- sample(letters, nrow(yy), replace=TRUE)
+yy <- subset(yy, select=c("FIPS", "newvar"))
+newpoly <- mapmerge(xx, yy, xid="FIPS", yid="FIPS")
 }
 }
 
