@@ -25,7 +25,7 @@ in ggplot2 and allow themes.
 \examples{
 # Univariate
 a <- runif(1000)
-b <- 7*a+rnorm(1)
+b <- 7 * a + rnorm(1)
 mymod <- lm(b~a)
 autoplot(mymod)
 # Multivariate

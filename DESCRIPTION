@@ -19,7 +19,6 @@ Depends:
     ggplot2
 Imports:
     maptools,
-    grid,
     arm,
     data.table,
     vcd,
