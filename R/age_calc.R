@@ -29,7 +29,7 @@ age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
   if (!inherits(dob, "Date") | !inherits(enddate, "Date")){
     stop("Both dob and enddate must be Date class objects")
   }
-  if(any(enddate < dob){
+  if(any(enddate < dob)){
     stop("End date must be a date after date of birth")
   }
   start <- as.POSIXlt(dob)

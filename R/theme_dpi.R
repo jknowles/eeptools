@@ -52,7 +52,6 @@ theme_dpi_map <- function(base_size = 14, base_family = "") {
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export
-#' @examples
 theme_dpi_map2 <- function(base_size = 14, base_family = "") {
   .Deprecated("theme_bw")
   theme_bw(base_size = base_size, base_family = base_family)
@@ -73,7 +72,6 @@ theme_dpi_map2 <- function(base_size = 14, base_family = "") {
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export
-#' @examples
 theme_dpi_mapPNG<-function (base_size = 18, base_family = "") {
   .Deprecated("theme_bw")
   theme_bw(base_size = base_size, base_family = base_family)
