@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_dpi.R
 \name{theme_dpi_mapPNG}
 \alias{theme_dpi_mapPNG}
-\title{an alternate ggplot2 theme developed for PNG or JPG maps}
+\title{an deprecated ggplot2 theme developed for PNG or JPG maps}
 \source{
 For more information see https://github.com/hadley/ggplot2/wiki/Themes
 }
@@ -18,7 +18,7 @@ theme_dpi_mapPNG(base_size = 18, base_family = "")
 A theme object which is a list of attributes applied to a ggplot2 object.
 }
 \description{
-This is a custom ggplot2 theme developed for the Wisconsin 
+This is a deprecated ggplot2 theme developed for the Wisconsin 
 Department of Public Instruction for making PNG or JPG maps
 }
 \details{
@@ -38,7 +38,7 @@ last_plot() + coord_map()
 # DPI theme
 ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + 
     expand_limits(x = states_map$long, y = states_map$lat) + 
-    facet_wrap( ~ variable) + theme_dpi_mapPNG()
+    facet_wrap( ~ variable) + theme_bw()
 }
 \author{
 Jared E. Knowles

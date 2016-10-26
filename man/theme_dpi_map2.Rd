@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_dpi.R
 \name{theme_dpi_map2}
 \alias{theme_dpi_map2}
-\title{an alternate ggplot2 theme developed for PDF or SVG maps}
+\title{an alternate deprecated ggplot2 theme developed for PDF or SVG maps}
 \source{
 For more information see https://github.com/hadley/ggplot2/wiki/Themes
 }
@@ -18,7 +18,7 @@ theme_dpi_map2(base_size = 14, base_family = "")
 A theme object which is a list of attributes applied to a ggplot2 object.
 }
 \description{
-This is a custom ggplot2 theme developed for the Wisconsin 
+This is a deprecated ggplot2 theme developed for the Wisconsin 
 Department of Public Instruction for making PDF maps
 }
 \details{
@@ -29,16 +29,15 @@ All values are optional
 crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
 require(reshape) # for melt
 crimesm <- melt(crimes, id = 1)
-# No DPI theme
+# No BW theme
 states_map <- map_data("state")
 ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), map = states_map) + 
     expand_limits(x = states_map$long, y = states_map$lat)+ labs(title="USA Crime")
 # Draw map
 last_plot() + coord_map()
-# DPI theme
 ggplot(crimesm, aes(map_id = state)) + geom_map(aes(fill = value), map = states_map) + 
     expand_limits(x = states_map$long, y = states_map$lat) + 
-    facet_wrap( ~ variable) + theme_dpi_map2()
+    facet_wrap( ~ variable) + theme_bw()
 }
 \author{
 Jared E. Knowles

@@ -2,7 +2,8 @@
 % Please edit documentation in R/theme_dpi.R
 \name{theme_dpi}
 \alias{theme_dpi}
-\title{a ggplot2 theme developed for PDF and PNG for use at the Wisconsin Department of Public Instruction}
+\title{a deprecated ggplot2 theme developed for PDF and PNG for use at the 
+Wisconsin Department of Public Instruction}
 \source{
 For more information see https://github.com/hadley/ggplot2/wiki/Themes
 }
@@ -19,14 +20,10 @@ A theme object which is a list of attributes applied to a ggplot2 object.
 }
 \description{
 This is a custom ggplot2 theme developed for the Wisconsin 
-Department of Public Instruction
+Department of Public Instruction. This function is now deprecated.
 }
 \details{
 All values are optional
-}
-\examples{
-qplot(mpg, wt, data=mtcars) # standard
-qplot(mpg, wt, data=mtcars) + theme_dpi()
 }
 \author{
 Jared E. Knowles
