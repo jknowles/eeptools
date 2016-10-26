@@ -1,5 +1,11 @@
 # NEWS
 
+## eeptools 1.0.0
+
+### Deprecated functions
+- Thanks to new `ggplot2` theme options, the `theme_dpi` functions are now just 
+wrappers for `theme_bw`
+
 ## eeptools 0.9.1
 
 ### Bug Fixes

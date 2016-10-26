@@ -32,7 +32,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
     labs(title="Residuals vs Fitted")+
-    theme_dpi()
+    theme_bw()
   # normal qq
   a <- quantile(df$.stdresid, c(0.25, 0.75))
   b <- qnorm(c(0.25, 0.75))
@@ -43,20 +43,22 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
     geom_abline(slope=slope, intercept=int) +
     scale_x_continuous("Theoretical Quantiles") +
     scale_y_continuous("Standardized Residuals") +
-    labs(title="Normal Q-Q")+theme_dpi()
+    labs(title="Normal Q-Q") + theme_bw()
   # scale-location
   g3 <- ggplot(df, aes(.fitted, sqrt(abs(.stdresid)))) +
     geom_point() +
     geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Root of Standardized Residuals") +
-    labs(title="Scale-Location")+theme_dpi()
+    labs(title="Scale-Location") + 
+    theme_bw()
   # cook's distance
   g4 <-  ggplot(df, aes(rows, .cooksd, ymin=0, ymax=.cooksd)) +
     geom_point() + geom_linerange() +
     scale_x_continuous("Observation Number") +
     scale_y_continuous("Cook's distance") +
-    labs(title="Cook's Distance")+theme_dpi()
+    labs(title="Cook's Distance") + 
+    theme_bw()
   # residuals vs leverage
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
     geom_point() +
@@ -64,14 +66,16 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
     geom_hline(yintercept = 0, linetype=2, size=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
-    labs(title="Residuals vs Leverage")+theme_dpi()
+    labs(title="Residuals vs Leverage") + 
+    theme_bw()
   # cooksd vs leverage
   g6 <- ggplot(df, aes(.hat, .cooksd)) +
     geom_point() +
     geom_smooth(se=FALSE, method = "loess") +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Cook's distance") +
-    labs(title="Cook's dist vs Leverage")+theme_dpi()
+    labs(title="Cook's dist vs Leverage") + 
+    theme_bw()
   plots <- list(g1, g2, g3, g4, g5, g6)
   # making the plots
   grid::grid.newpage()
@@ -96,4 +100,5 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
     j <- j+1
   }
 }
-utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd","rows",".hat"))
+utils::globalVariables(c(".fitted", ".resid", ".stdresid",
+                         ".cooksd", "rows", ".hat"))
