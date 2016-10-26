@@ -9,7 +9,7 @@ output:
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/eeptools)](http://cran.r-project.org/package=eeptools)
 [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues)
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls)
-[![Downloads](http://cranlogs.r-pkg.org/badges/eeptools)](http://cran.rstudio.com/package=eeptools)
+[![Downloads](http://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/web/packages/eeptools/index.html)
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
