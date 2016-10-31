@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools) [![Coverage Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eeptools)](http://cran.r-project.org/package=eeptools) [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls) [![Downloads](http://cranlogs.r-pkg.org/badges/eeptools)](http://cran.rstudio.com/package=eeptools)
+[![Build Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools) [![Coverage Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools) [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls) [![Downloads](https://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/web/packages/eeptools/index.html)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 Introduction
@@ -14,6 +14,7 @@ Datasets
 ``` r
 library(eeptools)
 #> Loading required package: ggplot2
+#> Warning: package 'ggplot2' was built under R version 3.2.4
 data("stuatt")
 head(stuatt)
 #>   sid school_year male race_ethnicity birth_date
@@ -187,7 +188,7 @@ statamode(vecB, method = "last")
 #> Levels: A
 vecA <- c(LETTERS[1:10])
 statamode(vecA, method = "sample")
-#> [1] "G"
+#> [1] "D"
 vecB <- c("A", "A", "A", LETTERS[3:10])
 statamode(vecB, method = "stata")
 #> [1] "A"
@@ -206,7 +207,7 @@ Regression Models
 ``` r
 require(MASS)
 #> Loading required package: MASS
-#> Warning: package 'MASS' was built under R version 3.2.2
+#> Warning: package 'MASS' was built under R version 3.2.4
 #Examples of "sim" 
 set.seed (1)
 J <- 15
@@ -248,13 +249,18 @@ The package includes a number of themes for `ggplot2` named `theme_dpi` to refle
 crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
 require(reshape) # for melt
 #> Loading required package: reshape
+#> Warning: package 'reshape' was built under R version 3.2.5
 crimesm <- melt(crimes, id = 1)
 states_map <- map_data("state")
+#> Warning: package 'maps' was built under R version 3.2.5
 p1 <- ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), 
                                                      linetype = 1, map = states_map) + 
        expand_limits(x = states_map$long, y = states_map$lat) + labs(title="USA Crime")
 p1 <- p1 + coord_map()
 p1 + theme_dpi_map()
+#> Warning: 'theme_dpi_map' is deprecated.
+#> Use 'theme_bw' instead.
+#> See help("Deprecated")
 ```
 
 ![](readmeplot/README-map-1.png)
