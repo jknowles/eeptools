@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools) [![Coverage Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools) [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls) [![Downloads](https://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/web/packages/eeptools/index.html)
+[![Build Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools) [![Coverage Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools) [![Github Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls) [![Downloads](https://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/package=eeptools)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 Introduction
@@ -188,7 +188,7 @@ statamode(vecB, method = "last")
 #> Levels: A
 vecA <- c(LETTERS[1:10])
 statamode(vecA, method = "sample")
-#> [1] "D"
+#> [1] "A"
 vecB <- c("A", "A", "A", LETTERS[3:10])
 statamode(vecB, method = "stata")
 #> [1] "A"
