@@ -1,4 +1,4 @@
-##' unction to calculate age from date of birth.
+##' Function to calculate age from date of birth.
 ##' @description his function calculates age in days, months, or years from a 
 ##' date of birth to another arbitrary date. This returns a numeric vector in 
 ##' the specified units.
