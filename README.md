@@ -13,8 +13,9 @@ Datasets
 
 ``` r
 library(eeptools)
+#> Warning: package 'eeptools' was built under R version 3.3.2
 #> Loading required package: ggplot2
-#> Warning: package 'ggplot2' was built under R version 3.2.4
+#> Warning: package 'ggplot2' was built under R version 3.3.2
 data("stuatt")
 head(stuatt)
 #>   sid school_year male race_ethnicity birth_date
@@ -188,7 +189,7 @@ statamode(vecB, method = "last")
 #> Levels: A
 vecA <- c(LETTERS[1:10])
 statamode(vecA, method = "sample")
-#> [1] "A"
+#> [1] "J"
 vecB <- c("A", "A", "A", LETTERS[3:10])
 statamode(vecB, method = "stata")
 #> [1] "A"
@@ -207,7 +208,6 @@ Regression Models
 ``` r
 require(MASS)
 #> Loading required package: MASS
-#> Warning: package 'MASS' was built under R version 3.2.4
 #Examples of "sim" 
 set.seed (1)
 J <- 15
@@ -249,10 +249,8 @@ The package includes a number of themes for `ggplot2` named `theme_dpi` to refle
 crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
 require(reshape) # for melt
 #> Loading required package: reshape
-#> Warning: package 'reshape' was built under R version 3.2.5
 crimesm <- melt(crimes, id = 1)
 states_map <- map_data("state")
-#> Warning: package 'maps' was built under R version 3.2.5
 p1 <- ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), 
                                                      linetype = 1, map = states_map) + 
        expand_limits(x = states_map$long, y = states_map$lat) + labs(title="USA Crime")
@@ -263,7 +261,7 @@ p1 + theme_dpi_map()
 #> See help("Deprecated")
 ```
 
-![](readmeplot/README-map-1.png)
+![](tools/readme/README-map-1.png)
 
 There is also a `ggplot2` version of `plot.lm` included:
 
@@ -273,7 +271,7 @@ mymod <- lm(cty~displ + cyl + drv, data=mpg)
 autoplot(mymod)
 ```
 
-![](readmeplot/README-lmautoplot-1.png)
+![](tools/readme/README-lmautoplot-1.png)
 
 Finally, there is a convenient method for creating labeled mosaic plots.
 
@@ -286,7 +284,7 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
              title = "Crosstab Plot", shade = FALSE)
 ```
 
-![](readmeplot/README-crossplot-1.png)
+![](tools/readme/README-crossplot-1.png)
 
 Helping Out
 ===========
