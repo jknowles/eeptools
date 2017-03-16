@@ -1,5 +1,9 @@
 # NEWS
 
+## eeptools 1.0.1
+
+- Revise `readme.rmd` to include plots in package build
+
 ## eeptools 1.0.0
 
 ### Deprecated functions
