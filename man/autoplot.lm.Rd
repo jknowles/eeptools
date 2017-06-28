@@ -40,4 +40,3 @@ Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-
 \seealso{
 \code{\link{plot.lm}} which this function mimics
 }
-

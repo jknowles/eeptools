@@ -84,4 +84,3 @@ moves
 \author{
 Jason P. Becker
 }
-

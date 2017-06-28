@@ -36,4 +36,3 @@ retained_calc(x)
 \author{
 Jason P. Becker
 }
-

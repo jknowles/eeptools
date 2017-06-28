@@ -43,4 +43,3 @@ data(midsch)
 head(midsch)
 }
 \keyword{datasets}
-

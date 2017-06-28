@@ -40,4 +40,3 @@ defac(gender)
 \author{
 Jared E. Knowles
 }
-

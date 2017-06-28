@@ -2,7 +2,8 @@
 % Please edit documentation in R/mapfunctions.R
 \name{mapmerge}
 \alias{mapmerge}
-\title{Combine an S4 polygon object with a dataframe}
+\title{A depcrecated method for converting polygons to dataframes
+Combine an S4 polygon object with a dataframe}
 \usage{
 mapmerge(mapobj, data, xid, yid)
 }
@@ -30,4 +31,3 @@ yy <- subset(yy, select=c("FIPS", "newvar"))
 newpoly <- mapmerge(xx, yy, xid="FIPS", yid="FIPS")
 }
 }
-

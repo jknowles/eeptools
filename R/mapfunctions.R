@@ -1,3 +1,4 @@
+##' A depcrecated method for converting polygons to dataframes
 ##' Combine an S4 polygon object with a dataframe
 ##'
 ##' Convenience function for merging dataframes and S4 spatial polygon objects. 
@@ -18,6 +19,7 @@
 ##' newpoly <- mapmerge(xx, yy, xid="FIPS", yid="FIPS")
 ##' }
 mapmerge <- function(mapobj, data, xid, yid){
+  .Deprecated("geom_map")
   x <- match(xid,colnames(mapobj@data))
   y <- match(yid,colnames(data))
   o <- match(mapobj@data[,x], data[,y])
@@ -27,7 +29,7 @@ mapmerge <- function(mapobj, data, xid, yid){
   return(d)
 }
 
-##' Fortify a SpatialPolygonsDataFrame
+##'  A depcrecated method for fortifying SpatialPolygonsDataFrames for plotting
 ##'
 ##' Convenience function for fortifying SpatialPolygonsDataFrames for ggplot2 plotting. 
 ##'
@@ -44,6 +46,7 @@ mapmerge <- function(mapobj, data, xid, yid){
 ##' plotobj <- ggmapmerge(xx,"FIPS")
 ##' }
 ggmapmerge <- function(mapobj, xid){
+  .Deprecated("geom_map")
   df.points <- ggplot2::fortify(mapobj, xid)
   df.points <- merge(df.points, mapobj@data, by.x='id', by.y=xid)
   df.points <- df.points[order(df.points$group, df.points$piece,

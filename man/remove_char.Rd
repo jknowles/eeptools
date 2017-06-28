@@ -34,4 +34,3 @@ as.numeric(b)
 Jared E. Knowles
 }
 \keyword{manip}
-

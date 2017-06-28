@@ -56,4 +56,3 @@ title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
 \keyword{crosstabs}
 \keyword{mosaic}
 \keyword{vcd}
-

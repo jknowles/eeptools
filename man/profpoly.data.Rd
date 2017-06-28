@@ -47,4 +47,3 @@ z
 }
 \keyword{ggplot2}
 \keyword{polygon}
-

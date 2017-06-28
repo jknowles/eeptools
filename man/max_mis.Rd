@@ -29,10 +29,9 @@ max(c(NA,NA,NA,NA),na.rm=TRUE)
 max_mis(c(NA,NA,NA,NA))
 
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 See also \code{\link{max}} which this function wraps.
 }
-
+\author{
+Jared E. Knowles
+}

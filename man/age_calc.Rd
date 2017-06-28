@@ -2,7 +2,7 @@
 % Please edit documentation in R/age_calc.R
 \name{age_calc}
 \alias{age_calc}
-\title{unction to calculate age from date of birth.}
+\title{Function to calculate age from date of birth.}
 \source{
 This function was developed in part from this response on the R-Help mailing list.
 }
@@ -40,11 +40,10 @@ age
 age <- age_calc(a, as.Date('2005-09-01'))
 age
 }
-\author{
-Jason P. Becker
-}
 \seealso{
 See also \code{\link{difftime}} which this function uses and mimics 
 some functionality but at higher unit levels.
 }
-
+\author{
+Jason P. Becker
+}

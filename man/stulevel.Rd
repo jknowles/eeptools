@@ -60,4 +60,3 @@ data(stulevel)
 head(stulevel)
 }
 \keyword{datasets}
-

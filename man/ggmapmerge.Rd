@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapfunctions.R
 \name{ggmapmerge}
 \alias{ggmapmerge}
-\title{Fortify a SpatialPolygonsDataFrame}
+\title{A depcrecated method for fortifying SpatialPolygonsDataFrames for plotting}
 \usage{
 ggmapmerge(mapobj, xid)
 }
@@ -27,4 +27,3 @@ xx <- maptools::readShapePoly(system.file("shapes/sids.shp", package="maptools")
 plotobj <- ggmapmerge(xx,"FIPS")
 }
 }
-

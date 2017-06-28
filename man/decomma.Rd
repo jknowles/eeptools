@@ -31,4 +31,3 @@ is.numeric(output)
 \author{
 Jared E. Knowles
 }
-

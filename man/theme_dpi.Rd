@@ -25,11 +25,10 @@ Department of Public Instruction. This function is now deprecated.
 \details{
 All values are optional
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 his uses \code{\link{unit}} from the grid package extensively. 
 See also \code{\link{theme_bw}} from the ggplot2 package.
 }
-
+\author{
+Jared E. Knowles
+}

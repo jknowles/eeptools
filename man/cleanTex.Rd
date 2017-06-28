@@ -24,4 +24,3 @@ Nothing. All files except the .tex, .pdf and .Rnw are removed from your director
 \description{
 Convenience function for cleaning up your directory after running pdflatex
 }
-

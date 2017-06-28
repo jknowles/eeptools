@@ -32,10 +32,9 @@ the vector in ascending order and stopping at the specified count
 a <- rnorm(100, mean=6, sd=1)
 thresh(a, 8) #return minimum number of elements to account 70 percent of total
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 \code{\link{cutoff}} which this function is related to
 }
-
+\author{
+Jared E. Knowles
+}

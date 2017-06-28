@@ -62,4 +62,3 @@ sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 \references{
 Modified from Gelman and Hill 2006. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press.
 }
-

@@ -40,4 +40,3 @@ head(stuatt)
 Visit the Strategic Data Project online at:  \url{http://sdp.cepr.harvard.edu/}
 }
 \keyword{datasets}
-

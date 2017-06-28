@@ -34,4 +34,3 @@ fac=sample(LETTERS[1:4], 60, replace=TRUE))
 varnames<-c('Quality','Grade')
 myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
 }
-

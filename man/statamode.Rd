@@ -38,10 +38,9 @@ statamode(a ,method="sample") # randomly pick one
 a <- c(LETTERS, "A" , "A")
 statamode(a)
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 \code{\link{table}} which this function uses
 }
-
+\author{
+Jared E. Knowles
+}

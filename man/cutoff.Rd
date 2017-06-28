@@ -38,4 +38,3 @@ cutoff(a, .7) #return minimum number of elements to account 70 percent of total
 \author{
 Jared E. Knowles
 }
-

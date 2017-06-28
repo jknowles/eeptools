@@ -22,6 +22,9 @@ leading_zero <- function(x, digits = 2){
   if(any(x < 0)){
     digits <- digits + 1
   }
-  formatter <- paste0('%0', digits, 'd')
-  return(sprintf(formatter, x))
+  if(digits < 0){
+    warning("Digits < 0 does not make sense, defaulting to 0")
+    digits <- 0
+  }
+  return(formatC(x, digits = digits-1, format = "d", flag = "0"))
 }

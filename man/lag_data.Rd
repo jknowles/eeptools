@@ -39,4 +39,3 @@ periods <- 2
 newdat <- lag_data(test_data, group="id", time="time", 
                  values=c("value1", "value2"), periods=3)
 }
-

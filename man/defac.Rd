@@ -23,11 +23,10 @@ b <- defac(a)
 class(b)
 
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 \code{\link{factor}}, \code{\link{levels}} to understand the R 
 implementation of factors.
 }
-
+\author{
+Jared E. Knowles
+}

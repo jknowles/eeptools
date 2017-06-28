@@ -35,10 +35,9 @@ b
 a
 
 }
-\author{
-Jared E. Knowles
-}
 \seealso{
 \code{\link{character}}
 }
-
+\author{
+Jared E. Knowles
+}
