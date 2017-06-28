@@ -6,7 +6,7 @@
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
 
-There were was one NOTE:
+There is one NOTE:
 * Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd",
 "rows",".hat")) to fix notes about unexported objects in `autoplot.lm`
 * Used utils::globalVariables(c("moves", "switches", ".SD")) to fix notes about 
