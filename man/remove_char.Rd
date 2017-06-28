@@ -22,7 +22,7 @@ When importing into R this is a problem, which this function solves in a simple
 step by replacing "*" with NA, and then converting the vector to numeric.
 }
 \note{
-Future versions could be modified to accomodate other indicators of 
+Future versions could be modified to accommodate other indicators of 
 redacted data.
 }
 \examples{

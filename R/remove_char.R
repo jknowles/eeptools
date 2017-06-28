@@ -8,7 +8,7 @@
 ##' @return Returns a vector of the same length as the input vector that is numeric 
 ##' with NAs in place of the character.
 ##' @author Jared E. Knowles
-##' @note Future versions could be modified to accomodate other indicators of 
+##' @note Future versions could be modified to accommodate other indicators of 
 ##' redacted data.
 ##' @keywords manip
 ##' @export

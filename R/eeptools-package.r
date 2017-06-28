@@ -67,7 +67,7 @@ NULL
 #' Student Attributes from the Strategic Data Project Toolkit
 #' @description A synthetic dataset of student attributes from the Strategic Data 
 #' Project which includes records with errors to practice data cleaning and 
-#' impelmenting business rules for consistency in data. 
+#' implementing business rules for consistency in data. 
 #' @format A data frame with 87534 observations on the following 9 variables.
 #' \describe{
 #'   \item{\code{sid}}{a numeric vector of the unique student ID}
