@@ -1,14 +1,12 @@
 ## Test environments
-* local Windows 7 64-bit install, R 3.2.3
-* ubuntu 12.04 (on travis-ci), R 3.3.1
+* local Windows 7 64-bit install, R 3.4.0
+* ubuntu 12.04 (on travis-ci), R 3.4.0
 * win-builder (devel and release)
 
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
 
 There were was one NOTE:
-* I believe "shapefiles" is how to correctly identify the data type used by 
-ESRI to store geospatial data, referred to in the Description
 * Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd",
 "rows",".hat")) to fix notes about unexported objects in `autoplot.lm`
 * Used utils::globalVariables(c("moves", "switches", ".SD")) to fix notes about 
