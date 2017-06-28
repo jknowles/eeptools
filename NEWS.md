@@ -2,6 +2,10 @@
 
 ## eeptools 1.1.0
 
+### Added
+A CONTRIBUTING.md file modeled after the excellent example in the `rio` package 
+by @leeper
+
 ### Bug fixes
 - Fix compatibiltiy issue for `leading_zero` function with latest version of R
 

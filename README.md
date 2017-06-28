@@ -13,9 +13,7 @@ Datasets
 
 ``` r
 library(eeptools)
-#> Warning: package 'eeptools' was built under R version 3.3.2
 #> Loading required package: ggplot2
-#> Warning: package 'ggplot2' was built under R version 3.3.2
 data("stuatt")
 head(stuatt)
 #>   sid school_year male race_ethnicity birth_date
@@ -240,29 +238,6 @@ head(sim.results)
 #> 6 -1.5     1 -0.32213552 -7.343319 6.737021
 ```
 
-Plotting Themes
-===============
-
-The package includes a number of themes for `ggplot2` named `theme_dpi` to reflect their internal use at the Wisconsin Department of Public Instruction. These themes are very similar to the `theme_bw()` within `ggplot2` but with font sizes optimized for presentations and publications.
-
-``` r
-crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
-require(reshape) # for melt
-#> Loading required package: reshape
-crimesm <- melt(crimes, id = 1)
-states_map <- map_data("state")
-p1 <- ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), 
-                                                     linetype = 1, map = states_map) + 
-       expand_limits(x = states_map$long, y = states_map$lat) + labs(title="USA Crime")
-p1 <- p1 + coord_map()
-p1 + theme_dpi_map()
-#> Warning: 'theme_dpi_map' is deprecated.
-#> Use 'theme_bw' instead.
-#> See help("Deprecated")
-```
-
-![](tools/readme/README-map-1.png)
-
 There is also a `ggplot2` version of `plot.lm` included:
 
 ``` r
@@ -288,5 +263,7 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
 
 Helping Out
 ===========
+
+Review the [Contributor Guide](CONTRIBUTING.md) for specific directions and tips on how to get involved.
 
 `eeptools` is intended to be a useful project for the education analytics community. Contributions are welcomed. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
