@@ -1,10 +1,10 @@
 context("Correct mode selected")
 
 test_that("statamode selects the mode right for each method", {
-  expect_that(statamode("a"), expect_match("a"))
-  expect_that(statamode(c("a", "a", "b", "b"), method="stata"), expect_match("."))
-  expect_that(statamode(c("a", "a", "b", "b"), method="last"), expect_match("b"))
- # expect_that(statamode(c("a", "a", "b", "b"), method="sample"), expect_match(c("a", "b"),all=FALSE))
+  expect_match(statamode("a"), "a")
+  expect_match(statamode(c("a", "a", "b", "b"), method="stata"), ".")
+  expect_match(statamode(c("a", "a", "b", "b"), method="last"), "b")
+ # expect_match(statamode(c("a", "a", "b", "b"), method="sample"), c("a", "b"), all=FALSE)
 })
 
 set.seed(100)

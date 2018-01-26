@@ -12,6 +12,7 @@ before_install:
   - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
   - sudo apt-get update -q
   - sudo apt-get install -q libgeos-dev
+  - sudo apt-get install -q libcurl4-openssl-dev
 
 notifications:
   email:
