@@ -11,7 +11,7 @@ env:
 before_install:
   - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
   - sudo apt-get update -q
-  - sudo apt-get install -q libgeos-dev libgeos-3.4.2
+  - sudo apt-get install -q libgeos-dev
 
 notifications:
   email:
