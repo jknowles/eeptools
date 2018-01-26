@@ -23,8 +23,6 @@ Imports:
     memisc,
     maptools
 Suggests:
-    reshape,
-    plyr,
     testthat,
     stringr,
     knitr,

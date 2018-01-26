@@ -1,6 +1,6 @@
 ## Test environments
-* local Windows 7 64-bit install, R 3.4.0
-* ubuntu 12.04 (on travis-ci), R 3.4.0
+* local Windows 7 64-bit install, R 3.4.3
+* ubuntu 16.04 (on travis-ci), R 3.4.3
 * win-builder (devel and release)
 
 ## R CMD check results
