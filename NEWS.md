@@ -1,5 +1,9 @@
 # NEWS
 
+## eeptools 1.1.1
+
+- Minor fixes for CRAN repository compliance in dependencies contained in vignettes
+
 ## eeptools 1.1.0
 
 ### Added

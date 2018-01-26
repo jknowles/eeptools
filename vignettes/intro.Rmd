@@ -161,24 +161,8 @@ sim.results <- gelmansim(mod = M3, newdata = cases, n.sims=200, na.omit=TRUE)
 head(sim.results)
 ```
 
-# Plotting Themes
+# Plotting Functions
 
-The package includes a number of themes for `ggplot2` named `theme_dpi` to reflect 
-their internal use at the Wisconsin Department of Public Instruction. These themes 
-are very similar to the `theme_bw()` within `ggplot2` but with font sizes optimized 
-for presentations and publications. 
-
-```{r map}
-crimes <- data.frame(state = tolower(rownames(USArrests)), USArrests)
-require(reshape) # for melt
-crimesm <- melt(crimes, id = 1)
-states_map <- map_data("state")
-p1 <- ggplot(crimes, aes(map_id = state)) + geom_map(aes(fill = Murder), 
-                                                     linetype = 1, map = states_map) + 
-       expand_limits(x = states_map$long, y = states_map$lat) + labs(title="USA Crime")
-p1 <- p1 + coord_map()
-p1 + theme_dpi_map()
-```
 
 There is also a `ggplot2` version of `plot.lm` included:
 
@@ -197,9 +181,15 @@ sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60,
 varnames<-c('Quality','Grade')
 crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE, 
              title = "Crosstab Plot", shade = FALSE)
+```
+
+And without labels:
+
+```{r}
 crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = FALSE, 
              title = "Crosstab Plot", shade = TRUE)
 ```
+
 
 # Datasets
 
