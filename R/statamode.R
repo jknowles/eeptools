@@ -81,27 +81,21 @@ statamode <- function(x, method = c("last", "stata", "sample")){
     }
   }
   else if (method=='last'){
-    z <- table(as.vector(x))
-    m <- names(z)[z == max(z)]
-    if (length(m) == 1){
+    x_vec <- as.vector(x)
+    z <- table(x_vec)
+    m <- names(z[which(z == max(z))])
+    m <- x[which(x %in% m)]
+    m <- m[length(m)]
+    if(length(m) > 0){
       if(xClass == "factor"){
         m <- factor(m)
-      } else{
+        return(m)
+      } else {
         class(m) <- xClass
+        return(m)
       }
-      return(m)
     }
-    else if (length(m) > 1){
-      m <- max(x[match(x, m) == max(match(x,m), na.rm=TRUE)], 
-               na.rm=TRUE)
-      if(xClass == "factor"){
-        m <- factor(m)
-      } else{
-        class(m) <- xClass
-      }
-      return(tail(m, 1))
-    }
-    else if (length(m) < 1){
+    else if(length(m) < 1){
       if(xClass == "character"){
         return(NA_character_)
       } else if(xClass == "numeric"){
