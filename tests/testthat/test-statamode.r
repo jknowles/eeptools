@@ -4,6 +4,7 @@ test_that("statamode selects the mode right for each method", {
   expect_that(statamode("a"), matches("a"))
   expect_that(statamode(c("a", "a", "b", "b"), method="stata"), matches("."))
   expect_that(statamode(c("a", "a", "b", "b"), method="last"), matches("b"))
+  expect_that(statamode(c("b", "b", "a", "a"), method="last"), matches("a"))
  # expect_that(statamode(c("a", "a", "b", "b"), method="sample"), matches(c("a", "b"),all=FALSE))
 })
 
