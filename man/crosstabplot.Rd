@@ -2,7 +2,7 @@
 % Please edit documentation in R/proficiency_tools.R
 \name{crosstabplot}
 \alias{crosstabplot}
-\title{Draw a visual crosstab (mosaid plot) with shading for correlations 
+\title{Draw a visual crosstab (mosaic plot) with shading for correlations 
 and labels in each cell.}
 \source{
 http://www.rexdouglass.com/blog:3

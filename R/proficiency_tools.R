@@ -1,4 +1,4 @@
-#' Draw a visual crosstab (mosaid plot) with shading for correlations 
+#' Draw a visual crosstab (mosaic plot) with shading for correlations 
 #' and labels in each cell.
 #'
 #' Improves labeling of mosaic plots over \code{mosaic} from the vcd package
@@ -55,7 +55,7 @@ crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL,
 #'    variables to compose the crosstab
 #' @param rowvar a character value for the column in data that will be displayed on the rows
 #'    of the crosstab
-#' @param colvar a character vlue for the column in data that will be displayed in columns of the 
+#' @param colvar a character value for the column in data that will be displayed in columns of the 
 #'    crosstab
 #' @param varnames a character vector of length two with the labels for rowvar and colvar
 #'    respectively
@@ -133,7 +133,7 @@ profpoly <- function(data){
 #' @param minimal is a vector of the floor of the minimal assessment category by grade
 #' @param basic is a vector of the floor of the basic assessment category by grade
 #' @param proficient is a vector of the floor of the proficient assessment category by grade
-#' @param advanced is a vectof of the floor of the advanced assessment category by grade
+#' @param advanced is a vector of the floor of the advanced assessment category by grade
 #' @param HOSS is a vector of the highest obtainable scale score by grade
 #' @keywords ggplot2
 #' @keywords polygon

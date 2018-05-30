@@ -18,7 +18,7 @@ an assessment by grade}
 
 \item{proficient}{is a vector of the floor of the proficient assessment category by grade}
 
-\item{advanced}{is a vectof of the floor of the advanced assessment category by grade}
+\item{advanced}{is a vector of the floor of the advanced assessment category by grade}
 
 \item{HOSS}{is a vector of the highest obtainable scale score by grade}
 }
