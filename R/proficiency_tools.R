@@ -7,7 +7,7 @@
 #'    variables to compose the crosstab
 #' @param rowvar a character value for the column in data that will be displayed on the rows
 #'    of the crosstab
-#' @param colvar a character vlue for the column in data that will be displayed in columns of the 
+#' @param colvar a character value for the column in data that will be displayed in columns of the 
 #'    crosstab
 #' @param varnames a character vector of length two with the labels for rowvar and colvar
 #'    respectively
