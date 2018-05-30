@@ -1,18 +1,19 @@
 language: r
-sudo: required
+r:
+    - devel
+    - release
+sudo: false
+cache: packages
 
 env:
-  global:
-    - WARNINGS_ARE_ERRORS=1
   matrix:
     - NOT_CRAN="true"
     - NOT_CRAN="false"
 
-before_install:
-  - sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
-  - sudo apt-get update -q
-  - sudo apt-get install -q libgeos-dev
-  - sudo apt-get install -q libcurl4-openssl-dev
+addons:
+  apt:
+    packages:
+    - texlive-latex-extra
 
 notifications:
   email:
@@ -32,9 +33,11 @@ r_binary_packages:
   - maptools
   - stringr
   - maptools
+  - covr
+  - lintr
 
-r_github_packages:
-  - jimhester/covr
-  - jimhester/lintr
 after_success:
   - Rscript -e 'library(covr);coveralls()'
+  
+branches:
+  only: master
