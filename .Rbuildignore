@@ -5,7 +5,6 @@
 todo.txt
 .gitignore
 build.R
-
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^README\.Rmd$
