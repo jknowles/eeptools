@@ -12,6 +12,7 @@
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 ##' @export
 ##' @import arm
+##' @importFrom stats contrasts
 ##' @examples
 ##'  #Examples of "sim" 
 ##' set.seed (1)

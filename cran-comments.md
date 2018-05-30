@@ -1,6 +1,6 @@
 ## Test environments
-* local Windows 7 64-bit install, R 3.4.3
-* ubuntu 16.04 (on travis-ci), R 3.4.3
+* local Windows 10 install, R 3.5.0
+* ubuntu 14.05 (on travis-ci), R devel, R-Release
 * win-builder (devel and release)
 
 ## R CMD check results

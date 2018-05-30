@@ -5,8 +5,8 @@ utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof"
 #' @details \tabular{ll}{
 #' Package: \tab eeptools\cr
 #' Type: \tab Package\cr
-#' Version: \tab 0.1 \cr
-#' Date: \tab 2012-07-21\cr
+#' Version: \tab 1.2.0 \cr
+#' Date: \tab 2018-06-01\cr
 #' License: \tab GPL-3 \cr
 #' }
 #' his package has a number of useful shortcuts for common tasks. It includes 
