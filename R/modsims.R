@@ -12,7 +12,6 @@
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 ##' @export
 ##' @import arm
-##' @import memisc
 ##' @examples
 ##'  #Examples of "sim" 
 ##' set.seed (1)
@@ -92,7 +91,8 @@ gelmansim <- function(mod, newdata, n.sims, na.omit=TRUE){
   
   pred.tmp <- unlist(dimnames(sims.tmp@coef)[2])
   X.tilde <- X.tilde[, unlist(colnames(X.tilde)) %in% pred.tmp]
-  X.tilde <- reorder(X.tilde, dim=2, names=pred.tmp)
+  # X.tilde <- memisc::reorder(X.tilde, dim=2, names=pred.tmp)
+  X.tilde <- X.tilde[, pred.tmp]
   n.tilde <- nrow(X.tilde)
   y.tilde <- array(NA, c(n.sims, n.tilde))
   

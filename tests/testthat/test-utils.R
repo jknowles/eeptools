@@ -182,3 +182,22 @@ test_that("Numeric accuracy", {
   expect_equal(nth_max(z), 12401892377905)
   expect_equal(nth_max(f), 10.0001)
 })
+
+context("Test isid")
+
+test_that("ISID returns correct values", {
+  data(stuatt)
+  total <- nrow(stuatt)
+  expect_false(isid(stuatt, vars = c("sid")))
+  expect_false(isid(stuatt, vars = c("sid", "school_year")))
+  expect_output(isid(stuatt, vars = c("sid", "school_year"), verbose = TRUE))
+  expect_output(isid(stuatt, 
+                   vars = c("sid", "school_year", "male", 
+                            "race_ethnicity", "hs_diploma_type"), verbose=TRUE))
+  expect_true(isid(stuatt, 
+                   vars = c("sid", "school_year", "male", 
+                            "race_ethnicity", "hs_diploma_type")))
+  
+})
+
+
