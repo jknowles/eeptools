@@ -23,7 +23,7 @@
 ##' 
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
   df <- ggplot2::fortify(object)
-  df <- cbind(df, rows=1:nrow(df))
+  df <- cbind(df, rows = seq_len(nrow(df)))
   # residuals vs fitted
   g1 <- ggplot(df, aes(.fitted, .resid)) +
     geom_point()  +

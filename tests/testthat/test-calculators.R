@@ -22,7 +22,7 @@ test_that("All function parameters result in a numeric calculations with sane in
   
   safe.ifelse <- function(cond, yes, no) structure(ifelse(cond, yes, no), class = class(yes))
   
-  for(i in 1:nrow(tests)){
+  for (i in seq_len(nrow(tests))) {
     atomDOB <- as.Date(as.POSIXct('1987-05-29 018:07:00'))
     vecDOB <- as.Date(seq(as.POSIXct('1987-05-29 018:07:00'), len=26, by="21 day"))
     vecED <- as.Date(seq(as.POSIXct('2017-05-29 018:07:00'), len=26, by="21 day"))
@@ -47,6 +47,8 @@ test_that("Bad inputs yield correct errors", {
                "Both dob and enddate must be Date class objects")
   expect_error(age_calc(as.Date('2004-02-16'), as.Date('2004-01-15')), 
                "End date must be a date after date of birth")
+  expect_error(age_calc(as.Date('2004-01-15'), as.Date('2004-02-16'), units = "fake"),
+               "Unrecognized units. Please choose years, months, or days.")
   
 })
 
@@ -141,7 +143,41 @@ test_that("Nonstandard cases fail", {
 
 context("Test moves calculator")
 
-test_that("Zed", {
+test_that("Bad input yields errors", {
+  df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)),
+                   schid = c(1, 2, 2, 2, 3, 1, 1, 1, 3, 1),
+                   enroll_date = c('2004-08-26',
+                                   '2004-10-01',
+                                   '2005-05-01',
+                                   '2004-09-01',
+                                   '2004-11-03',
+                                   '2005-01-11',
+                                   '2005-04-02',
+                                   '2004-09-26',
+                                   '2004-09-01',
+                                   '2005-02-02'),
+                   exit_date = c('2004-08-26',
+                                 '2005-04-10',
+                                 '2005-06-15',
+                                 '2004-11-02',
+                                 '2005-01-10',
+                                 '2005-03-01',
+                                 '2005-06-15',
+                                 '2005-05-30',
+                                 NA,
+                                 '2005-06-15'))
+  expect_error(moves_calc(df), "Both enroll_date and exit_date must be Date objects")
+  df$enroll_date <- as.Date(df$enroll_date, format = '%Y-%m-%d')
+  df$exit_date <- as.Date(df$exit_date, format = '%Y-%m-%d')
+  expect_warning(moves_calc(df, enrollby = 'Not a date or coercible'),
+                 regexp = "enrollby must be a string with format %Y-%m-%d,")
+  expect_warning(moves_calc(df, exitby = 'Not a date or coercible'),
+                 regexp = "exitby must be a string with format %Y-%m-%d,")
+  expect_warning(moves_calc(df, gap = 'Not a number either'),
+                 "gap was not a number, defaulting to 14 days")
+})
+
+test_that("moves_calc gets the correct results", {
   df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)),
                    schid = c(1, 2, 2, 2, 3, 1, 1, 1, 3, 1),
                    enroll_date = as.Date(c('2004-08-26',
@@ -154,7 +190,7 @@ test_that("Zed", {
                                            '2004-09-26',
                                            '2004-09-01',
                                            '2005-02-02'),
-                                         format='%Y-%m-%d'),
+                                         format = '%Y-%m-%d'),
                    exit_date = as.Date(c('2004-08-26',
                                          '2005-04-10',
                                          '2005-06-15',
@@ -165,14 +201,12 @@ test_that("Zed", {
                                          '2005-05-30',
                                          NA,
                                          '2005-06-15'),
-                                       format='%Y-%m-%d'))
+                                       format = '%Y-%m-%d'))
   moves <- moves_calc(df)
-  moves
   expect_is(moves, "data.frame")
   expect_equal(nrow(moves), 4)
-  # moves <- moves_calc(df, enrollby='2004-10-15', gap=22)
-  # moves
-  # moves <- moves_calc(df, enrollby='2004-10-15', exitby='2005-05-29')
-  # moves
+  correct_result <- data.frame(sid = as.factor(seq_len(4)), 
+                               moves = c(4, 4, 2, NA))
+  expect_equal(moves, correct_result)
 })
 

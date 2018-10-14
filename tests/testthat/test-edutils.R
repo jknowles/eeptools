@@ -17,6 +17,9 @@ test_that("Object fails correctly", {
   expect_error(lag_data(test_data, group="id", time="time", 
                         values=c("value1", "id"), periods = 2), 
                "Cannot lag a grouping or a time variable")
+  expect_error(lag_data(test_data, group = "id", time = "id", periods = 2,
+                        values = c("value1")),
+               "Time must be a numeric or integer value")
   expect_warning(lag_data(test_data, group="id", time="time", 
                           values=c("value1", "value2"), periods = 2.16),
                           "parameter periods has been forced to integer of value 2")
