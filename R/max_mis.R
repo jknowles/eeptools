@@ -18,7 +18,7 @@
 ##' 
 max_mis <- function(x){
   varclass <- class(x)
-  if(varclass %in% c("ordered", "factor", "character")){
+  if(any(varclass %in% c("ordered", "factor", "character"))){
     stop("Vector must be of class integer or real to take maximum values")
   }
   suppressWarnings(x <- max(x, na.rm=TRUE))
