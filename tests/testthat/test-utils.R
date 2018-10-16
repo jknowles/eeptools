@@ -85,6 +85,7 @@ test_that("max_mis handles missing data correctly", {
   max(c(NA,NA,NA,NA),na.rm=TRUE)
   expect_identical(max_mis(c(NA,NA,NA,NA)), NA_real_)
   expect_identical(max_mis(c(NA_real_, NA_real_)), NA_real_)
+  expect_identical(max_mis(vector(mode = 'integer')), NA_integer_)
   expect_identical(max_mis(c()), NA_real_)
   expect_error(max_mis(c("A", "B", "C")))
   expect_error(max_mis(factor("A", "B", "C")))

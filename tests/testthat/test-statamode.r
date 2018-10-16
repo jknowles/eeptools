@@ -1,18 +1,18 @@
 context("Correct mode selected")
 
 test_that("statamode selects the mode right for each method", {
-  expect_that(statamode("a"), matches("a"))
-  expect_that(statamode(c("a", "a", "b", "b"), method="stata"), matches("."))
-  expect_that(statamode(c("a", "a", "b", "b"), method="last"), matches("b"))
-  expect_that(statamode(c("b", "b", "a", "a"), method="last"), matches("a"))
+  expect_match(statamode("a"), "a")
+  expect_match(statamode(c("a", "a", "b", "b"), method = "stata"), ".")
+  expect_match(statamode(c("a", "a", "b", "b"), method = "last"), "b")
+  expect_match(statamode(c("b", "b", "a", "a"), method = "last"), "a")
  # expect_that(statamode(c("a", "a", "b", "b"), method="sample"), matches(c("a", "b"),all=FALSE))
 })
 
 set.seed(100)
 a <- c(3, 1, 9, 8, 4, 4, 7, 7)
-b <- statamode(a, method="last")
-c <- statamode(a, method="stata")
-d <- statamode(a, method="sample")
+b <- statamode(a, method = "last")
+c <- statamode(a, method = "stata")
+d <- statamode(a, method = "sample")
 
 
 test_that("statamode returns correct modes for each method using numbers", {
