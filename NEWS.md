@@ -3,7 +3,13 @@
 ## eeptools 1.2.1
 
 ### Bug Fixes
-- In `max_mis`, there is an `if` predicate that checks if a class is of an invalid type. Because R objects can have multiple classes, this statement relies on the R semantics that the first value of the logical vector returned by the predicate is used. This is a feature R-core is looking to remove as it has considerable performance penalties. This check is now wrapped in `any()`, which evaluates `TRUE` if any value in the logical vector is `TRUE`.
+
+- In `max_mis`, there is an `if` predicate that checks if a class is of an
+invalid type. Because R objects can have multiple classes, this statement relies
+on the R semantics that the first value of the logical vector returned by the
+predicate is used. This is a feature R-core is looking to remove as it has
+considerable performance penalties. This check is now wrapped in `any()`, which
+evaluates `TRUE` if any value in the logical vector is `TRUE`.
 
 ## eeptools 1.2.0
 

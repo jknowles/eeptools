@@ -1,10 +1,10 @@
 ## Test environments
-* local Windows 10 install, R 3.5.0
-* ubuntu 14.05 (on travis-ci), R devel, R-Release
+* local Windows 10 install, R 3.5.1
+* ubuntu 14.04.5 (on travis-ci), R devel, R-Release
 * win-builder (devel and release)
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs or NOTEs. 
 
 There is one NOTE:
 * Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd",
@@ -16,4 +16,4 @@ unexported objects in `moves_calc`
 
 
 ## Downstream dependencies
-There are currently no downstream dependencies on CRAN.
+There is one downstream dependency. It was checked and no errors were found.
