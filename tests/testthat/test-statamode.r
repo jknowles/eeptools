@@ -31,6 +31,7 @@ test_that("statamode defaults to stata", {
 })
 
 test_that("statamode handles all types of modes", {
+  suppressWarnings(RNGversion("3.5.0"))
   set.seed(21341)
   tests <- expand.grid(class = c("numeric", "factor", "character"), 
                        method = c("last", "stata", "sample"), 

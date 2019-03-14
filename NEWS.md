@@ -1,5 +1,11 @@
 # NEWS
 
+## eeptools 1.2.2
+
+### Bug Fixes
+
+- Updated unit tests to avoid warnings associated with the new random number generator in R 3.5.3
+
 ## eeptools 1.2.1
 
 ### Bug Fixes
