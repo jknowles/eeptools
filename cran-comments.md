@@ -1,7 +1,7 @@
 ## Test environments
-* local Windows 10 install, R 3.5.1
+* local Windows 10 install, R 3.5.2
 * ubuntu 14.04.5 (on travis-ci), R devel, R-Release
-* win-builder (devel and release)
+* r-hub "ubuntu-gcc-devel", "windows-x86_64-devel", "debian-gcc-release"
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs. 
