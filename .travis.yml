@@ -10,8 +10,8 @@ before_install:
 
 install:
   - ./run.sh install_aptget r-cran-knitr r-cran-rmarkdown r-cran-maptools
-  - ./run.sh install_aptget r-cran-testthat
-  - ./run.sh install_aptget r-cran-rstanarm r-cran-amelia r-cran-data.table
+  - ./run.sh install_aptget r-cran-testthat 
+  - ./run.sh install_aptget r-cran-arm r-cran-data.table
   - ./run.sh install_aptget r-cran-dplyr r-cran-mvtnorm r-cran-foreach
   - ./run.sh install_aptget r-cran-vcd r-cran-abind r-cran-ggplot2
 
