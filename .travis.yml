@@ -9,12 +9,11 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - ./run.sh install_aptget r-cran-knitr r-cran-rmarkdown r-cran-lme4 r-cran-arm
-  - ./run.sh install_aptget r-cran-testthat r-cran-future.apply r-cran-broom
-  - ./run.sh install_aptget r-cran-rstanarm r-cran-amelia r-cran-dt
+  - ./run.sh install_aptget r-cran-knitr r-cran-rmarkdown r-cran-maptools
+  - ./run.sh install_aptget r-cran-testthat
+  - ./run.sh install_aptget r-cran-rstanarm r-cran-amelia r-cran-data.table
   - ./run.sh install_aptget r-cran-dplyr r-cran-mvtnorm r-cran-foreach
-  - ./run.sh install_aptget r-cran-shiny r-cran-abind r-cran-ggplot2
-  - ./run.sh install_r blme
+  - ./run.sh install_aptget r-cran-vcd r-cran-abind r-cran-ggplot2
 
 script:
   - ./run.sh run_tests
