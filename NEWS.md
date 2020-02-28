@@ -1,5 +1,11 @@
 # NEWS
 
+## eeptools 1.2.3
+
+### Bug Fixes
+
+- Update to avoid CRAN check warnings on some platforms
+
 ## eeptools 1.2.2
 
 ### Bug Fixes

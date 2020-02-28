@@ -201,7 +201,8 @@ test_that("moves_calc gets the correct results", {
                                          '2005-05-30',
                                          NA,
                                          '2005-06-15'),
-                                       format = '%Y-%m-%d'))
+                                       format = '%Y-%m-%d'), 
+                   stringsAsFactors = TRUE) # for R 4.0.0 default changes
   moves <- moves_calc(df)
   expect_is(moves, "data.frame")
   expect_equal(nrow(moves), 4)

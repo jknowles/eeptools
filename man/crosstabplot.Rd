@@ -8,8 +8,17 @@ and labels in each cell.}
 http://www.rexdouglass.com/blog:3
 }
 \usage{
-crosstabplot(data, rowvar, colvar, varnames, title = NULL,
-  subtitle = NULL, label = FALSE, shade = TRUE, ...)
+crosstabplot(
+  data,
+  rowvar,
+  colvar,
+  varnames,
+  title = NULL,
+  subtitle = NULL,
+  label = FALSE,
+  shade = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{a data object, matrix or dataframe, that contains the categorical 

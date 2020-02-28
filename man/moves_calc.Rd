@@ -4,9 +4,16 @@
 \alias{moves_calc}
 \title{Function to calculate the number of times a student has changed schools.}
 \usage{
-moves_calc(df, enrollby, exitby, gap = 14, sid = "sid",
-  schid = "schid", enroll_date = "enroll_date",
-  exit_date = "exit_date")
+moves_calc(
+  df,
+  enrollby,
+  exitby,
+  gap = 14,
+  sid = "sid",
+  schid = "schid",
+  enroll_date = "enroll_date",
+  exit_date = "exit_date"
+)
 }
 \arguments{
 \item{df}{a data.frame containing minimally a student identifier, school identifier, enrollment date, and exit date.}

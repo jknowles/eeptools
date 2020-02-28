@@ -3,7 +3,6 @@
 \docType{package}
 \name{eeptools}
 \alias{eeptools}
-\alias{eeptools-package}
 \title{Evaluation of educational policy tools}
 \description{
 Make common tasks for educational evaluation easier to do!
