@@ -57,18 +57,20 @@ context("Test retention calculator")
 
 test_that("standard cases work", {
   x <- data.frame(sid = c(101, 101, 102, 103, 103, 103, 104, 105, 105, 106, 106),
-                 grade = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7))
+                 grade = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7), 
+                 stringsAsFactors = TRUE) # R 4.0
   expect_is(retained_calc(x), "data.frame")
   expect_equal(nrow(retained_calc(x)), 4)
   z <- data.frame(stuid = c(101, 101, 102, 103, 103, 103, 104, 105, 105, 106, 106),
-                  grade_cd = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7))
+                  grade_cd = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7), 
+                  stringsAsFactors = TRUE) # R 4.0
   expect_is(retained_calc(z, sid = "stuid", grade = "grade_cd"), "data.frame")
   expect_identical(retained_calc(z, sid = "stuid", grade = "grade_cd"), 
                    retained_calc(x))
-  tests <- data.frame(grade_val = 1:12, expected_val = NA)
+  tests <- data.frame(grade_val = 1:12, expected_val = NA, stringsAsFactors = TRUE)
   
   test_dat <- data.frame(stuid = rep(101:130, each = 12), 
-                         grade = rep(seq(1:12), 30))
+                         grade = rep(seq(1:12), 30), stringsAsFactors = TRUE)
   test_dat <- test_dat[order(test_dat$stuid, test_dat$grade),]
   test_dat$stuid <- as.character(test_dat$stuid)
   
@@ -133,7 +135,7 @@ test_that("standard cases work", {
 
 test_that("Nonstandard cases fail", {
   x <- data.frame(sid = c(101, 101, 102, 103, 103, 103, 104, 105, 105, 106, 106),
-                  grade = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7))
+                  grade = c(9, 10, 9, 9, 9, 10, 10, 8, 9, 7, 7), stringsAsFactors = TRUE)
   expect_is(retained_calc(x, grade_val = 13), "data.frame")
   expect_equal(nrow(retained_calc(x, grade_val = 13)), 0)
   expect_is(retained_calc(x, grade_val = -2), "data.frame")
@@ -165,7 +167,8 @@ test_that("Bad input yields errors", {
                                  '2005-06-15',
                                  '2005-05-30',
                                  NA,
-                                 '2005-06-15'))
+                                 '2005-06-15'), 
+                   stringsAsFactors = TRUE) # R 4.0
   expect_error(moves_calc(df), "Both enroll_date and exit_date must be Date objects")
   df$enroll_date <- as.Date(df$enroll_date, format = '%Y-%m-%d')
   df$exit_date <- as.Date(df$exit_date, format = '%Y-%m-%d')

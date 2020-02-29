@@ -70,7 +70,8 @@ test_that("Crossplots work and get right answers", {
   set.seed(1213)
   sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
                                                         replace=TRUE)),
-                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
+                        fac=sample(LETTERS[1:4], 60, replace=TRUE), 
+                        stringsAsFactors = TRUE)
   varnames<-c('Quality','Grade')
   
   out <- crosstabs(sampDat, "y", "fac", varnames = varnames)
@@ -85,7 +86,8 @@ context("Test mosaictabs with labels")
 test_that("Plots work correctly", {
   sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
                                                         replace=TRUE)),
-                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
+                        fac=sample(LETTERS[1:4], 60, replace=TRUE), 
+                        stringsAsFactors = TRUE) # R 4.0
   varnames<-c('Quality','Grade')
   test_plot_file <- "crosstabplot.png"
   png(test_plot_file)
