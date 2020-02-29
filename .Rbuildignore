@@ -14,3 +14,4 @@ readmeplot
 ^CONDUCT\.md$
 ^revdep$
 CONTRIBUTING.md
+^CRAN-RELEASE$
