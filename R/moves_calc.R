@@ -121,7 +121,7 @@ moves_calc <- function(df,
   
   df <- df[complete.cases(df[, c(enroll_date, exit_date)]), ]
   dt <- data.table(df, key = sid)
-  dt[[sid]] <- as.factor(as.character(dt[[sid]]))
+  dt[[sid]] <- as.character(dt[[sid]])
   setnames(dt, names(dt)[which(names(dt) %in% enroll_date)], "enroll_date")
   setnames(dt, names(dt)[which(names(dt) %in% exit_date)], "exit_date")
   dt[['moves']] <- 0
@@ -163,5 +163,5 @@ moves_calc <- function(df,
   output[dt, moves := moves + switches]
   # Set names properly and return data.frame as supplied.
   setnames(output, 'id', sid)
-  return(as.data.frame(output))
+  return(as.data.frame(output, stringsAsFactors = TRUE))
 }

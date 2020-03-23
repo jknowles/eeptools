@@ -39,11 +39,11 @@ test_that("values of simulations are sensible", {
 
 context("Check multivariate GLM case")
 
-dat <- as.data.frame(y123.dat)
-M2 <- glm (y1 ~ x1 + group, data=dat)
+dat <- as.data.frame(y123.dat, stringsAsFactors = TRUE)
+M2 <- glm(y1 ~ x1 + group, data = dat)
 
-cases <- expand.grid(x1 = seq(-2, 2, by=0.1), 
-                    group=seq(1, 14, by=2))
+cases <- expand.grid(x1 = seq(-2, 2, by = 0.1), 
+                    group = seq(1, 14, by = 2))
 
 sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 
