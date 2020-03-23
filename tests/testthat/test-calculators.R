@@ -209,9 +209,11 @@ test_that("moves_calc gets the correct results", {
   moves <- moves_calc(df)
   expect_s3_class(moves, "data.frame")
   expect_equal(nrow(moves), 4)
-  correct_result <- data.frame(sid = as.factor(seq_len(4)), 
+  correct_result <- data.frame(sid = as.character(seq_len(4)), 
                                moves = c(4, 4, 2, NA), 
                                stringsAsFactors = TRUE)
   expect_equal(moves, correct_result)
 })
+
+
 
