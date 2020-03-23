@@ -207,10 +207,11 @@ test_that("moves_calc gets the correct results", {
                                        format = '%Y-%m-%d'), 
                    stringsAsFactors = TRUE) # for R 4.0.0 default changes
   moves <- moves_calc(df)
-  expect_is(moves, "data.frame")
+  expect_s3_class(moves, "data.frame")
   expect_equal(nrow(moves), 4)
   correct_result <- data.frame(sid = as.factor(seq_len(4)), 
-                               moves = c(4, 4, 2, NA))
+                               moves = c(4, 4, 2, NA), 
+                               stringsAsFactors = TRUE)
   expect_equal(moves, correct_result)
 })
 
