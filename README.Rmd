@@ -33,7 +33,7 @@ to error specific to analysis of education data.
 # Datasets
 
 `eeptools` provides three new datasets of interest to education researchers. These 
-datasets are also used in the [R Bootcamp for Education Analysts](www.jaredknowles.com/r-bootcamp)
+datasets are also used in the [R Bootcamp for Education Analysts](https://www.jaredknowles.com/r-bootcamp)
 
 ```{r}
 library(eeptools)
@@ -215,12 +215,12 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
 
 # Helping Out
 
-Review the [Contributor Guide](CONTRIBUTING.md) for specific directions and tips 
+Review the [Contributor Guide](https://github.com/jknowles/eeptools/blob/master/CONTRIBUTING.md) for specific directions and tips 
 on how to get involved.
 
 `eeptools` is intended to be a useful project for the education analytics 
 community. Contributions are welcomed. Please note that this project is 
 released with a 
-[Contributor Code of Conduct](CONDUCT.md). By participating in this project you 
+[Contributor Code of Conduct](https://github.com/jknowles/eeptools/blob/master/CONDUCT.md). By participating in this project you 
 agree to abide by its terms.
 

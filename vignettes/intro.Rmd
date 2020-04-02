@@ -194,7 +194,7 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = FALSE,
 # Datasets
 
 `eeptools` provides three new datasets of interest to education researchers. These 
-datasets are also used in the [R Bootcamp for Education Analysts](www.jaredknowles.com/r-bootcamp)
+datasets are also used in the [R Bootcamp for Education Analysts](https://www.jaredknowles.com/r-bootcamp)
 
 ```{r}
 library(eeptools)

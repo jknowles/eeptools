@@ -1,10 +1,10 @@
 Contributions to **eeptools** are welcome from anyone and are best sent as pull requests on [the GitHub repository](https://github.com/jknowles/eeptools/). This page provides some instructions to potential contributors about how to add to the package.
 
- 1. Contributions can be submitted as [a pull request](https://help.github.com/articles/creating-a-pull-request/) on GitHub by forking or cloning the [repo](https://github.com/leeper/rio/), making changes and submitting the pull request.
+ 1. Contributions can be submitted as [a pull request](https://help.github.com/articles/creating-a-pull-request/) on GitHub by forking or cloning the [repo](https://github.com/jknowles/eeptools/), making changes and submitting the pull request.
  
  2. Pull requests should involve only one commit per substantive change. This means if you change multiple files (e.g., code and documentation), these changes should be committed together. If you don't know how to do this (e.g., you are making changes in the GitHub web interface) just submit anyway and the maintainer will clean things up.
  
- 3. All contributions must be submitted consistent with the package license ([GPL-3](http://www.gnu.org/licenses/old-licenses/gpl-3.0.en.html)).
+ 3. All contributions must be submitted consistent with the package license ([GPL-3](https://www.gnu.org/licenses/old-licenses/gpl-3.0.en.html)).
  
  4. All contributions need to be noted in the `Authors@R` field in the [DESCRIPTION](https://github.com/jknowles/eeptools/blob/master/DESCRIPTION). Just follow the format of the existing entries to add your name (and, optionally, email address). Substantial contributions should also be noted in [`inst/CITATION`](https://github.com/jknowles/eeptools/blob/master/inst/CITATION).
  
