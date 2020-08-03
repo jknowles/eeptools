@@ -1,9 +1,9 @@
 ##' Function to calculate age from date of birth.
-##' @description his function calculates age in days, months, or years from a 
+##' @description This function calculates age in days, months, or years from a 
 ##' date of birth to another arbitrary date. This returns a numeric vector in 
 ##' the specified units.
 ##' @param dob a vector of class \code{Date} representing the date of birth/start date
-##' @param enddate a vector of class Date representing the when the observation's 
+##' @param enddate a vector of class Date representing when the observation's 
 ##' age is of interest, defaults to current date.
 ##' @param units character, which units of age should be calculated? allowed values are 
 ##' days, months, and years
