@@ -35,6 +35,8 @@ age_calc <- function(dob, enddate=Sys.Date(), units='months', precise=TRUE){
   start <- as.POSIXlt(dob)
   end <- as.POSIXlt(enddate)
   if (precise) {
+    start$year = start$year+1900
+    end$year = end$year+1900
     start_is_leap <- ifelse(start$year %% 400 == 0, TRUE, 
                             ifelse(start$year %% 100 == 0, FALSE,
                                    ifelse(start$year %% 4 == 0, TRUE, FALSE)))
