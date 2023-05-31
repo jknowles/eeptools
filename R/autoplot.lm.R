@@ -6,7 +6,7 @@
 ##' @param mfrow Describes the layout of the resulting function in the plot frames
 ##' @param ... additional parameters to pass through
 ##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
-##' @references Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
+##' @references Modified from: https://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
 ##' @seealso \code{\link{plot.lm}} which this function mimics
 ##' @export
 ##' @import ggplot2

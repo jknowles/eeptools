@@ -5,7 +5,7 @@
 ##' @param x a character vector containing numbers with commas that should 
 ##' be coerced into being numeric.
 ##' @details This function assumes decimal point notation for numbers. For more 
-##' information, see \url{http://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
+##' information, see \url{https://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
 ##' @return A numeric
 ##' @author Jared E. Knowles
 ##' @export

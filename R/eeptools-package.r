@@ -83,8 +83,8 @@ NULL
 #' @details This is the non-clean version of the data to allow for implementing 
 #' business rules to clean data.
 #' @source Available from the Strategic Data Project online at 
-#' \url{http://sdp.cepr.harvard.edu/toolkit-effective-data-use}
-#' @references Visit the Strategic Data Project online at:  \url{http://sdp.cepr.harvard.edu/}
+#' \url{https://sdp.cepr.harvard.edu/toolkit-effective-data-use}
+#' @references Visit the Strategic Data Project online at:  \url{https://sdp.cepr.harvard.edu/}
 #' @examples 
 #' data(stuatt)
 #' head(stuatt)

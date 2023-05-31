@@ -20,7 +20,7 @@ on. This assumes decimal point as opposed to decimal comma notation.
 }
 \details{
 This function assumes decimal point notation for numbers. For more 
-information, see \url{http://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
+information, see \url{https://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
 }
 \examples{
 input <- c("10,243", "11,212", "7,011", "5443", "500")

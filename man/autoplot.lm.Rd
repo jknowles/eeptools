@@ -35,7 +35,7 @@ autoplot(mymod)
 
 }
 \references{
-Modified from: http://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
+Modified from: https://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
 }
 \seealso{
 \code{\link{plot.lm}} which this function mimics

@@ -17,7 +17,6 @@
 #' @param label logical, if TRUE cells will be labeled, else they will not
 #' @param shade logical, if TRUE cells will be shaded with Pearson residuals
 #' @param ... additional arguments to \code{\link{crosstabs}} e.g. digits
-#' @source http://www.rexdouglass.com/blog:3
 #' @keywords mosaic
 #' @keywords crosstabs
 #' @keywords vcd

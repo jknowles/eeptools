@@ -4,9 +4,6 @@
 \alias{crosstabplot}
 \title{Draw a visual crosstab (mosaic plot) with shading for correlations 
 and labels in each cell.}
-\source{
-http://www.rexdouglass.com/blog:3
-}
 \usage{
 crosstabplot(
   data,

@@ -1,7 +1,5 @@
 ## Test environments
-* local Windows 10 install, R 3.6.3
-* ubuntu 14.04.5 (on travis-ci), R-Release
-* Win Builder: R-Release
+* local Windows 10 install, R 4.2.1
 * r-hub: "ubuntu-gcc-devel", "windows-x86_64-devel", "debian-gcc-release"
 
 ## Previous Issues with Test Errors have Been Resolved

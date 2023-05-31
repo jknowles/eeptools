@@ -1,18 +1,9 @@
-[![Build
-Status](https://travis-ci.org/jknowles/eeptools.png?branch=master)](https://travis-ci.org/jknowles/eeptools)
-[![Coverage
-Status](https://coveralls.io/repos/jknowles/eeptools/badge.svg?branch=master&service=github)](https://coveralls.io/github/jknowles/eeptools?branch=master)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools)
-[![Github
-Issues](http://githubbadges.herokuapp.com/jknowles/eeptools/issues.svg)](https://github.com/jknowles/eeptools/issues)
-[![Pending
-Pull-Requests](http://githubbadges.herokuapp.com/jknowles/eeptools/pulls.svg?style=flat)](https://github.com/jknowles/eeptools/pulls)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools)
 [![Downloads](https://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/package=eeptools)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-Introduction
-============
+# Introduction
 
 `eeptools` is an R package that seeks to make it easier for analysts at
 state and local education agencies to analyze and visualize their data
@@ -21,8 +12,7 @@ around a number of R functions, `eeptools` strives to make many common
 tasks simpler and less prone to error specific to analysis of education
 data.
 
-Datasets
-========
+# Datasets
 
 `eeptools` provides three new datasets of interest to education
 researchers. These datasets are also used in the [R Bootcamp for
@@ -31,6 +21,7 @@ Education Analysts](https://www.jaredknowles.com/r-bootcamp)
 ``` r
 library(eeptools)
 #> Loading required package: ggplot2
+#> Warning: package 'ggplot2' was built under R version 4.2.3
 data("stuatt")
 head(stuatt)
 #>   sid school_year male race_ethnicity birth_date first_9th_school_year_reported
@@ -51,7 +42,7 @@ head(stuatt)
 
 The `stuatt`, student attributes, dataset is provided from the
 [Strategic Data Project Toolkit for Effective Data
-Use](http://sdp.cepr.harvard.edu/toolkit-effective-data-use). This
+Use](https://sdp.cepr.harvard.edu/toolkit-effective-data-use). This
 dataset is useful for learning how to clean data in R and how to
 aggregate and summarize individual unit-record data into group-level
 data.
@@ -116,8 +107,7 @@ The `midsch` dataset contains an analysis on abnormality in school
 average assessment scores. It contains observed and predicted values of
 aggregated test scores at the school level for a large midwestern state.
 
-Administrative Data Functions
-=============================
+# Administrative Data Functions
 
 For analysts using unit-record data of some type, there are several
 `calc` functions which automate common tasks including calculating ages
@@ -185,8 +175,7 @@ moves
 #> 4   4    NA
 ```
 
-Manipulate Data
-===============
+# Manipulate Data
 
 Another set of key functions in the package are to make basic data
 manipulation easier. One thing users of other statistical packaegs may
@@ -235,8 +224,7 @@ vector of numerics and ignoring any NAs (useful for inclusion in
 processing data where numerics are written with commas. `nth_max` allows
 you to identify the 2nd, 3rd, etc. maximum value in a vector.
 
-Regression Models
-=================
+# Regression Models
 
 `eeptools` includes ways to simplify the use of regression analyses
 tools recommended by Gelman and Hill 2006 through the `gelmansim`
@@ -245,6 +233,7 @@ function, which itself is a wrapper for the `arm::sim()` function.
 ``` r
 require(MASS)
 #> Loading required package: MASS
+#> Warning: package 'MASS' was built under R version 4.2.3
 #Examples of "sim" 
 set.seed (1)
 J <- 15
@@ -283,10 +272,10 @@ There is also a `ggplot2` version of `plot.lm` included:
 data(mpg)
 mymod <- lm(cty~displ + cyl + drv, data=mpg)
 autoplot(mymod)
-#> `geom_smooth()` using formula 'y ~ x'
-#> `geom_smooth()` using formula 'y ~ x'
-#> `geom_smooth()` using formula 'y ~ x'
-#> `geom_smooth()` using formula 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ![](tools/readme/README-lmautoplot-1.png)
@@ -304,8 +293,7 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
 
 ![](tools/readme/README-crossplot-1.png)
 
-Helping Out
-===========
+# Helping Out
 
 Review the [Contributor
 Guide](https://github.com/jknowles/eeptools/blob/master/CONTRIBUTING.md)
