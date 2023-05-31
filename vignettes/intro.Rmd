@@ -203,7 +203,7 @@ head(stuatt)
 ```
 
 The `stuatt`, student attributes, dataset is provided from the 
-[Strategic Data Project Toolkit for Effective Data  Use](http://sdp.cepr.harvard.edu/toolkit-effective-data-use). 
+[Strategic Data Project Toolkit for Effective Data  Use](https://sdp.cepr.harvard.edu/toolkit-effective-data-use). 
 This dataset is useful for learning how to clean data in R and how to aggregate 
 and summarize individual unit-record data into group-level data. 
 
