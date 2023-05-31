@@ -17,4 +17,4 @@ unexported objects in `moves_calc`
 
 
 ## Downstream dependencies
-There is one downstream dependency. It was checked and no errors were found.
+There are no downstream dependencies.
