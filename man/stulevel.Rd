@@ -4,7 +4,8 @@
 \name{stulevel}
 \alias{stulevel}
 \title{A synthetic data set of K-12 student attributes.}
-\format{A data frame with 2700 observations on the following 32 variables.
+\format{
+A data frame with 2700 observations on the following 32 variables.
 \describe{
  \item{\code{X}}{a numeric vector}
  \item{\code{school}}{a numeric vector}
@@ -38,7 +39,8 @@
  \item{\code{mathSS}}{a numeric vector}
  \item{\code{proflvl}}{a factor with levels \code{advanced} \code{basic} \code{below basic} \code{proficient}}
  \item{\code{race}}{a factor with levels \code{A} \code{B} \code{H} \code{I} \code{W}}
- }}
+ }
+}
 \source{
 The script to generate this synthetic dataset can be found and modified 
 at \url{https://github.com/jknowles/r_tutorial_ed}

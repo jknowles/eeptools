@@ -61,7 +61,7 @@ gelmansim <- function(mod, newdata, n.sims, na.omit=TRUE){
   # Get factors
   facs <- mod$model[,sapply(mod$model, not.numeric)]
   if(length(facs) != 0){
-  if(class(facs) == "data.frame"){
+  if(inherits(facs, "data.frame")){
     contr.tmp <- lapply(facs, unique)
     for(i in names(contr.tmp)){
       newdata[, i] <- factor(newdata[, i], levels=unlist(contr.tmp[i]))

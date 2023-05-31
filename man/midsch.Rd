@@ -4,7 +4,8 @@
 \name{midsch}
 \alias{midsch}
 \title{A dataframe of aggregate test scores for schools in a Midwest state.}
-\format{A data frame with 19985 observations on the following 16 variables.
+\format{
+A data frame with 19985 observations on the following 16 variables.
 \describe{
  \item{\code{district_id}}{a numeric vector}
  \item{\code{school_id}}{a numeric vector}
@@ -22,7 +23,8 @@
  \item{\code{test_year}}{a numeric vector representing the year the test was taken}
  \item{\code{tprob}}{a numeric vector representing the probability of a residual appearing}
  \item{\code{flagged_t95}}{a numeric vector}
-}}
+}
+}
 \usage{
 midsch
 }

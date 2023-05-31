@@ -2,7 +2,7 @@
 
 ## eeptools 1.2.5
 
-- Removed depcrecated mapping functionms to address #45
+- Removed deprecated mapping functions to address #45 the sunsetting of `maptools` 
 
 ## eeptools 1.2.3
 
