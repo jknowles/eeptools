@@ -15,3 +15,4 @@ readmeplot
 ^revdep$
 CONTRIBUTING.md
 ^CRAN-RELEASE$
+^\.github$

@@ -1,7 +1,7 @@
 Package: eeptools
 Type: Package
 Title: Convenience Functions for Education Data
-Version: 1.2.4
+Version: 1.2.5
 Authors@R: c(person(c("Jason", "P."), "Becker", role = c("ctb"),
     email = "jason+sitemail@jbecker.co"),
     person(c("Jared", "E."), "Knowles", role=c("aut", "cre"),
@@ -13,13 +13,12 @@ Description: Collection of convenience functions to make working with
     with errors.
 License: GPL-3
 Depends:
-    R (>= 2.15.1),
+    R (>= 3.5.3),
     ggplot2
 Imports:
     arm,
     data.table,
-    vcd,
-    maptools
+    vcd
 Suggests:
     testthat,
     stringr,

@@ -1,8 +1,8 @@
 # NEWS
 
-## eeptools 1.2.4
+## eeptools 1.2.5
 
-- Update to avoid `sp` change
+- Removed depcrecated mapping functionms to address #45
 
 ## eeptools 1.2.3
 
