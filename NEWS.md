@@ -1,5 +1,9 @@
 # NEWS
 
+## eeptools 1.2.4
+
+- Update to avoid `sp` change
+
 ## eeptools 1.2.3
 
 ### Bug Fixes
