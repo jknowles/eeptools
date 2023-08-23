@@ -20,7 +20,7 @@ A data frame with 87534 observations on the following 9 variables.
 }
 \source{
 Available from the Strategic Data Project online at 
-\url{http://sdp.cepr.harvard.edu/toolkit-effective-data-use}
+\url{https://sdp.cepr.harvard.edu/toolkit-effective-data-use}
 }
 \usage{
 stuatt
@@ -39,6 +39,6 @@ data(stuatt)
 head(stuatt)
 }
 \references{
-Visit the Strategic Data Project online at:  \url{http://sdp.cepr.harvard.edu/}
+Visit the Strategic Data Project online at:  \url{https://sdp.cepr.harvard.edu/}
 }
 \keyword{datasets}
