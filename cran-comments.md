@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows 10 install, R 4.2.1
+* local Windows 11 install, R 4.3.0
 * r-hub: "ubuntu-gcc-devel", "windows-x86_64-devel", "debian-gcc-release"
 
 ## Previous Issues with Test Errors have Been Resolved

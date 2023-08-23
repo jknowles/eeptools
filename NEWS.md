@@ -1,5 +1,10 @@
 # NEWS
 
+## eeptools 1.2.6
+
+- Fixed package documentation issues arising from changes in `roxygen`
+- Made package startup message align with version number
+
 ## eeptools 1.2.5
 
 - Removed deprecated mapping functions to address #45 the sunsetting of `maptools` 
