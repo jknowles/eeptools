@@ -4,6 +4,8 @@ Title: Convenience Functions for Education Data
 Version: 1.2.6
 Authors@R: c(person(c("Jason", "P."), "Becker", role = c("ctb"),
     email = "jason+sitemail@jbecker.co"),
+	person("Vinay", "Bhandaru", role="ctb",
+    email="vbhandaru@gwu.edu"),
     person(c("Jared", "E."), "Knowles", role=c("aut", "cre"),
     email="jared@civilytics.com"))
 Description: Collection of convenience functions to make working with
