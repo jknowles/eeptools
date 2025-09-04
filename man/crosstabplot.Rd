@@ -56,7 +56,7 @@ crosstabplot(df, rowvar = "x",colvar = "fac", varnames = varnames,
 title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
 }
 \seealso{
-\code{\link{mosaic}} which this function wraps
+\code{\link[vcd]{mosaic}} which this function wraps
  \code{\link{crosstabs}} which does the data manipulation for the crosstab
 }
 \keyword{crosstabs}

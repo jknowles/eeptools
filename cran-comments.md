@@ -1,8 +1,6 @@
 ## Test environments
-* local Windows 11 install, R 4.3.0
+* local Windows 11 install, R 4.5.1
 * r-hub: "ubuntu-gcc-devel", "windows-x86_64-devel", "debian-gcc-release"
-
-## Previous Issues with Test Errors have Been Resolved
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs. 

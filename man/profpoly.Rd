@@ -29,7 +29,7 @@ z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof,
 profpoly(z)
 }
 \seealso{
-\code{\link{geom_polygon}} which this function wraps
+\code{\link[ggplot2]{geom_polygon}} which this function wraps
 }
 \keyword{ggplot2}
 \keyword{polygon}

@@ -25,8 +25,8 @@ Department of Public Instruction for making PDF maps
 All values are optional
 }
 \seealso{
-his uses \code{\link{unit}} from the grid package extensively. 
-See also \code{\link{theme_bw}} from the ggplot2 package.
+his uses \code{\link[grid]{unit}} from the grid package extensively. 
+See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 }
 \author{
 Jared E. Knowles

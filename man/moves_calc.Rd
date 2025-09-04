@@ -47,7 +47,7 @@ a data.frame
 \description{
 This function calculates the number of times a student has changed 
 schools, including accounting for gaps in enrollment data. It returns a 
-\code{\link{data.table}} with the student ID and the number of student moves.
+\code{\link[data.table]{data.table}} with the student ID and the number of student moves.
 }
 \details{
 \code{enrollby} and \code{exitby} are specified automatically if not 

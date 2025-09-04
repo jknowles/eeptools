@@ -10,8 +10,7 @@ utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof"
 #' warning system models.
 #' @author Jared E. Knowles
 #' @note This package is still in beta and function names may change in the next release.
-#' @docType package
-#' @keywords "_PACKAGE"
+#' @keywords internal
 #' @examples 
 #' gender<-c("M","M","M","F","F","F")
 #' statamode(gender)
@@ -23,5 +22,5 @@ utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof"
 #' makenum(gender)
 #' gender <- factor(gender)
 #' defac(gender)
-NULL
+"_PACKAGE"
 

@@ -2,13 +2,13 @@
 ##'
 ##' Generate prediction intervals from R models following Gelman and Hill
 ##'
-##' @param mod Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{merMod}
+##' @param mod Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{\link[lme4]{merMod}}
 ##' @param newdata Sets of new data to generate predictions for
 ##' @param n.sims Number of simulations per case
 ##' @param na.omit Logical indicating whether to remove NAs from \code{newdata}
 ##' @return A dataframe with newdata and prediction intervals
 ##' @references Modified from Gelman and Hill 2006. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press.
-##' @details Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link{sim}} in the 
+##' @details Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link[arm]{sim}} in the 
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 ##' @export
 ##' @import arm

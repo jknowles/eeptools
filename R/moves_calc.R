@@ -2,7 +2,7 @@ utils::globalVariables(c("moves", "switches", ".SD"))
 #' Function to calculate the number of times a student has changed schools.
 #' @description This function calculates the number of times a student has changed 
 #' schools, including accounting for gaps in enrollment data. It returns a 
-#' \code{\link{data.table}} with the student ID and the number of student moves.
+#' \code{\link[data.table]{data.table}} with the student ID and the number of student moves.
 #' @param df a data.frame containing minimally a student identifier, school identifier, enrollment date, and exit date.
 #' @param enrollby a date that determines the earliest a student can enroll for 
 #' the first time without being credited with having moved at least once.

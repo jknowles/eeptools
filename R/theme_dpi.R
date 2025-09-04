@@ -7,8 +7,8 @@
 #' @details All values are optional
 #' @return A theme object which is a list of attributes applied to a ggplot2 object.
 #' @source For more information see https://github.com/hadley/ggplot2/wiki/Themes
-#' @seealso his uses \code{\link{unit}} from the grid package extensively. 
-#' See also \code{\link{theme_bw}} from the ggplot2 package.
+#' @seealso his uses \code{\link[grid]{unit}} from the grid package extensively. 
+#' See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export
@@ -27,8 +27,8 @@ theme_dpi <- function (base_size = 16, base_family = "") {
 #' @return A theme object which is a list of attributes applied to a ggplot2 object.
 #' @details All values are optional
 #' @source For more information see https://github.com/hadley/ggplot2/wiki/Themes
-#' @seealso his uses \code{\link{unit}} from the grid package extensively. 
-#' See also \code{\link{theme_bw}} from the ggplot2 package.
+#' @seealso his uses \code{\link[grid]{unit}} from the grid package extensively. 
+#' See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export
@@ -47,8 +47,8 @@ theme_dpi_map <- function(base_size = 14, base_family = "") {
 #' @return A theme object which is a list of attributes applied to a ggplot2 object.
 #' @details All values are optional
 #' @source For more information see https://github.com/hadley/ggplot2/wiki/Themes
-#' @seealso his uses \code{\link{unit}} from the grid package extensively. 
-#' See also \code{\link{theme_bw}} from the ggplot2 package.
+#' @seealso his uses \code{\link[grid]{unit}} from the grid package extensively. 
+#' See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export
@@ -67,8 +67,8 @@ theme_dpi_map2 <- function(base_size = 14, base_family = "") {
 #' @return A theme object which is a list of attributes applied to a ggplot2 object.
 #' @details All values are optional
 #' @source For more information see https://github.com/hadley/ggplot2/wiki/Themes
-#' @seealso his uses \code{\link{unit}} from the grid package extensively. 
-#' See also \code{\link{theme_bw}} from the ggplot2 package.
+#' @seealso his uses \code{\link[grid]{unit}} from the grid package extensively. 
+#' See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 #' @author Jared E. Knowles
 #' @import ggplot2
 #' @export

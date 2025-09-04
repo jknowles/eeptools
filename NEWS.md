@@ -1,5 +1,9 @@
 # NEWS
 
+## eeptools 1.2.7
+
+- Fixed package documentation crossreference issues
+
 ## eeptools 1.2.6
 
 - Fixed package documentation issues arising from changes in `roxygen`

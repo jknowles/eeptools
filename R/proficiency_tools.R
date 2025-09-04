@@ -22,7 +22,7 @@
 #' @keywords vcd
 #' @return A mosaic plot
 #' @seealso
-#'  \code{\link{mosaic}} which this function wraps
+#'  \code{\link[vcd]{mosaic}} which this function wraps
 #'  \code{\link{crosstabs}} which does the data manipulation for the crosstab
 #' 
 #' @import vcd
@@ -100,7 +100,7 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
 #' @keywords polygon
 #' @return a ggplot2 object that can be printed or saved
 #' @seealso
-#'  \code{\link{geom_polygon}} which this function wraps
+#'  \code{\link[ggplot2]{geom_polygon}} which this function wraps
 #'
 #' @export
 #' @examples
@@ -138,7 +138,7 @@ profpoly <- function(data){
 #' @keywords polygon
 #' @return a dataframe for adding a polygon to layers in other ggplot2 plots
 #' @seealso
-#'  \code{\link{geom_polygon}} which this function assists
+#'  \code{\link[ggplot2]{geom_polygon}} which this function assists
 #'
 #' @export
 #' @examples

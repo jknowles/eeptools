@@ -43,7 +43,7 @@ z<-profpoly.data(grades,LOSS,minimal,basic,
 z
 }
 \seealso{
-\code{\link{geom_polygon}} which this function assists
+\code{\link[ggplot2]{geom_polygon}} which this function assists
 }
 \keyword{ggplot2}
 \keyword{polygon}

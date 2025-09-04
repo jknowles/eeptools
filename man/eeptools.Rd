@@ -2,6 +2,7 @@
 % Please edit documentation in R/eeptools-package.r
 \docType{package}
 \name{eeptools}
+\alias{eeptools-package}
 \alias{eeptools}
 \title{Evaluation of educational policy tools}
 \description{
@@ -29,7 +30,15 @@ makenum(gender)
 gender <- factor(gender)
 defac(gender)
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jknowles/eeptools}
+  \item Report bugs at \url{https://github.com/jknowles/eeptools/issues}
+}
+
+}
 \author{
 Jared E. Knowles
 }
-\keyword{"_PACKAGE"}
+\keyword{internal}

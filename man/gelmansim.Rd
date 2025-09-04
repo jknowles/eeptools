@@ -7,7 +7,7 @@
 gelmansim(mod, newdata, n.sims, na.omit = TRUE)
 }
 \arguments{
-\item{mod}{Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{merMod}}
+\item{mod}{Name of a model object such as \code{\link{lm}}, \code{\link{glm}}, or \code{\link[lme4]{merMod}}}
 
 \item{newdata}{Sets of new data to generate predictions for}
 
@@ -22,7 +22,7 @@ A dataframe with newdata and prediction intervals
 Generate prediction intervals from R models following Gelman and Hill
 }
 \details{
-Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link{sim}} in the 
+Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link[arm]{sim}} in the 
 \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 }
 \examples{
