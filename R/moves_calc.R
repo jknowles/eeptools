@@ -163,5 +163,5 @@ moves_calc <- function(df,
   output[dt, moves := moves + switches]
   # Set names properly and return data.frame as supplied.
   setnames(output, 'id', sid)
-  return(as.data.frame(output, stringsAsFactors = TRUE))
+  return(as.data.frame(output, stringsAsFactors = FALSE))
 }

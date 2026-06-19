@@ -1,4 +1,3 @@
-context("Check bivariate GLM case")
 require(MASS)
 #Examples of "sim" 
 set.seed (1)
@@ -24,9 +23,9 @@ sim.results <- gelmansim(mod = M1, newdata = cases, n.sims=200, na.omit=TRUE)
 
 
 test_that("returned dataframe is correct size", {
-  expect_that(dim(sim.results)[1], equals(length(seq(-2, 2, by=0.1))))
-  expect_that(dim(sim.results)[2], equals(4))
-  expect_that(sim.results, is_a("data.frame"))
+  expect_equal(dim(sim.results)[1], length(seq(-2, 2, by=0.1)))
+  expect_equal(dim(sim.results)[2], 4)
+  expect_s3_class(sim.results, "data.frame")
 })
 
 test_that("values of simulations are sensible", {  
@@ -37,20 +36,19 @@ test_that("values of simulations are sensible", {
   expect_true(all(!is.na(sim.results$yhatMax)))
 })
 
-context("Check multivariate GLM case")
 
 dat <- as.data.frame(y123.dat, stringsAsFactors = TRUE)
 M2 <- glm(y1 ~ x1 + group, data = dat)
 
 cases <- expand.grid(x1 = seq(-2, 2, by = 0.1), 
-                    group = seq(1, 14, by = 2))
+                     group = seq(1, 14, by = 2))
 
 sim.results <- gelmansim(M2, newdata=cases, n.sims=200, na.omit=TRUE)
 
 test_that("returned dataframe is correct size", {
-  expect_that(dim(sim.results)[1], equals(nrow(cases)))
-  expect_that(dim(sim.results)[2], equals(3 + ncol(cases)))
-  expect_that(sim.results, is_a("data.frame"))
+  expect_equal(dim(sim.results)[1], nrow(cases))
+  expect_equal(dim(sim.results)[2], 3 + ncol(cases))
+  expect_s3_class(sim.results, "data.frame")
 })
 
 test_that("values of simulations are sensible", {  
@@ -61,7 +59,6 @@ test_that("values of simulations are sensible", {
   expect_true(all(!is.na(sim.results$yhatMax)))
 })
 
-context("Check multivariate GLM case with factor")
 
 dat$group <- factor(dat$group)
 M3 <- glm (y1 ~ x1 + group, data=dat)
@@ -73,9 +70,9 @@ cases$group <- factor(cases$group)
 sim.results <- gelmansim(M3, newdata=cases, n.sims=200, na.omit=TRUE)
 
 test_that("returned dataframe is correct size", {
-  expect_that(dim(sim.results)[1], equals(nrow(cases)))
-  expect_that(dim(sim.results)[2], equals(3 + ncol(cases)))
-  expect_that(sim.results, is_a("data.frame"))
+  expect_equal(dim(sim.results)[1], nrow(cases))
+  expect_equal(dim(sim.results)[2], 3 + ncol(cases))
+  expect_s3_class(sim.results, "data.frame")
 })
 
 test_that("values of simulations are sensible", {  
@@ -86,7 +83,6 @@ test_that("values of simulations are sensible", {
   expect_true(all(!is.na(sim.results$yhatMax)))
 })
 
-context("Check multivariate LM case with factor")
 
 dat$group <- factor(dat$group)
 M4 <- lm(y1 ~ x1 + group, data=dat)
@@ -99,9 +95,9 @@ sim.results <- gelmansim(M4, newdata=cases, n.sims=200, na.omit=TRUE)
 
 
 test_that("returned dataframe is correct size", {
-  expect_that(dim(sim.results)[1], equals(nrow(cases)))
-  expect_that(dim(sim.results)[2], equals(3 + ncol(cases)))
-  expect_that(sim.results, is_a("data.frame"))
+  expect_equal(dim(sim.results)[1], nrow(cases))
+  expect_equal(dim(sim.results)[2], 3 + ncol(cases))
+  expect_s3_class(sim.results, "data.frame")
 })
 
 test_that("values of simulations are sensible", {  

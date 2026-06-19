@@ -9,7 +9,9 @@ utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", "vals", "prof"
 #' Future development work will include methods for tuning and evaluating early 
 #' warning system models.
 #' @author Jared E. Knowles
-#' @note This package is still in beta and function names may change in the next release.
+
+#' @importFrom utils packageVersion tail
+#' @importFrom stats as.formula formula median model.matrix na.omit complete.cases pnorm qnorm quantile reorder rnorm sd vcov weighted.mean
 #' @keywords internal
 #' @examples 
 #' gender<-c("M","M","M","F","F","F")

@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools)

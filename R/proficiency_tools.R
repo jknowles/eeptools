@@ -178,57 +178,5 @@ profpoly.data <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
 
 
 
-##
-# Make a Gantt Chart to Track Projects
-##
-# 
-# 
-# 
-# require(ggplot2)
-# tasks<-c("WISEdash","Educator Effectiveness","Value-Added","SIS","Research")
-# dfr<-data.frame(
-#   name = factor(tasks,levels=tasks),
-#   start.date = c('01-08-2010','01-03-2011','01-01-2011','01-03-2012','01-01-2011'),
-#   end.date = c('01-03-2012','01-09-2015','01-09-2016','01-09-2017','01-01-2013'),
-#   funding = c('federal','unknown','unknown','state','federal')
-# )
-# mdfr <- melt(dfr, measure.vars = c("start.date", "end.date"))
-# mdfr$value<-as.character(mdfr$value)
-# g<-ggplot(mdfr, aes(as.Date(value, "%d-%m-%Y"), name, colour = as.factor(funding))) + 
-#   geom_line(size = 6) + scale_colour_brewer("Funding Source",pal='Dark2')+
-#   xlab("") + ylab("") +
-#   theme_bw()
-# 
-# g+geom_vline(xintercept=15330,size=2,color='black')+
-#   opts(title='Major Projects \n',axis.title.x=theme_text(size=18),
-#        axis.title.y=theme_text(size=18,angle=90),
-#        plot.title=theme_text(size=20),axis.text.x=theme_text(size=12),
-#        axis.text.y=theme_text(size=12))
-# 
-# 
-# tasks<-c('WISEdash','CWCS','ELO','SIS','Classroom VA','Research')
-# dfr<-data.frame(
-#   name=factor(tasks,levels=tasks),
-#   start.date=c('1-12-2011','1-1-2010','06-30-2011','06-30-2012','06-30-2013','01-01-2011'),
-#   end.date=c('10-22-2012','10-12-2011','04-09-2013','04-10-2014','04-10-2015','01-01-2013'),
-#   funding=c('federal','state','federal','state','unknown','unknown')
-# )
-# 
-# #M
-# 
-# mdfr <- melt(dfr, measure.vars = c("start.date", "end.date"))
-# mdfr$value<-as.character(mdfr$value)
-# g<-ggplot(mdfr, aes(as.Date(value, "%m-%d-%Y"), name, colour = as.factor(funding))) + 
-#   geom_line(size = 6) + scale_colour_brewer("Funding Source",pal='Dark2')+
-#   xlab("") + ylab("") +
-#   theme_bw()
-# 
-# g+geom_vline(xintercept=15330,size=2,color='black')+
-#   opts(title='Major DPI Projects \n',axis.title.x=theme_text(size=18),
-#        axis.title.y=theme_text(size=18,angle=90),
-#        plot.title=theme_text(size=20),axis.text.x=theme_text(size=12),
-#        axis.text.y=theme_text(size=12))
-# 
-# mdfr$test<-as.Date(mdfr$value,"%m-%d-%Y")
 
 

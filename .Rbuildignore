@@ -16,3 +16,4 @@ readmeplot
 CONTRIBUTING.md
 ^CRAN-RELEASE$
 ^\.github$
+^CRAN-SUBMISSION$

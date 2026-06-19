@@ -6,10 +6,12 @@
 ##' missing leading zeroes.
 ##' @param digits an integer representing the desired width of \code{x}
 ##' @return A character vector of length \code{digits}
-##' @details If x contains negative values then the width specified by digits 
-##' will include one space taken up for the negative sign. The function does not 
-##' trim values that are longer than digits, so the vector produced will not 
-##' have a uniform width if \code{nchar(x) > d}
+##' @details If \code{x} contains negative values, \code{digits} is widened by 1 for
+##' the entire vector so that all values share a uniform total width, with the negative
+##' sign occupying one character position. For example,
+##' \code{leading_zero(c(-5, 42), digits = 2)} returns \code{c("-05", "042")} — both
+##' width 3. Mixed-sign vectors are supported but produce width \code{digits + 1}
+##' for all elements.
 ##' @author Jason P. Becker
 ##' @author Jared E. Knowles
 ##' @export
