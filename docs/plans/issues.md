@@ -605,7 +605,7 @@ Delete line 12 entirely. No replacement is needed.
 Verification:
 Run `devtools::document()` then open `man/eeptools.Rd` and confirm there is no
 "Note" section containing "beta".
-Status: open
+Status: done — @note removed from R/eeptools-package.r; man/eeptools.Rd regenerated without Note section.
 ---
 
 ---
@@ -640,7 +640,7 @@ workflow fail on errors but not on notes (CRAN notes on a dev branch are accepta
 Verification:
 Push a commit to main and confirm the R-CMD-check workflow runs successfully in
 GitHub Actions with the updated action versions.
-Status: open
+Status: done — actions/checkout bumped to v4; error-on: '"error"' added to check-r-package step.
 ---
 
 ---
