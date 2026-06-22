@@ -25,6 +25,13 @@ Generate prediction intervals from R models following Gelman and Hill
 Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link[arm]{sim}} in the 
 \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use the \code{marginaleffects} package or
+\code{merTools::predictInterval()} instead. This function will be removed in
+a future release, at which point the \code{arm} dependency will be dropped.
+}
+
 \examples{
  #Examples of "sim" 
 set.seed (1)

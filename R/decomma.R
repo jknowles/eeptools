@@ -7,6 +7,9 @@
 ##' @details This function assumes decimal point notation for numbers. For more 
 ##' information, see \url{https://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
 ##' @return A numeric
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0; use \code{readr::parse_number()} instead. This
+##' function will be removed in a future release.
 ##' @author Jared E. Knowles
 ##' @export
 ##' @examples
@@ -15,6 +18,9 @@
 ##' is.numeric(output)
 ##' 
 decomma <- function(x){
+  .Deprecated(msg = paste("decomma() is deprecated as of eeptools 1.3.0 and will be",
+                          "removed in a future release.",
+                          "Use readr::parse_number() instead."))
   x <- gsub(",", "", x)
   return(as.numeric(x))
 }

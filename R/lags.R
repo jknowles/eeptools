@@ -9,6 +9,10 @@
 ##' @param periods A scalar for the number of periods to be lagged in the data. Can 
 ##' be negative to indicate leading variable.
 ##' @return A dataframe with a newly created variable lagged
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0; use \code{dplyr::lag()} with
+##' \code{dplyr::group_by()}, or \code{data.table::shift()}, instead. This
+##' function will be removed in a future release.
 ##' @export
 ##' @examples
 ##' 
@@ -25,6 +29,9 @@
 ##' newdat <- lag_data(test_data, group="id", time="time", 
 ##'                  values=c("value1", "value2"), periods=3)
 lag_data <- function(df, group, time, periods, values) {
+  .Deprecated(msg = paste("lag_data() is deprecated as of eeptools 1.3.0 and will be",
+                          "removed in a future release. Use dplyr::lag() with",
+                          "dplyr::group_by(), or data.table::shift(), instead."))
   if(any(group %in% values) | any(time %in% values)){
     stop("Cannot lag a grouping or a time variable")
   }

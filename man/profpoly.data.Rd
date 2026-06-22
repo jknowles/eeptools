@@ -28,6 +28,12 @@ a dataframe for adding a polygon to layers in other ggplot2 plots
 \description{
 Creates a data frame suitable for building custom polygon layers in ggplot2 objects
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0. This niche assessment-band helper will be
+removed in a future release.
+}
+
 \examples{
 grades<-c(3,4,5,6,7,8)
 g<-length(grades)

@@ -2,11 +2,8 @@
 % Please edit documentation in R/theme_dpi.R
 \name{theme_dpi}
 \alias{theme_dpi}
-\title{a deprecated ggplot2 theme developed for PDF and PNG for use at the 
+\title{a defunct ggplot2 theme developed for PDF and PNG for use at the
 Wisconsin Department of Public Instruction}
-\source{
-For more information see https://github.com/hadley/ggplot2/wiki/Themes
-}
 \usage{
 theme_dpi(base_size = 16, base_family = "")
 }
@@ -16,18 +13,23 @@ theme_dpi(base_size = 16, base_family = "")
 \item{base_family}{character, specify the font family, this value is optional}
 }
 \value{
-A theme object which is a list of attributes applied to a ggplot2 object.
+This function is defunct.
 }
 \description{
-This is a custom ggplot2 theme developed for the Wisconsin 
-Department of Public Instruction. This function is now deprecated.
+This was a custom ggplot2 theme developed for the Wisconsin
+Department of Public Instruction. This function is now defunct.
 }
 \details{
 All values are optional
 }
+\section{Deprecation}{
+
+Defunct as of eeptools 1.3.0 (deprecated since 1.2.x). Use
+\code{\link[ggplot2]{theme_bw}} instead.
+}
+
 \seealso{
-his uses \code{\link[grid]{unit}} from the grid package extensively. 
-See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
+\code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 }
 \author{
 Jared E. Knowles

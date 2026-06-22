@@ -28,6 +28,13 @@ a list with crosstab calculations
 \description{
 Build a list of crosstabulations from a dataset
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{janitor::tabyl()} or
+\code{dplyr::count()} instead. This function will be removed in a future
+release.
+}
+
 \examples{
 df<-data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 fac=sample(LETTERS[1:4], 60, replace=TRUE))

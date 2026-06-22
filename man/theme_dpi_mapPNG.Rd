@@ -2,10 +2,7 @@
 % Please edit documentation in R/theme_dpi.R
 \name{theme_dpi_mapPNG}
 \alias{theme_dpi_mapPNG}
-\title{an deprecated ggplot2 theme developed for PNG or JPG maps}
-\source{
-For more information see https://github.com/hadley/ggplot2/wiki/Themes
-}
+\title{a defunct ggplot2 theme developed for PNG or JPG maps}
 \usage{
 theme_dpi_mapPNG(base_size = 18, base_family = "")
 }
@@ -15,18 +12,20 @@ theme_dpi_mapPNG(base_size = 18, base_family = "")
 \item{base_family}{character, specify the font family, this value is optional}
 }
 \value{
-A theme object which is a list of attributes applied to a ggplot2 object.
+This function is defunct.
 }
 \description{
-This is a deprecated ggplot2 theme developed for the Wisconsin 
-Department of Public Instruction for making PNG or JPG maps
+This was a ggplot2 theme developed for the Wisconsin
+Department of Public Instruction for making PNG or JPG maps. This function is now defunct.
 }
-\details{
-All values are optional
+\section{Deprecation}{
+
+Defunct as of eeptools 1.3.0 (deprecated since 1.2.x). Use
+\code{\link[ggplot2]{theme_bw}} instead.
 }
+
 \seealso{
-his uses \code{\link[grid]{unit}} from the grid package extensively. 
-See also \code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
+\code{\link[ggplot2]{theme_bw}} from the ggplot2 package.
 }
 \author{
 Jared E. Knowles

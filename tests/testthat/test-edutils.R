@@ -2,7 +2,7 @@
 
 context("Test that lags works")
 
-test_that("Object fails correctly", {
+test_that("Object fails correctly", suppress_deprecation({
   test_data <- expand.grid(id = sample(letters, 10), 
                            time = 1:10)
   vals <- data.frame(value1 = rnorm(100), value2 = runif(100),
@@ -23,9 +23,9 @@ test_that("Object fails correctly", {
   expect_warning(lag_data(test_data, group="id", time="time", 
                           values=c("value1", "value2"), periods = 2.16),
                           "parameter periods has been forced to integer of value 2")
-})
+}))
 
-test_that("Object values are correct", {
+test_that("Object values are correct", suppress_deprecation({
   test_data <- expand.grid(id = sample(letters, 10), 
                            time = 1:10)
   vals <- data.frame(value1 = rnorm(100), value2 = runif(100),
@@ -62,11 +62,11 @@ test_that("Object values are correct", {
       }
     }
   }  
-})
+}))
 
 context("Test crossplot functionality")
 
-test_that("Crossplots work and get right answers", {
+test_that("Crossplots work and get right answers", suppress_deprecation({
   set.seed(1213)
   sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
                                                         replace=TRUE)),
@@ -79,11 +79,11 @@ test_that("Crossplots work and get right answers", {
   expect_equal(names(out), c("TABS", "PROPORTIONS", "TABSPROPORTIONS"))
   
   
-})
+}))
 
 context("Test mosaictabs with labels")
 
-test_that("Plots work correctly", {
+test_that("Plots work correctly", suppress_deprecation({
   sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
                                                         replace=TRUE)),
                         fac=sample(LETTERS[1:4], 60, replace=TRUE), 
@@ -119,11 +119,11 @@ test_that("Plots work correctly", {
   unlink(test_plot_file)
   
   
-})
+}))
 
 context("Test proficiency polygons")
 
-test_that("profpoly.data produces correct objects", {
+test_that("profpoly.data produces correct objects", suppress_deprecation({
   
   grades<-c(3,4,5,6,7,8)
   g <- length(grades)
@@ -137,10 +137,10 @@ test_that("profpoly.data produces correct objects", {
   z <- profpoly.data(grades, LOSS, minimal, basic, proficient = prof, 
                      advanced = adv, HOSS)
   expect_is(z, "data.frame")
-  
-})
 
-test_that("profpoly makes valid ggplot objects", {
+}))
+
+test_that("profpoly makes valid ggplot objects", suppress_deprecation({
   grades<-c(3,4,5,6,7,8)
   g <- length(grades)
   LOSS <- rep(200, g)
@@ -161,5 +161,5 @@ test_that("profpoly makes valid ggplot objects", {
 #   dev.off()
 #   expect_true(file.exists(test_plot_file))
 #   unlink(test_plot_file)
-})
+}))
 

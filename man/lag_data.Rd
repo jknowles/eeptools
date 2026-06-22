@@ -24,6 +24,13 @@ A dataframe with a newly created variable lagged
 \description{
 Lag variables by an arbitrary number of periods even if the data is grouped
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{dplyr::lag()} with
+\code{dplyr::group_by()}, or \code{data.table::shift()}, instead. This
+function will be removed in a future release.
+}
+
 \examples{
 
 test_data <- expand.grid(id = sample(letters, 10), 

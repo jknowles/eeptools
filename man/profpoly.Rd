@@ -15,6 +15,12 @@ a ggplot2 object that can be printed or saved
 \description{
 Creates a proficiency polygon in ggplot2 for showing assessment categories
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0. This niche assessment-band helper will be
+removed in a future release.
+}
+
 \examples{
 grades<-c(3,4,5,6,7,8)
 g <- length(grades)

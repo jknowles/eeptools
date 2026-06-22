@@ -3,7 +3,7 @@
 
 context("Test that regression can be autoplotted")
 
-test_that("Autoplot works as expected for linear models", {
+test_that("Autoplot works as expected for linear models", suppress_deprecation({
   a <- runif(1000)
   b <- 7*a+rnorm(1)
   mymod <- lm(b~a)
@@ -31,6 +31,6 @@ test_that("Autoplot works as expected for linear models", {
   expect_true(file.exists(test_plot_file))
   unlink(test_plot_file)
 
-})
+}))
 
 

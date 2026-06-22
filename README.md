@@ -1,3 +1,4 @@
+
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/eeptools)](https://cran.r-project.org/package=eeptools)
 [![Downloads](https://cranlogs.r-pkg.org/badges/eeptools)](https://cran.r-project.org/package=eeptools)
 
@@ -16,12 +17,11 @@ data.
 
 `eeptools` provides three new datasets of interest to education
 researchers. These datasets are also used in the [R Bootcamp for
-Education Analysts](https://www.jaredknowles.com/r-bootcamp)
+Education Analysts](https://jaredknowles.com/archive/r-bootcamp/)
 
 ``` r
 library(eeptools)
 #> Loading required package: ggplot2
-#> Warning: package 'ggplot2' was built under R version 4.2.3
 data("stuatt")
 head(stuatt)
 #>   sid school_year male race_ethnicity birth_date first_9th_school_year_reported
@@ -205,7 +205,7 @@ statamode(vecB, method = "last")
 #> Levels: A
 vecA <- c(LETTERS[1:10])
 statamode(vecA, method = "sample")
-#> [1] "J"
+#> [1] "B"
 vecB <- c("A", "A", "A", LETTERS[3:10])
 statamode(vecB, method = "stata")
 #> [1] "A"
@@ -233,7 +233,6 @@ function, which itself is a wrapper for the `arm::sim()` function.
 ``` r
 require(MASS)
 #> Loading required package: MASS
-#> Warning: package 'MASS' was built under R version 4.2.3
 #Examples of "sim" 
 set.seed (1)
 J <- 15
@@ -258,12 +257,12 @@ cases$group <- factor(cases$group)
 sim.results <- gelmansim(mod = M3, newdata = cases, n.sims=200, na.omit=TRUE)
 head(sim.results)
 #>      x group      yhats   yhatMin  yhatMax
-#> 1 -2.0     1  1.1736195 -6.264184 8.243267
-#> 2 -1.9     1  0.7390300 -7.376271 8.587548
-#> 3 -1.8     1  1.1866869 -6.256829 7.846494
-#> 4 -1.7     1 -0.3616534 -8.355161 7.494966
-#> 5 -1.6     1  0.1931550 -7.104866 8.648023
-#> 6 -1.5     1 -0.6293359 -7.803899 6.654324
+#> 1 -2.0     1  1.1071284 -6.348896 8.202628
+#> 2 -1.9     1  0.6736463 -7.511567 8.400011
+#> 3 -1.8     1  1.1224105 -6.679137 8.144215
+#> 4 -1.7     1 -0.4248225 -8.419041 6.984633
+#> 5 -1.6     1  0.1310932 -7.320700 9.293344
+#> 6 -1.5     1 -0.6902903 -8.019434 7.595934
 ```
 
 There is also a `ggplot2` version of `plot.lm` included:
@@ -278,7 +277,7 @@ autoplot(mymod)
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![](tools/readme/README-lmautoplot-1.png)
+![](tools/readme/README-lmautoplot-1.png)<!-- -->
 
 Finally, there is a convenient method for creating labeled mosaic plots.
 
@@ -291,7 +290,7 @@ crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE,
              title = "Crosstab Plot", shade = FALSE)
 ```
 
-![](tools/readme/README-crossplot-1.png)
+![](tools/readme/README-crossplot-1.png)<!-- -->
 
 # Helping Out
 

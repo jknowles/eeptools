@@ -22,6 +22,12 @@ on. This assumes decimal point as opposed to decimal comma notation.
 This function assumes decimal point notation for numbers. For more 
 information, see \url{https://en.wikipedia.org/wiki/Decimal_mark#Countries_using_Arabic_numerals_with_decimal_point}.
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{readr::parse_number()} instead. This
+function will be removed in a future release.
+}
+
 \examples{
 input <- c("10,243", "11,212", "7,011", "5443", "500")
 output <- decomma(input)

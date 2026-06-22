@@ -22,6 +22,13 @@ A ggplot2 object that mimics the functionality of a plot of linear model.
 This uses ggplot2 to replicate the plot functionality for lm 
 in ggplot2 and allow themes.
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{ggfortify::autoplot()} or
+\code{performance::check_model()} instead. This method will be removed in a
+future release.
+}
+
 \examples{
 # Univariate
 a <- runif(1000)

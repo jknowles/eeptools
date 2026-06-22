@@ -47,6 +47,13 @@ A mosaic plot
 \description{
 Improves labeling of mosaic plots over \code{mosaic} from the vcd package
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{vcd::mosaic()} or the \code{ggmosaic}
+package instead. This function will be removed in a future release, at which
+point the \code{vcd} dependency will be dropped.
+}
+
 \examples{
 df <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8],60,replace=TRUE)),
 fac=sample(LETTERS[1:4], 60, replace=TRUE))
