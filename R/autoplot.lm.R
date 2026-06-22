@@ -88,7 +88,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
     mypos <- data.frame(matrix(1, length(which), 2))
     grid::pushViewport(grid::viewport(layout = grid::grid.layout(1, 1)))
     formatter <- function(.) {
-      .dontcare <- readline("Hit <Return> to see next plot: ")
+      if (interactive()) readline("Hit <Return> to see next plot: ")
       grid::grid.newpage()
     }
   }

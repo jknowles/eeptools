@@ -25,13 +25,13 @@ and leap second precision}
 A numeric vector of ages the same length as the dob vector
 }
 \description{
-his function calculates age in days, months, or years from a 
+This function calculates age in days, months, or years from a 
 date of birth to another arbitrary date. This returns a numeric vector in 
 the specified units.
 }
 \examples{
-a <- as.Date(seq(as.POSIXct('1987-05-29 018:07:00'), len=26, by="21 day"))
-b <- as.Date(seq(as.POSIXct('2002-05-29 018:07:00'), len=26, by="21 day"))
+a <- as.Date(seq(as.Date('1987-05-29'), len=26, by="21 day"))
+b <- as.Date(seq(as.Date('2002-05-29'), len=26, by="21 day"))
 
 age <- age_calc(a, units='years')
 age

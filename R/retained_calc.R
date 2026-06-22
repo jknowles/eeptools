@@ -20,10 +20,11 @@
 ##'                grade = c(9, 10, 9, 9, 9, 10, 10))
 ##' retained_calc(x)
 retained_calc <- function(df, sid = 'sid', grade = 'grade', grade_val = 9){
-  df$grade <- df[, grade]
-  df$sid <- df[, sid]
-  dt <- data.table(df, key=c("sid", "grade"))
-  result <- dt[I(grade == grade_val), list(count = .N), by = key(dt)]
+  tmp <- df
+  tmp[["grade"]] <- df[[grade]]
+  tmp[["sid"]]   <- df[[sid]]
+  dt <- data.table::data.table(tmp, key = c("sid", "grade"))
+  result <- dt[grade == grade_val, list(count = .N), by = key(dt)]
   result <- result[, list(sid, retained = ifelse(count > 1, 'Y', 'N'))]
   return(as.data.frame(result))
 }

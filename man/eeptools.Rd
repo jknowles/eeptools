@@ -15,9 +15,6 @@ calculating student characteristics, and finding thresholds within vectors.
 Future development work will include methods for tuning and evaluating early 
 warning system models.
 }
-\note{
-This package is still in beta and function names may change in the next release.
-}
 \examples{
 gender<-c("M","M","M","F","F","F")
 statamode(gender)

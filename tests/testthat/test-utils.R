@@ -1,11 +1,9 @@
 # Test utils
-context("Test defac conversion of factors")
-
 test_that("defac works for all types of factors", {
   a <- as.factor(LETTERS)
   b <- ordered(c(1, 3, '09', 7, 5, "B"))
-  expect_is(defac(a), "character")
-  expect_is(defac(b), "character")
+  expect_type(defac(a), "character")
+  expect_type(defac(b), "character")
   a2 <- defac(a)
   b2 <- defac(b)
   expect_identical(levels(a), a2)
@@ -14,8 +12,6 @@ test_that("defac works for all types of factors", {
   expect_identical(length(b), length(b2))
 })
 
-context("Forcing numerics with makenum")
-
 test_that("makenum works for all types of factors", {
   a <- ordered(c(1, 3, '09', 7, 5))
   a2 <- makenum(a)
@@ -23,17 +19,15 @@ test_that("makenum works for all types of factors", {
   b2 <- makenum(b)
   c <- factor(c(1, 3, '09', 7, 5, "B"))
   c2 <- makenum(c)
-  expect_is(a2, "numeric")
-  expect_is(b2, "numeric")
-  expect_is(c2, "numeric")
+  expect_type(a2, "double")
+  expect_type(b2, "double")
+  expect_type(c2, "double")
   expect_identical(length(a), length(a2))
   expect_identical(length(b), length(b2))
   expect_identical(length(c), length(c2))
   expect_identical(a2, b2)
   expect_identical(c2[6], NA_real_)
 })
-
-context("Test that cutoff is numerically accurate")
 
 test_that("cutoff gets the desired result", {
   set.seed(1024)
@@ -55,9 +49,6 @@ test_that("cutoff gets the desired result", {
   expect_error(cutoff(d, -0.00039))
 })
 
-context("Test the threshold function for numeric accuracy")
-
-
 test_that("thresh gets the accurate result", {
   set.seed(1024)
   a <- rnorm(1000, mean = 0, sd = 1)
@@ -78,8 +69,6 @@ test_that("thresh gets the accurate result", {
   expect_error(thresh(d, -39))
 })
 
-context("Test that max_mis works correctly")
-
 test_that("max_mis handles missing data correctly", {
   expect_identical(max(c(7,NA,3,2,0),na.rm=TRUE), max_mis(c(7,NA,3,2,0)))
   max(c(NA,NA,NA,NA),na.rm=TRUE)
@@ -92,38 +81,34 @@ test_that("max_mis handles missing data correctly", {
   expect_error(max_mis(ordered("A", "B", "C")))
 })
 
-context("Remove character")
-
 test_that("Remove character works for multiple character type", {
   a <- c(1, 5, 3, 6, "*", 2, 5, "*", "*")
   b <- remove_char(a, "*")
-  expect_is(b, "character")
+  expect_type(b, "character")
   expect_identical(length(a), length(b))
   expect_equal(length(b[is.na(b)]), 3)
   a <- c(1, 3, 5, "B", "D", ".", ".", ".")
   b <- remove_char(a, ".")
-  expect_is(b, "character")
+  expect_type(b, "character")
   expect_identical(length(a), length(b))
   expect_equal(length(b[is.na(b)]), 3)
   a <- c(1, 3, 5, "B", "D", "Unk.", "Unk.", "Unk.")
   b <- remove_char(a, "Unk.")
-  expect_is(b, "character")
+  expect_type(b, "character")
   expect_identical(length(a), length(b))
   expect_equal(length(b[is.na(b)]), 3)
   a <- c(1, 3, 5, "B", "D", "Unk.", "Unk.", "Unk.", NA, NA, NA)
   b <- remove_char(a, "Unk.")
-  expect_is(b, "character")
+  expect_type(b, "character")
   expect_identical(length(a), length(b))
   expect_equal(length(b[is.na(b)]), 6)
 })
 
 
-context("Leading zero functions as desired")
-
 test_that("Function works for multiple types of inputs", {
   a <- seq(1, 9)
   a2 <- leading_zero(a, digits = 2)
-  expect_is(a2, "character")
+  expect_type(a2, "character")
   expect_true(all(sapply(a2, nchar)==2))
   expect_error(leading_zero(a2, digits = -1))
   expect_error(leading_zero(a2, digits = 0))
@@ -131,7 +116,7 @@ test_that("Function works for multiple types of inputs", {
   
   a <- seq(9, 25)
   a2 <- leading_zero(a, digits = 3)
-  expect_is(a2, "character")
+  expect_type(a2, "character")
   expect_true(all(sapply(a2, nchar)==3))
   a2 <- leading_zero(a, digits = 1)
   expect_false(all(sapply(a2, nchar)==1))
@@ -144,8 +129,6 @@ test_that("Function works for multiple types of inputs", {
                          "0400", "4000"))
 })
 
-context("Test decomma")
-
 a <- c("12,124", "21,131", "A,b")
 b <- c("12124", "21131", "Ab")
 
@@ -153,23 +136,21 @@ c <- a[1:2]
 d <- as.numeric(b[1:2])
 
 test_that("decomma returns the right class", {
-  expect_that(decomma(c), equals(d))
-  expect_that(decomma(a), gives_warning())
-  expect_that(decomma(a), is_a("numeric"))
-  expect_that(decomma(b), is_a("numeric"))
-  expect_that(decomma(c), is_a("numeric"))
-  expect_that(decomma(d), is_a("numeric"))
+  expect_equal(decomma(c), d)
+  expect_warning(decomma(a))
+  expect_type(decomma(a), "double")
+  expect_type(decomma(b), "double")
+  expect_type(decomma(c), "double")
+  expect_type(decomma(d), "double")
 })
 
 n <- c(NA, NA, NA, "7,102", "27,125", "23,325,22", "Ab")
 
 test_that("decomma handles NAs properly", {
-  expect_that(length(decomma(n)[!is.na(decomma(n))]), equals(3))
-  expect_that(decomma(n)[6], equals(2332522))
+  expect_equal(length(decomma(n)[!is.na(decomma(n))]), 3)
+  expect_equal(decomma(n)[6], 2332522)
 })
 
-
-context("nth max")
 
 test_that("Numeric accuracy", {
   a <- c(1:20, 20:1)
@@ -184,8 +165,6 @@ test_that("Numeric accuracy", {
   expect_equal(nth_max(f), 10.0001)
 })
 
-context("Test isid")
-
 test_that("ISID returns correct values", {
   data(stuatt)
   total <- nrow(stuatt)
@@ -193,12 +172,10 @@ test_that("ISID returns correct values", {
   expect_false(isid(stuatt, vars = c("sid", "school_year")))
   expect_output(isid(stuatt, vars = c("sid", "school_year"), verbose = TRUE))
   expect_output(isid(stuatt, 
-                   vars = c("sid", "school_year", "male", 
-                            "race_ethnicity", "hs_diploma_type"), verbose=TRUE))
+                     vars = c("sid", "school_year", "male", 
+                              "race_ethnicity", "hs_diploma_type"), verbose=TRUE))
   expect_true(isid(stuatt, 
                    vars = c("sid", "school_year", "male", 
                             "race_ethnicity", "hs_diploma_type")))
   
 })
-
-
