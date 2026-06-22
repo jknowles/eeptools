@@ -1,5 +1,5 @@
 # Test utils
-test_that("defac works for all types of factors", {
+test_that("defac works for all types of factors", suppress_deprecation({
   a <- as.factor(LETTERS)
   b <- ordered(c(1, 3, '09', 7, 5, "B"))
   expect_type(defac(a), "character")
@@ -10,9 +10,9 @@ test_that("defac works for all types of factors", {
   expect_true(all(levels(b) %in% b2))
   expect_identical(length(a), length(a2))
   expect_identical(length(b), length(b2))
-})
+}))
 
-test_that("makenum works for all types of factors", {
+test_that("makenum works for all types of factors", suppress_deprecation({
   a <- ordered(c(1, 3, '09', 7, 5))
   a2 <- makenum(a)
   b <- factor(c(1, 3, '09', 7, 5))
@@ -27,7 +27,7 @@ test_that("makenum works for all types of factors", {
   expect_identical(length(c), length(c2))
   expect_identical(a2, b2)
   expect_identical(c2[6], NA_real_)
-})
+}))
 
 test_that("cutoff gets the desired result", {
   set.seed(1024)
@@ -135,21 +135,21 @@ b <- c("12124", "21131", "Ab")
 c <- a[1:2]
 d <- as.numeric(b[1:2])
 
-test_that("decomma returns the right class", {
+test_that("decomma returns the right class", suppress_deprecation({
   expect_equal(decomma(c), d)
-  expect_warning(decomma(a))
+  expect_warning(decomma(a), "NAs introduced by coercion")
   expect_type(decomma(a), "double")
   expect_type(decomma(b), "double")
   expect_type(decomma(c), "double")
   expect_type(decomma(d), "double")
-})
+}))
 
 n <- c(NA, NA, NA, "7,102", "27,125", "23,325,22", "Ab")
 
-test_that("decomma handles NAs properly", {
-  expect_equal(length(decomma(n)[!is.na(decomma(n))]), 3)
-  expect_equal(decomma(n)[6], 2332522)
-})
+test_that("decomma handles NAs properly", suppress_deprecation({
+  expect_equal(length(suppressWarnings(decomma(n))[!is.na(suppressWarnings(decomma(n)))]), 3)
+  expect_equal(suppressWarnings(decomma(n))[6], 2332522)
+}))
 
 
 test_that("Numeric accuracy", {

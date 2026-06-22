@@ -11,17 +11,18 @@ vignette: >
 
 # Introduction
 
-`eeptools` is an R package that seeks to make it easier for analysts at 
-state and local education agencies to analyze and visualize their data on student, 
-school, and district performance. By putting simple wrappers around a number of 
-R functions, `eeptools` strives to make many common tasks simpler and less prone 
-to error specific to analysis of education data.
+`eeptools` is an R package that makes it easier for analysts at state and local
+education agencies to work with administrative records on students, schools, and
+districts. It focuses on the tasks that are specific to education unit-record
+data -- calculating ages and grade retention, identifying student mobility,
+checking unique identifiers, and exploring example datasets -- and tries to make
+those tasks simpler and less error-prone.
 
 ```{r setup, echo = FALSE, message=FALSE, warning=FALSE, results='hide'}
 knitr::opts_chunk$set(
   cache=FALSE,
   comment="#>",
-  collapse=TRUE, 
+  collapse=TRUE,
   echo=TRUE
 )
 library(knitr); library(eeptools)
@@ -29,29 +30,29 @@ library(knitr); library(eeptools)
 
 # Administrative Data Functions
 
-For analysts using unit-record data of some type, there are several `calc` functions 
-which automate common tasks including calculating ages (`age_calc`), 
-grade retention (`retained_calc`), and student mobility (`moves_calc`). 
+For analysts using unit-record data of some type, there are several `calc` functions
+which automate common tasks including calculating ages (`age_calc`),
+grade retention (`retained_calc`), and student mobility (`moves_calc`).
 
 
 ```{r}
-age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'),
          units = "years")
-age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'),
          units = "months")
-age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'), 
+age_calc(dob = as.Date('1995-01-15'), enddate = as.Date('2003-02-16'),
          units = "days")
 ```
 
-`age_calc` also now properly accounts for leap years and leap seconds by default. 
-`age_calc` can be passed a vector of dates of birth and a vector of end dates or 
-a single end-date and produce a vector of ages as well -- suitable for computing 
-student age on the fly from date-of-birth records. 
+`age_calc` also now properly accounts for leap years and leap seconds by default.
+`age_calc` can be passed a vector of dates of birth and a vector of end dates or
+a single end-date and produce a vector of ages as well -- suitable for computing
+student age on the fly from date-of-birth records.
 
-`retained_calc` takes a vector of student identifiers and a vector of grades and 
-checks whether or not the student was retained in the grade level specified by 
-the user. It returns a data.frame of all students who could have been retained 
-and a yes or no indicator of whether they were retained. 
+`retained_calc` takes a vector of student identifiers and a vector of grades and
+checks whether or not the student was retained in the grade level specified by
+the user. It returns a data.frame of all students who could have been retained
+and a yes or no indicator of whether they were retained.
 
 
 ```{r}
@@ -60,12 +61,12 @@ x <- data.frame(sid = c(101, 101, 102, 103, 103, 103, 104, 105, 105, 106, 106),
 retained_calc(df = x, sid = "sid", grade = "grade", grade_val = 9)
 ```
 
-`retained_calc` is intended to be used after you have processed your data as it 
-does not take into account time or sequence other than the order in which the 
-data is passed to it. 
+`retained_calc` is intended to be used after you have processed your data as it
+does not take into account time or sequence other than the order in which the
+data is passed to it.
 
-`moves_calc` is intended to identify based on enrollment dates whether a student 
-experienced a school move within a school year. 
+`moves_calc` is intended to identify based on enrollment dates whether a student
+experienced a school move within a school year.
 
 
 ```{r}
@@ -80,20 +81,20 @@ df <- data.frame(sid = c(rep(1,3), rep(2,4), 3, rep(4,2)),
                     '2005-03-01', '2005-06-15', '2005-05-30',
                     NA, '2005-06-15'), format='%Y-%m-%d'))
 
-moves <- moves_calc(df, sid = "sid", schid = "schid", enroll_date = "enroll_date", 
+moves <- moves_calc(df, sid = "sid", schid = "schid", enroll_date = "enroll_date",
                     exit_date = "exit_date")
 moves
 
 ```
 
-# Manipulate Data
+# Manipulating and Cleaning Data
 
-Another set of key functions in the package are to make basic data manipulation 
-easier. One thing users of other statistical packaegs may miss when using R is 
-a convenient function for determining the `mode` of a vector. The `statamode` 
+Another set of key functions in the package make basic data manipulation easier.
+One thing users of other statistical packages may miss when using R is a
+convenient function for determining the `mode` of a vector. The `statamode`
 function is designed to do just that. `statamode` works with numeric, character,
- and factor data types. It also includes various options for how to deal with a 
- tie demonstrated below.
+and factor data types. It also includes various options for how to deal with a
+tie demonstrated below.
 
 ```{r statamode}
 vecA <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -114,98 +115,73 @@ vecC <- c("A", "A", "A", NA, NA, LETTERS[5:10])
 statamode(vecC, method = "stata")
 ```
 
-There are a number of functions to save you keystrokes like `defac` for converting 
-a factor to a character, `makenum` for turning a factor variable into a numeric 
-variable, `max_mis` for taking the maximum of a vector of numerics and ignoring 
-any NAs (useful for inclusion in `do.call` or `apply` constructions). `remove_char` 
-allows you to quickly `gsub` out a specific character from a string vector such 
-as an `*` or `...`. `decomma` is a somewhat specialized version of this for 
-processing data where numerics are written with commas. `nth_max` allows you to 
-identify the 2nd, 3rd, etc. maximum value in a vector. 
-
-
-# Regression Models
-
-`eeptools` includes ways to simplify the use of regression analyses tools recommended 
-by Gelman and Hill 2006 through the `gelmansim` function, which itself is a wrapper 
-for the `arm::sim()` function. This function allows the distribution of predicted 
-values to be generated automatically which is useful for gauging uncertainty in 
-a statistical model and also to compare predictions from multiple models on the 
-same case data to see if the values of those models overlap or are distinct 
-from one another. 
-
-```{r sim}
-library(MASS)
-#Examples of "sim" 
-set.seed (1)
-J <- 15
-n <- J*(J+1)/2
-group <- rep (1:J, 1:J)
-mu.a <- 5
-sigma.a <- 2
-a <- rnorm (J, mu.a, sigma.a)
-b <- -3
-x <- rnorm (n, 2, 1)
-sigma.y <- 6
-y <- rnorm (n, a[group] + b*x, sigma.y)
-u <- runif (J, 0, 3)
-dat <- cbind (y, x, group)
-# Linear regression 
-dat <- as.data.frame(dat)
-dat$group <- factor(dat$group)
-M3 <- glm (y ~ x + group, data=dat)
-cases <- expand.grid(x = seq(-2, 2, by=0.1), 
-                     group=seq(1, 14, by=2))
-cases$group <- factor(cases$group)
-sim.results <- gelmansim(mod = M3, newdata = cases, n.sims=200, na.omit=TRUE)
-head(sim.results)
-```
-
-# Plotting Functions
-
-
-There is also a `ggplot2` version of `plot.lm` included:
-
-```{r lmautoplot}
-data(mpg)
-mymod <- lm(cty~displ + cyl + drv, data=mpg)
-autoplot(mymod)
-```
-
-Finally, there is a convenient method for creating labeled mosaic plots. 
-
-```{r crossplot}
-sampDat <- data.frame(cbind(x=seq(1,3,by=1), y=sample(LETTERS[6:8], 60, 
-                                                        replace=TRUE)),
-                        fac=sample(LETTERS[1:4], 60, replace=TRUE))
-varnames<-c('Quality','Grade')
-crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = TRUE, 
-             title = "Crosstab Plot", shade = FALSE)
-```
-
-And without labels:
+Administrative extracts are rarely clean. `remove_char` strips a specific
+character -- such as the `*` often used to mark redacted cells -- out of a
+column and returns the result, replacing the marker with `NA` so the column can
+be coerced to numeric.
 
 ```{r}
-crosstabplot(sampDat, "y", "fac", varnames = varnames,  label = FALSE, 
-             title = "Crosstab Plot", shade = TRUE)
+scores <- c(1, 5, 3, 6, "*", 2, 5, "*", "*")
+remove_char(scores, "*")
 ```
 
+Fixed-width identifier codes (school numbers, district codes, FIPS codes) often
+lose their leading zeroes when read in as numbers. `leading_zero` pads them back
+to a fixed width.
+
+```{r}
+leading_zero(c(1, 23, 7, 105), digits = 4)
+```
+
+When you summarize arbitrary subsets of data, some subsets may contain only
+missing values. Taking `max()` of such a subset returns `-Inf` and a warning;
+`max_mis` returns `NA` instead, which is convenient inside `apply` or `do.call`
+constructions. `nth_max` returns the 2nd, 3rd, etc. largest value in a vector.
+
+```{r}
+max_mis(c(7, NA, 3, 2, 0))
+max_mis(c(NA, NA, NA, NA))
+nth_max(c(1:20, 20:1), n = 2)
+```
+
+# Checking and Summarizing Data
+
+Before aggregating unit-record data it is good practice to confirm which
+variables uniquely identify a row. `isid` (named after the Stata command) checks
+whether a set of variables forms a unique key.
+
+```{r}
+data(stuatt)
+isid(stuatt, vars = c("sid"))
+isid(stuatt, vars = c("sid", "school_year"))
+```
+
+`cutoff` and `thresh` help you understand how concentrated a quantity is. After
+sorting a vector in descending order, `cutoff` returns the number of elements
+needed to reach a given proportion of the total, while `thresh` returns the
+proportion of the total reached after a given number of elements.
+
+```{r}
+set.seed(442)
+enrollment <- rpois(100, lambda = 50)
+cutoff(enrollment, 0.5)  # elements needed to reach 50% of the total
+thresh(enrollment, 10)   # proportion of the total in the 10 largest
+```
 
 # Datasets
 
-`eeptools` provides three new datasets of interest to education researchers. These 
-datasets are also used in the [R Bootcamp for Education Analysts](https://www.jaredknowles.com/r-bootcamp)
+`eeptools` provides three new datasets of interest to education researchers. These
+datasets are also used in the [R Bootcamp for Education Analysts](https://jaredknowles.com/archive/r-bootcamp/)
 
 ```{r}
-library(eeptools)
 data("stuatt")
 head(stuatt)
 ```
 
-The `stuatt`, student attributes, dataset is provided from the 
-[Strategic Data Project Toolkit for Effective Data  Use](https://sdp.cepr.harvard.edu/toolkit-effective-data-use). 
-This dataset is useful for learning how to clean data in R and how to aggregate 
-and summarize individual unit-record data into group-level data. 
+The `stuatt`, student attributes, dataset is provided from the
+[Strategic Data Project Toolkit for Effective Data  Use](https://sdp.cepr.harvard.edu/toolkit-effective-data-use).
+This dataset is useful for learning how to clean data in R and how to aggregate
+and summarize individual unit-record data into group-level data.
 
 ```{r}
 data(stulevel)
@@ -213,9 +189,9 @@ head(stulevel)
 
 ```
 
-The `stulevel` dataset is a simulated student-level longitudinal record. It contains 
-student and school level attributes and is useful for practicing evaluating 
-longitudinal analyses of student unit-record data. 
+The `stulevel` dataset is a simulated student-level longitudinal record. It contains
+student and school level attributes and is useful for practicing evaluating
+longitudinal analyses of student unit-record data.
 
 ```{r}
 data("midsch")
@@ -223,8 +199,17 @@ head(midsch)
 
 ```
 
-The `midsch` dataset contains an analysis on abnormality in school average 
-assessment scores. It contains observed and predicted values of aggregated 
-test scores at the school level for a large midwestern state. 
+The `midsch` dataset contains an analysis on abnormality in school average
+assessment scores. It contains observed and predicted values of aggregated
+test scores at the school level for a large midwestern state.
 
+# Deprecated functions
 
+As of version 1.3.0 several older convenience functions are deprecated and will
+be removed in a future release. These include `defac()`, `makenum()`,
+`decomma()`, `cleanTex()`, `lag_data()`, `gelmansim()`, `autoplot.lm()`,
+`crosstabs()`, `crosstabplot()`, `profpoly()`, and `profpoly.data()`, along with
+the now-defunct `theme_dpi*()` themes. Where a modern replacement exists it is
+named in each function's help page and in `NEWS.md`; for example, use
+`as.character()` in place of `defac()`, `readr::parse_number()` in place of
+`decomma()`, and `dplyr::lag()` in place of `lag_data()`.

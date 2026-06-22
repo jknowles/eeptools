@@ -16,6 +16,12 @@ A character
 This is a shortcut function to convert a factor to a character 
 variable without having to type as.character()
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{as.character()} instead. This
+function will be removed in a future release.
+}
+
 \examples{
 a <- as.factor(LETTERS)
 summary(a)

@@ -1,18 +1,25 @@
+## Submission
+
+This release (1.3.0) modernizes `autoplot.lm` for `ggplot2` 4.0 (removing the
+deprecated `ggplot2::fortify()` call and the deprecated `size` line aesthetic),
+fixes a moved URL in the README, and begins focusing the package on education
+administrative-records work by deprecating several convenience functions and
+making four long-deprecated theme functions defunct. Deprecated functions still
+work but emit a warning. No exported functions were removed in this release, so
+there is no impact on reverse dependencies (of which there are none).
+
 ## Test environments
-* local Windows 11 install, R 4.5.1
-* r-hub: "ubuntu-gcc-devel", "windows-x86_64-devel", "debian-gcc-release"
+* local Linux install, R 4.6.0
+* GitHub Actions: macOS-latest (release), windows-latest (release),
+  ubuntu-latest (devel, release, oldrel-1)
 
 ## R CMD check results
-There were no ERRORs or WARNINGs or NOTEs. 
+There were no ERRORs or WARNINGs.
 
 There is one NOTE:
-* Used utils::globalVariables(c(".fitted", ".resid",".stdresid",".cooksd",
-"rows",".hat")) to fix notes about unexported objects in `autoplot.lm`
-* Used utils::globalVariables(c("moves", "switches", ".SD")) to fix notes about 
-unexported objects in `moves_calc`
-* Used utils::globalVariables(c("adv", "grade", "count", "id", "gradeP", 
-"vals", "prof")) to fix notes about unexported objects in `profpoly`
-
+* Uses `utils::globalVariables()` to declare non-standard-evaluation column
+  names used by `data.table` and `ggplot2` in `autoplot.lm`, `moves_calc`,
+  and `profpoly`.
 
 ## Downstream dependencies
 There are no downstream dependencies.

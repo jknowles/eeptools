@@ -10,6 +10,10 @@
 ##' @references Modified from Gelman and Hill 2006. Data Analysis Using Regression and Multilevel/Hierarchical Models. Cambridge University Press.
 ##' @details Currently gelmansim does not work for \code{\link{lm}} objects because of the way \code{\link[arm]{sim}} in the 
 ##' \code{arm} package handles variable names for these objects. It is recommended users use \code{\link{glm}} in these cases.
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0; use the \code{marginaleffects} package or
+##' \code{merTools::predictInterval()} instead. This function will be removed in
+##' a future release, at which point the \code{arm} dependency will be dropped.
 ##' @export
 ##' @import arm
 ##' @importFrom stats contrasts
@@ -47,7 +51,10 @@
 ##'  
 ##' }
 gelmansim <- function(mod, newdata, n.sims, na.omit=TRUE){
-    sims.tmp <- arm::sim(mod, n.sims=n.sims)
+  .Deprecated(msg = paste("gelmansim() is deprecated as of eeptools 1.3.0 and will",
+                          "be removed in a future release. Use the 'marginaleffects'",
+                          "package or merTools::predictInterval() instead."))
+  sims.tmp <- arm::sim(mod, n.sims=n.sims)
   if("lm" %in% class(mod)[1]){
     form.tmp <- as.formula(paste("~",as.character(formula(mod)[3])))
   } else{

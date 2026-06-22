@@ -1,5 +1,40 @@
 # NEWS
 
+## eeptools 1.3.0
+
+This release begins narrowing `eeptools` toward its durable purpose — a toolkit
+for education administrative-records analysis — by deprecating convenience
+functions that are now better served by base R or other packages, and by
+retiring functions that have been deprecated for several releases. Deprecated
+functions still work but emit a warning; they are scheduled for removal in 2.0.0,
+at which point the `arm` and `vcd` dependencies will be dropped.
+
+### Deprecated
+
+- `defac()` — use `as.character()`
+- `makenum()` — use `as.numeric(as.character())`
+- `decomma()` — use `readr::parse_number()`
+- `cleanTex()` — modern knitr/Quarto workflows manage their own build artifacts
+- `lag_data()` — use `dplyr::lag()` with `dplyr::group_by()`, or `data.table::shift()`
+- `gelmansim()` — use the `marginaleffects` package or `merTools::predictInterval()`
+- `autoplot.lm()` — use `ggfortify::autoplot()` or `performance::check_model()`
+- `crosstabs()` — use `janitor::tabyl()` or `dplyr::count()`
+- `crosstabplot()` — use `vcd::mosaic()` or the `ggmosaic` package
+- `profpoly()` and `profpoly.data()` — niche assessment-band helpers
+
+### Defunct
+
+- `theme_dpi()`, `theme_dpi_map()`, `theme_dpi_map2()`, and `theme_dpi_mapPNG()`
+  are now defunct. Use `ggplot2::theme_bw()` instead. (Deprecated since 1.2.x.)
+
+### Other changes
+
+- Modernized `autoplot.lm` for `ggplot2` 4.0: model diagnostics are now computed
+  directly from `stats` (`fitted`, `resid`, `rstandard`, `hatvalues`,
+  `cooks.distance`) instead of the deprecated `ggplot2::fortify()`, and the
+  deprecated `size` aesthetic on lines was replaced with `linewidth`
+- Fixed a moved (`301`) URL for the R Bootcamp for Education Analysts
+
 ## eeptools 1.2.7
 
 - Fixed package documentation crossreference issues

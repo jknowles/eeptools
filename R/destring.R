@@ -11,6 +11,9 @@
 ##' cause errors.
 ##' @seealso \code{\link{character}}
 ##' @return A numeric
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0; use \code{as.numeric(as.character(x))} instead.
+##' This function will be removed in a future release.
 ##' @author Jared E. Knowles
 ##' @export
 ##' @examples
@@ -21,7 +24,8 @@
 ##' a
 ##' 
 makenum <- function(x){
-  x <- as.character(x)
-  x <- as.numeric(x)
-  return(x)
+  .Deprecated(msg = paste("makenum() is deprecated as of eeptools 1.3.0 and will be",
+                          "removed in a future release.",
+                          "Use as.numeric(as.character(x)) instead."))
+  as.numeric(as.character(x))
 }

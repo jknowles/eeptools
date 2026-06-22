@@ -24,7 +24,11 @@
 #' @seealso
 #'  \code{\link[vcd]{mosaic}} which this function wraps
 #'  \code{\link{crosstabs}} which does the data manipulation for the crosstab
-#' 
+#'
+#' @section Deprecation:
+#' Deprecated in eeptools 1.3.0; use \code{vcd::mosaic()} or the \code{ggmosaic}
+#' package instead. This function will be removed in a future release, at which
+#' point the \code{vcd} dependency will be dropped.
 #' @import vcd
 #' @export
 #' @examples
@@ -34,10 +38,15 @@
 #' myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
 #' crosstabplot(df, rowvar = "x",colvar = "fac", varnames = varnames, 
 #' title = 'My Plot', subtitle = 'Foo', label = FALSE, shade = TRUE, digits = 3)
-crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL, 
+crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL,
                              subtitle = NULL, label = FALSE, shade = TRUE, ...){
-  out <- crosstabs(data = data, rowvar = rowvar, colvar = colvar, 
-                   varnames = varnames, ...)
+  .Deprecated(msg = paste("crosstabplot() is deprecated as of eeptools 1.3.0 and",
+                          "will be removed in a future release.",
+                          "Use vcd::mosaic() or the 'ggmosaic' package instead."))
+  # crosstabs() is itself deprecated; suppress its warning here to avoid a
+  # duplicate notice when called through crosstabplot().
+  out <- suppressWarnings(crosstabs(data = data, rowvar = rowvar, colvar = colvar,
+                   varnames = varnames, ...))
   if(label){
     vcd::mosaic(out$TABS, shade = shade, main = title, sub = subtitle, 
                 labeling = labeling_cells(text = out$TABSPROPORTIONS, 
@@ -61,6 +70,10 @@ crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL,
 #' @param digits an integer for how much to round the proportion calculations by, 
 #' default is 2
 #' @return a list with crosstab calculations
+#' @section Deprecation:
+#' Deprecated in eeptools 1.3.0; use \code{janitor::tabyl()} or
+#' \code{dplyr::count()} instead. This function will be removed in a future
+#' release.
 #' @export
 #'
 #' @examples
@@ -69,6 +82,9 @@ crosstabplot <- function(data, rowvar, colvar, varnames, title = NULL,
 #' varnames<-c('Quality','Grade')
 #' myCT <- crosstabs(df, rowvar = "x",colvar = "fac", varnames = varnames, digits =2)
 crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
+  .Deprecated(msg = paste("crosstabs() is deprecated as of eeptools 1.3.0 and will",
+                          "be removed in a future release.",
+                          "Use janitor::tabyl() or dplyr::count() instead."))
   crosstab <- table(data[, rowvar], data[, colvar])
   rowvarcat <- levels(as.factor(data[, rowvar]))
   colvarcat <- levels(as.factor(data[, colvar]))
@@ -102,6 +118,9 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
 #' @seealso
 #'  \code{\link[ggplot2]{geom_polygon}} which this function wraps
 #'
+#' @section Deprecation:
+#' Deprecated in eeptools 1.3.0. This niche assessment-band helper will be
+#' removed in a future release.
 #' @export
 #' @examples
 #' grades<-c(3,4,5,6,7,8)
@@ -116,6 +135,8 @@ crosstabs <-function(data, rowvar, colvar, varnames, digits = 2){
 #'                   advanced = adv, HOSS)
 #' profpoly(z)
 profpoly <- function(data){
+  .Deprecated(msg = paste("profpoly() is deprecated as of eeptools 1.3.0 and will",
+                          "be removed in a future release."))
   if(!all(c("gradeP", "prof", "vals") %in% names(data))){
     stop("Please run profpoly first to generate the polygon data")
   }
@@ -140,6 +161,9 @@ profpoly <- function(data){
 #' @seealso
 #'  \code{\link[ggplot2]{geom_polygon}} which this function assists
 #'
+#' @section Deprecation:
+#' Deprecated in eeptools 1.3.0. This niche assessment-band helper will be
+#' removed in a future release.
 #' @export
 #' @examples
 #'grades<-c(3,4,5,6,7,8)
@@ -155,6 +179,8 @@ profpoly <- function(data){
 #'                proficient = prof,advanced = adv, HOSS)
 #' z
 profpoly.data <- function(grades,LOSS,minimal,basic,proficient,advanced,HOSS){
+  .Deprecated(msg = paste("profpoly.data() is deprecated as of eeptools 1.3.0 and",
+                          "will be removed in a future release."))
   g<-length(grades)
   rep.invert <- function(x){
     c(x,x[order(-x)])

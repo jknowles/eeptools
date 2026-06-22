@@ -8,6 +8,10 @@
 ##' @return A ggplot2 object that mimics the functionality of a plot of linear model.
 ##' @references Modified from: https://librestats.com/2012/06/11/autoplot-graphical-methods-with-ggplot2/
 ##' @seealso \code{\link{plot.lm}} which this function mimics
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0; use \code{ggfortify::autoplot()} or
+##' \code{performance::check_model()} instead. This method will be removed in a
+##' future release.
 ##' @export
 ##' @import ggplot2
 ##' @examples
@@ -22,13 +26,22 @@
 ##' autoplot(mymod)
 ##' 
 autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
-  df <- ggplot2::fortify(object)
-  df <- cbind(df, rows = seq_len(nrow(df)))
+  .Deprecated(msg = paste("autoplot.lm() is deprecated as of eeptools 1.3.0 and will",
+                          "be removed in a future release. Use ggfortify::autoplot()",
+                          "or performance::check_model() instead."))
+  # Model diagnostics computed directly from stats rather than the
+  # deprecated ggplot2::fortify() (deprecated in ggplot2 4.0.0).
+  df <- data.frame(.fitted   = stats::fitted(object),
+                   .resid    = stats::resid(object),
+                   .stdresid = stats::rstandard(object),
+                   .hat      = stats::hatvalues(object),
+                   .cooksd   = stats::cooks.distance(object))
+  df$rows <- seq_len(nrow(df))
   # residuals vs fitted
   g1 <- ggplot(df, aes(.fitted, .resid)) +
     geom_point()  +
     geom_smooth(se=FALSE, method = "loess") +
-    geom_hline(yintercept = 0, linetype=2, size=.2) +
+    geom_hline(yintercept = 0, linetype=2, linewidth=.2) +
     scale_x_continuous("Fitted Values") +
     scale_y_continuous("Residual") +
     labs(title="Residuals vs Fitted")+
@@ -63,7 +76,7 @@ autoplot.lm <- function(object, which=c(1:6), mfrow=c(3,2), ...){
   g5 <- ggplot(df, aes(.hat, .stdresid)) +
     geom_point() +
     geom_smooth(se=FALSE, method = "loess") +
-    geom_hline(yintercept = 0, linetype=2, size=.2) +
+    geom_hline(yintercept = 0, linetype=2, linewidth=.2) +
     scale_x_continuous("Leverage") +
     scale_y_continuous("Standardized Residuals") +
     labs(title="Residuals vs Leverage") + 

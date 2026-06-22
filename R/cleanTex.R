@@ -10,8 +10,15 @@
 ##' @param keepRproj Logical. Should function save .Rproj files with filename \code{fn}. 
 ##' Default is TRUE.
 ##' @return Nothing. All files except the .tex, .pdf and .Rnw are removed from your directory.
+##' @section Deprecation:
+##' Deprecated in eeptools 1.3.0. Modern knitr/Quarto workflows manage their own
+##' build artifacts, so this Sweave-era helper is no longer needed. It will be
+##' removed in a future release.
 ##' @export
 cleanTex <- function(fn, keepPDF = TRUE, keepRnw = TRUE, keepRproj = TRUE){
+  .Deprecated(msg = paste("cleanTex() is deprecated as of eeptools 1.3.0 and will be",
+                          "removed in a future release. Modern knitr/Quarto",
+                          "workflows manage their own build artifacts."))
   a <- list.files(pattern=fn)
   save <- a[grep(".tex",a)]
   if(keepPDF==TRUE){  

@@ -27,6 +27,12 @@ This will force all levels to be converted to characters and then to
 numeric objects. Leading zeroes will be stripped off and commas will 
 cause errors.
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0; use \code{as.numeric(as.character(x))} instead.
+This function will be removed in a future release.
+}
+
 \examples{
 a <- ordered(c(1, 3, '09', 7, 5))
 b <- makenum(a)

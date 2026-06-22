@@ -24,3 +24,10 @@ Nothing. All files except the .tex, .pdf and .Rnw are removed from your director
 \description{
 Convenience function for cleaning up your directory after running pdflatex
 }
+\section{Deprecation}{
+
+Deprecated in eeptools 1.3.0. Modern knitr/Quarto workflows manage their own
+build artifacts, so this Sweave-era helper is no longer needed. It will be
+removed in a future release.
+}
+
